@@ -1,0 +1,5 @@
+# Education Manager Project DB File
+
+DROP DATABASE IF EXISTS SB_EM;
+CREATE DATABASE SB_EM;
+USE SB_EM;
