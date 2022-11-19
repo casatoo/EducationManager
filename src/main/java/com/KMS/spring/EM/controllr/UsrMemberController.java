@@ -26,10 +26,10 @@ public class UsrMemberController {
 	
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
-	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email,@RequestParam(defaultValue = "/") String afterLoginUri ,Model model) {
+	public String doJoin(String loginId, String loginPw, String birthDay, String name, String englishName, String cellphoneNum,
+			String email ,Model model, @RequestParam(defaultValue = "/") String afterLoginUri) {
 
-		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, name, nickname, cellphoneNum, email);
+		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
 
 		if(doJoinRd.isFail()) {
 			if(doJoinRd.getResultCode().equals("F-1")) {
@@ -39,8 +39,6 @@ public class UsrMemberController {
 				return Ut.jsHistoryBack(Ut.f("이미 가입된 회원입니다."));
 			}
 		}
-		Member member = memberService.getMember((int) doJoinRd.getData1());
-		resultRd = ResultData.newData(doJoinRd,"member",member);
 		return Ut.jsReplace(Ut.f("회원가입 성공!"),Ut.f("../member/login?afterLoginUri=%s",Ut.getUriEncoded(afterLoginUri)));
 	}
 
