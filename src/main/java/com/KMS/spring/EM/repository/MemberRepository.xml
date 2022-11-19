@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.KMS.exam.demo.repository.MemberRepository">
-	<insert id="Join">
+<mapper namespace="com.KMS.spring.EM.repository.MemberRepository">
+	<insert id="doJoin">
 		INSERT INTO `member`
 		SET regDate = NOW(),
-		updateDate =
-		NOW(),
+		updateDate = NOW(),
 		loginId = #{loginId},
 		loginPw = #{loginPw},
+		birthDay = #{birthDay},
 		`name` = #{name},
-		nickname = #{nickname},
+		englishName = #{englishName},
 		cellphoneNum = #{cellphoneNum},
 		email = #{email}
 	</insert>
+
+	<select id="getMemberById" resultType="Member">
+		SELECT *
+		FROM `member`
+		WHERE id
+		= #{id}
+	</select>
+	
+	<select id="getMemberByNameAndEmail" resultType="Member">
+		SELECT *
+		FROM `member`
+		WHERE `name`
+		= #{name}
+		AND email
+		= #{email}
+	</select>
+	
+	<select id="getMemberByLoginId" resultType="Member">
+		SELECT *
+		FROM
+		`member`
+		WHERE loginId
+		= #{loginId}
+	</select>
+
+	<select id="getLastInsertId" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+
 
 </mapper>

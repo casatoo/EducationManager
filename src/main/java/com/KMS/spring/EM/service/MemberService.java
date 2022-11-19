@@ -41,7 +41,7 @@ public class MemberService {
 		if(existsMember != null) {
 			return ResultData.from("F-2",Ut.f("이미 가입된 회원입니다. %s, %s",name, email));
 		}
-		memberRepository.Join(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
+		memberRepository.doJoin(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
 		
 		return ResultData.from("S-1","회원가입 성공");
 	}
