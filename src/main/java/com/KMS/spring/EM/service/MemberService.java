@@ -36,7 +36,7 @@ public class MemberService {
 	 * @param email
 	 * @return
 	 */
-	public ResultData<Integer> doJoin(String loginId, String loginPw, String birthDay, String name, String englishName, String cellphoneNum, String email) {
+	public ResultData doJoin(String loginId, String loginPw, String birthDay, String name, String englishName, String cellphoneNum, String email) {
 	
 		Member existsMember  = memberRepository.getMemberByLoginId(loginId);
 		
@@ -71,6 +71,7 @@ public class MemberService {
 	
 	/**
 	 * 아이디 체크
+	 * 탈퇴여부 체크
 	 * 비밀번호 체크
 	 * 후 로그인
 	 * @param loginId
@@ -82,15 +83,28 @@ public class MemberService {
 		Member existsMember = memberRepository.getMemberByLoginId(loginId);
 		
 		if(existsMember == null) {
-			return ResultData.from("F-4",Ut.f("%s 는 존재하지 않는 아이디 입니다.",loginId));
+			return ResultData.from("F-4",Ut.f("아이디가 틀렸습니다."));
+		}
+		if(existsMember.getDelStatus() == 1) {
+			return ResultData.from("F-5",Ut.f("탈퇴한 회원입니다."));
 		}
 		String existsLoginPw = memberRepository.getLoginPwByLoginId(loginId);
 		
 		if(!existsLoginPw.equals(loginPw)) {
-			return ResultData.from("F-5",Ut.f("비밀번호가 틀렸습니다."));
+			return ResultData.from("F-6",Ut.f("비밀번호가 틀렸습니다."));
 		}
 		return ResultData.from("S-1",Ut.f("로그인 성공"));
 		
+	}
+	
+	/**
+	 * 회원번호 가져와서 실행
+	 * 
+	 * @param id
+	 */
+	public ResultData quitMember(int id) {
+		memberRepository.quitMember(id);
+		return ResultData.from("S-1","탈퇴 성공");
 	}
 	
 }

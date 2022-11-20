@@ -19,4 +19,6 @@ public interface MemberRepository {
 	
 	public String getLoginPwByLoginId(String loginId);
 
+	public void quitMember(int id);
+
 }

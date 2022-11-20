@@ -187,8 +187,6 @@ public class Rq {
 		String requestUri = req.getRequestURI();
 
 		switch (requestUri) {
-		case "/usr/article/write":
-		case "/usr/article/modify":
 		case "/usr/member/info":
 			return "../member/doLogout?afterLogoutUri=" + "/";
 		}

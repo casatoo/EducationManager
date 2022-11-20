@@ -25,7 +25,7 @@
 		<a href="${rq.joinUri}"><span>회원가입</span></a>
 		<a href="${rq.loginUri}"><span>로그인</span></a>
 		<a href="${rq.logoutUri}"><span>로그아웃</span></a>
-		<a href="../member/userInfo" > <span>내 정보</span></a>
+		<a href="../member/userInfo" ><span>내 정보</span></a>
 	</div>
 </body>
 </html>

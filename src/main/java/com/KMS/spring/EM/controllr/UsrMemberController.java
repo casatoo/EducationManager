@@ -132,7 +132,12 @@ public class UsrMemberController {
 
 		return Ut.jsReplace("로그아웃 되었습니다", afterLogoutUri);
 	}
-	
+	/**
+	 * 로그인 회원정보 조회
+	 * @param req
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("usr/member/userInfo")
 	public String memberInfo(HttpServletRequest req, Model model) {
 		Member member = memberService.getMemberById(rq.getLoginedMemberId());
@@ -149,6 +154,20 @@ public class UsrMemberController {
 		model.addAttribute("level",level);
 		
 		return "/usr/member/userInfo";
+	}
+	/**
+	 * 회원 탈퇴
+	 * 맴버의 delStatus 를 1로 바꿈
+	 * @param id
+	 * @return String
+	 */
+	@RequestMapping("/usr/member/quitMember")
+	@ResponseBody
+	public String quitMember(int id) {
+		
+		ResultData rd =  memberService.quitMember(id);
+		
+		return Ut.jsReplace(rd.getMsg(), "/");
 	}
 
 }

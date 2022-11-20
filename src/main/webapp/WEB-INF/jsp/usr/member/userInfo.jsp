@@ -43,5 +43,7 @@
 				<div>${member.cellphoneNum}</div>
 				<label> E-MAIL </label>
 				<div>${member.email}</div>
+				<a onclick="if(confirm('정말 탈퇴하시겠습니까?') == false) return false;"
+					href="../member/quitMember?id=${member.id }">탈퇴</a>
 </body>
 </html>

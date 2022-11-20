@@ -49,6 +49,12 @@
 		WHERE loginId
 		= #{loginId}
 	</select>
-
+	
+	<update id="quitMember">
+	UPDATE `member` SET
+	delStatus = 1,
+	delDate = NOW()
+	WHERE id = #{id};
+	</update>
 
 </mapper>
