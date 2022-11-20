@@ -12,7 +12,10 @@ import com.KMS.spring.EM.vo.Rq;
 @Component
 public class BeforeActionInterceptor implements HandlerInterceptor {
 	private Rq rq;
-
+	/**
+	 * 생성자
+	 * @param rq
+	 */
 	public BeforeActionInterceptor(Rq rq) {
 		this.rq = rq;
 	}

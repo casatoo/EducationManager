@@ -32,7 +32,22 @@ public class UsrMemberController {
 	@Autowired
 	Rq rq;
 	
-	
+	/**
+	 * 회원가입
+	 * 아이디 중복 체크 
+	 * 이름, 이메일 중복체크
+	 * 가입성공 메세지 출력 로그인 페이지로 이동
+	 * @param loginId
+	 * @param loginPw
+	 * @param birthDay
+	 * @param name
+	 * @param englishName
+	 * @param cellphoneNum
+	 * @param email
+	 * @param model
+	 * @param afterLoginUri
+	 * @return
+	 */
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
 	public String doJoin(String loginId, String loginPw, String birthDay, String name, String englishName,
@@ -116,6 +131,24 @@ public class UsrMemberController {
 		rq.logout();
 
 		return Ut.jsReplace("로그아웃 되었습니다", afterLogoutUri);
+	}
+	
+	@RequestMapping("usr/member/userInfo")
+	public String memberInfo(HttpServletRequest req, Model model) {
+		Member member = memberService.getMemberById(rq.getLoginedMemberId());
+		String level = "";
+		if(member.getAuthLevel() == 1) {
+			level = "관리자";
+		}else if(member.getAuthLevel() == 2) {
+			level = "직원";
+		}else if(member.getAuthLevel() == 3) {
+			level = "원생";
+		}
+		
+		model.addAttribute("member",member);
+		model.addAttribute("level",level);
+		
+		return "/usr/member/userInfo";
 	}
 
 }
