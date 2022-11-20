@@ -42,6 +42,13 @@
 	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID()
 	</select>
+	
+	<select id="getLoginPwByLoginId" resultType="String">
+		SELECT loginPw
+		FROM `member`
+		WHERE loginId
+		= #{loginId}
+	</select>
 
 
 </mapper>

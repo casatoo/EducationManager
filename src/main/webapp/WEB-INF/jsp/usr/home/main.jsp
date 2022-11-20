@@ -21,5 +21,6 @@
 </head>
 <body>
 <div>메인 페이지</div>
+<button >회원가입</button>
 </body>
 </html>

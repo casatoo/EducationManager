@@ -16,6 +16,7 @@ public interface MemberRepository {
 	public Member getMemberByLoginId(String loginId);
 
 	public int getLastInsertId();
-
+	
+	public String getLoginPwByLoginId(String loginId);
 
 }

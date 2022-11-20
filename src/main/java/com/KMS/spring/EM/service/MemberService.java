@@ -25,12 +25,19 @@ public class MemberService {
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
-	
+	/**
+	 * 회원가입
+	 * @param loginId
+	 * @param loginPw
+	 * @param birthDay
+	 * @param name
+	 * @param englishName
+	 * @param cellphoneNum
+	 * @param email
+	 * @return
+	 */
 	public ResultData<Integer> doJoin(String loginId, String loginPw, String birthDay, String name, String englishName, String cellphoneNum, String email) {
-		/**
-		 * 맴버 생성
-		 * 라스트생성 아이디 가져옴 반환함
-		 */
+	
 		Member existsMember  = memberRepository.getMemberByLoginId(loginId);
 		
 		if(existsMember != null) {
@@ -45,7 +52,45 @@ public class MemberService {
 		
 		return ResultData.from("S-1","회원가입 성공");
 	}
+	/**
+	 * 회원번호로 Member 검색
+	 * @param id
+	 * @return Member
+	 */
+	public Member getMemberById(int id) {
+		return memberRepository.getMemberById(id);
+	}
+	/**
+	 * 로그인 아이디로 Member 검색
+	 * @param loginId
+	 * @return
+	 */
+	public Member getMemberByLoginId(String loginId) {
+		return  memberRepository.getMemberByLoginId(loginId);
+	}
 	
-	
+	/**
+	 * 아이디 체크
+	 * 비밀번호 체크
+	 * 후 로그인
+	 * @param loginId
+	 * @param loginPw
+	 * @return ResultData
+	 */
+	public ResultData<Integer> doLogin(String loginId, String loginPw) {
+		
+		Member existsMember = memberRepository.getMemberByLoginId(loginId);
+		
+		if(existsMember == null) {
+			return ResultData.from("F-4",Ut.f("%s 는 존재하지 않는 아이디 입니다.",loginId));
+		}
+		String existsLoginPw = memberRepository.getLoginPwByLoginId(loginId);
+		
+		if(!existsLoginPw.equals(loginPw)) {
+			return ResultData.from("F-5",Ut.f("비밀번호가 틀렸습니다."));
+		}
+		return ResultData.from("S-1",Ut.f("로그인 성공"));
+		
+	}
 	
 }
