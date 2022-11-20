@@ -17,8 +17,6 @@
 
 <script src="/resource/common.js" defer="defer"></script>
 <link rel="stylesheet" href="/resource/common.css" />
-
-
 <meta charset="UTF-8">
 <title>login</title>
 </head>
@@ -50,7 +48,7 @@
 		<label>email</label>
 		<input id="email" name="email" type="email">
 		<a>인증코드 발송</a>
-		<input type="text" placeholder="인증코드 입력"/>
+		<input type="text"  name="accessCode" placeholder="인증코드 입력"/>
 		<button type="submit">비밀번호 찾기</button>
 	</form>
 </body>

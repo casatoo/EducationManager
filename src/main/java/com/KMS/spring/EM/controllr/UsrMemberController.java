@@ -197,5 +197,17 @@ public class UsrMemberController {
 		
 		return rd;
 	}
+	/**
+	 * 인증 코드 생성
+	 * @return
+	 */
+	@RequestMapping("/usr/member/createAuthKey")
+	@ResponseBody
+	public String createAuthKey() {
+		
+		String memberModifyAuthKey = memberService.genMemberModifyAuthKey(rq.getLoginedMemberId());
+		
+		return memberModifyAuthKey;
+	}
 
 }

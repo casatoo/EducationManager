@@ -122,5 +122,16 @@ public class MemberService {
 		}
 		return ResultData.from("S-1","아이디 조회 성공","loginId",existsMember.getLoginId());
 	}
+	/**
+	 * 10자리 인증코드 생성
+	 * @param loginMemberId
+	 * @return
+	 */
+	public String genMemberModifyAuthKey(int loginMemberId) {
+		String memberModifyAuthKey = Ut.getTempPassword(10);
+
+
+		return memberModifyAuthKey;
+	}
 	
 }
