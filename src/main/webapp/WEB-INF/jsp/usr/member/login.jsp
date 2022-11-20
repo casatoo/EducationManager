@@ -26,13 +26,32 @@
 	<div>로그인 페이지</div>
 	<form action="../member/doLogin?">
 		<input type="hidden" name="afterLoginUri" id="afterLoginUri" value="${param.afterLoginUri}" /> 
-		<label> Username </label> 
+		<label> id </label> 
 		<input id="loginId" name="loginId" type="text"> 
 		<label>Password</label> 
 		<input id="loginPw" name="loginPw" type="password">
 		<button type="submit">로그인</button>
+	</form>
+		
 		<a href="../member/join">회원가입 </a> 
-		<a href="#">아이디 비밀번호 찾기 </a>
+		
+	<form action="../member/findLoginId">
+		<label>name</label> 
+		<input id="name" name="name" type="text"> 
+		<label>email</label> 
+		<input id="email" name="email" type="email">
+		<button type="submit">아이디 찾기</button>
+	</form>
+		<form action="../member/findLoginPw">
+		<label>name</label> 
+		<input id="name" name="name" type="text"> 
+		<label>loginId</label> 
+		<input id="loginId" name="loginId" type="text"> 
+		<label>email</label>
+		<input id="email" name="email" type="email">
+		<a>인증코드 발송</a>
+		<input type="text" placeholder="인증코드 입력"/>
+		<button type="submit">비밀번호 찾기</button>
 	</form>
 </body>
 </html>

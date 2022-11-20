@@ -170,5 +170,32 @@ public class UsrMemberController {
 		
 		return Ut.jsReplace(rd.getMsg(), "/");
 	}
+	
+	
+	/**
+	 * 아이디 찾기
+	 * 일치하는 회원이 없을 경우 일치하는 회원이 없다고 출력
+	 * 아이디에 생성제한 조건을 최소 4글자 이상으로 주고 뒷 세글자는 ***로 표시
+	 * @param name
+	 * @param email
+	 * @return String
+	 */
+	@RequestMapping("/usr/member/findLoginId")
+	@ResponseBody
+	public ResultData findLoginId(String name , String email) {
+		
+		ResultData rd = memberService.findLoginId(name,email);
+		
+		return rd;
+	}
+	
+	@RequestMapping("/usr/member/findLoginPw")
+	@ResponseBody
+	public ResultData findLoginPw(String name , String loginId, String email, String accessCode) {
+		
+		ResultData rd = memberService.findLoginId(name,email);
+		
+		return rd;
+	}
 
 }

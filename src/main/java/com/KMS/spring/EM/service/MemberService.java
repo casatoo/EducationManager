@@ -106,5 +106,21 @@ public class MemberService {
 		memberRepository.quitMember(id);
 		return ResultData.from("S-1","탈퇴 성공");
 	}
+	/**
+	 * 아이디 찾기
+	 * 일치 회원 검색
+	 * member가 null 이면 일치회원 없음
+	 * 있으면 loginId 를 반환
+	 * @param name
+	 * @param email
+	 * @return
+	 */
+	public ResultData findLoginId(String name, String email) {
+		Member existsMember = memberRepository.getMemberByNameAndEmail(name, email);
+		if(existsMember == null) {
+			return ResultData.from("F-1",Ut.f("일치하는 회원이 없습니다."));
+		}
+		return ResultData.from("S-1","아이디 조회 성공","loginId",existsMember.getLoginId());
+	}
 	
 }
