@@ -21,6 +21,8 @@
 </head>
 <body>
 <div>메인 페이지</div>
-<button >회원가입</button>
+<a href="${rq.joinUri}"><span>회원가입</span></a>
+<a href="${rq.loginUri}"><span>로그인</span></a>
+<a href="${rq.logoutUri}"><span>로그아웃</span></a>
 </body>
 </html>

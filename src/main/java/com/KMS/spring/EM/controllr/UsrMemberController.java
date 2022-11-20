@@ -100,5 +100,22 @@ public class UsrMemberController {
 		model.addAttribute("afterLoginUri",afterLoginUri);
 		return "/usr/member/login";
 	}
+	/**
+	 * 로그아웃
+	 * rq에 로그아웃 명령
+	 * 로그아웃 후 uri 로 이동
+	 * @param afterLogoutUri
+	 * @return
+	 */
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
+	public String doLogout(@RequestParam(defaultValue = "/")String afterLogoutUri) {
+		if(rq.isNotLogined()){
+			return Ut.jsReplace(Ut.f("로그인이 필요한 서비스입니다."),Ut.getUriEncoded(afterLogoutUri));
+		}
+		rq.logout();
+
+		return Ut.jsReplace("로그아웃 되었습니다", afterLogoutUri);
+	}
 
 }
