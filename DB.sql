@@ -42,7 +42,7 @@ updateDate DATETIME NOT NULL,
 startOfEducation DATETIME COMMENT '교육시작일',
 endOfEducation DATETIME COMMENT '교육종료일',
 title VARCHAR(50) COMMENT '교육과정명',
-Place VARCHAR(50) COMMENT '교육장소',
+place VARCHAR(50) COMMENT '교육장소',
 managerMemberId INT COMMENT '담당자',
 `status` INT DEFAULT 0 COMMENT '0 = 진행중, 1 = 종료'
 );
@@ -57,7 +57,12 @@ INSERT INTO educationCourse(regDate,updateDate,startOfEducation,endOfEducation,t
 DESC `member`;
 SELECT * FROM `member`;
 SELECT * FROM educationCourse;
+SELECT E.*, M.name FROM educationCourse AS E INNER JOIN `member` AS M ON E.managerMemberId = M.id;
 
+FROM article AS A
+		INNER JOIN `member` AS M
+		ON A.memberId
+		= M.id
 	SELECT * FROM `member` 
 	WHERE `name` 
 	LIKE '%3%'

@@ -10,4 +10,6 @@ import com.KMS.spring.EM.vo.EducationCourse;
 public interface EducationCourseRepository {
 	
 	public List<EducationCourse> getEducationCourseList();
+
+	public EducationCourse getEducationCourse(int id);
 }

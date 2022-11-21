@@ -11,7 +11,9 @@
 			href="../member/userInfo"><span>내 정보</span></a> <a
 			href="../member/administrator"><span>관리자 페이지</span></a>
 	</div>
-
+	<c:if test="${educationCourses == null}">
+		<div>등록된 교육과정이 없습니다</div>
+	</c:if>
 	<c:forEach var="educationCourse" items="${educationCourses}">
 		<div class="educationCourse">
 			<a href="../educationCourse/detail?id=${educationCourse.id}">

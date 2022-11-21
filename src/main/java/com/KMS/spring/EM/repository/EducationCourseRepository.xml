@@ -8,4 +8,12 @@
 		INNER JOIN `member` AS M 
 		ON E.managerMemberId = M.id;
 	</select>
+	
+	<select id="getEducationCourse" resultType="EducationCourse">
+		SELECT E.*, M.name AS extra__managerName
+		FROM educationCourse AS E 
+		INNER JOIN `member` AS M 
+		ON E.managerMemberId = M.id
+		WHERE E.id = #{id}
+	</select>
 </mapper>

@@ -31,4 +31,8 @@ public class EducationCourseService {
 		
 		return educationCourseRepository.getEducationCourseList();
 	}
+
+	public EducationCourse getEducationCourse(int id) {
+		return educationCourseRepository.getEducationCourse(id);
+	}
 }
