@@ -56,5 +56,12 @@
 	delDate = NOW()
 	WHERE id = #{id};
 	</update>
+	
+	<select id="getMemberList" resultType="Member">
+	SELECT * FROM `member` 
+	WHERE `name` 
+	LIKE '%${name}%'
+	ORDER BY id DESC;
+	</select>
 
 </mapper>

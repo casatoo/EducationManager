@@ -1,5 +1,7 @@
 package com.KMS.spring.EM.controllr;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,8 @@ import com.KMS.spring.EM.vo.ResultData;
 import com.KMS.spring.EM.vo.Rq;
 
 /**
- * @author Administrator 컨트롤러 어노테이션 써주기
+ * 맴버 컨트롤러
+ * @author Administrator
  */
 @Controller
 public class UsrMemberController {
@@ -101,7 +104,7 @@ public class UsrMemberController {
 		
 		if(doLoginRd.isFail()) {
 			ResultData resultRd = ResultData.from(doLoginRd.getResultCode(),doLoginRd.getMsg());
-			return Ut.jsReplace(resultRd.getMsg(), "../member/login");
+			return Ut.jsReplace(resultRd.getMsg(), Ut.f("../member/login?afterLoginUri=%s",afterLoginUri));
 		}
 		Member member = memberService.getMemberByLoginId(loginId);
 		rq.login(member);
@@ -188,7 +191,17 @@ public class UsrMemberController {
 		
 		return rd;
 	}
-	
+	/**
+	 * 비밀번호 찾기
+	 * 인증코드는 비동기로 구현 예정
+	 * 비밀번호는 재설정 하도록 유도
+	 * 미구현
+	 * @param name
+	 * @param loginId
+	 * @param email
+	 * @param accessCode
+	 * @return
+	 */
 	@RequestMapping("/usr/member/findLoginPw")
 	@ResponseBody
 	public ResultData findLoginPw(String name , String loginId, String email, String accessCode) {
@@ -199,7 +212,7 @@ public class UsrMemberController {
 	}
 	/**
 	 * 인증 코드 생성
-	 * @return
+	 * @return String
 	 */
 	@RequestMapping("/usr/member/createAuthKey")
 	@ResponseBody
@@ -208,6 +221,20 @@ public class UsrMemberController {
 		String memberModifyAuthKey = memberService.genMemberModifyAuthKey(rq.getLoginedMemberId());
 		
 		return memberModifyAuthKey;
+	}
+	
+	/**
+	 * 관리자페이지
+	 * 회원목록 set
+	 * @param model
+	 * @return String
+	 */
+	@RequestMapping("usr/member/administrator")
+	public String administrator(@RequestParam(defaultValue = "")String searchName, Model model) {
+		List<Member> memberList = memberService.getMemberList(searchName);
+		
+		model.addAttribute("memberList",memberList);
+		return "/usr/member/administrator";
 	}
 
 }

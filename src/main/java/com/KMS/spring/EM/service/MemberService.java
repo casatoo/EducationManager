@@ -1,5 +1,7 @@
 package com.KMS.spring.EM.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -132,6 +134,14 @@ public class MemberService {
 
 
 		return memberModifyAuthKey;
+	}
+	/**
+	 *  memberlist 가져오기
+	 * @return List<Member>
+	 */
+	public List<Member> getMemberList(String searchName) {
+		
+		return memberRepository.getMemberList(searchName);
 	}
 	
 }

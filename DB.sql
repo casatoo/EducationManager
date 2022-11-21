@@ -37,3 +37,5 @@ INSERT INTO `member`(regDate,updateDate,loginId,loginPw,birthDay,`authLevel`,`na
 # 연습 쿼리
 DESC `member`;
 SELECT * FROM `member`;
+
+

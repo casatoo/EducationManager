@@ -1,5 +1,7 @@
 package com.KMS.spring.EM.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.KMS.spring.EM.vo.Member;
@@ -21,4 +23,5 @@ public interface MemberRepository {
 
 	public void quitMember(int id);
 
+	public List<Member> getMemberList(String name);
 }
