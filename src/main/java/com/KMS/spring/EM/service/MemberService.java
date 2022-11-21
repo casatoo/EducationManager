@@ -3,6 +3,7 @@ package com.KMS.spring.EM.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.KMS.spring.EM.repository.MemberRepository;
@@ -23,10 +24,18 @@ public class MemberService {
  */
 	@Autowired
 	public MemberRepository memberRepository;
+	@Value("${custom.siteMainUri}")
+	private String siteMainUri;
+	@Value("${custom.siteName}")
+	private String siteName;
 	
-	public MemberService(MemberRepository memberRepository) {
+	private MailService mailService;
+
+	public MemberService( MailService mailService, MemberRepository memberRepository) {
+		this.mailService = mailService;
 		this.memberRepository = memberRepository;
 	}
+
 	/**
 	 * 회원가입
 	 * @param loginId
@@ -50,6 +59,8 @@ public class MemberService {
 		if(existsMember != null) {
 			return ResultData.from("F-2",Ut.f("이미 가입된 회원입니다. %s, %s",name, email));
 		}
+		
+		loginPw = Ut.sha256(loginPw);
 		memberRepository.doJoin(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
 		
 		return ResultData.from("S-1","회원가입 성공");
@@ -92,7 +103,7 @@ public class MemberService {
 		}
 		String existsLoginPw = memberRepository.getLoginPwByLoginId(loginId);
 		
-		if(!existsLoginPw.equals(loginPw)) {
+		if(!existsLoginPw.equals(Ut.sha256(loginPw))) {
 			return ResultData.from("F-6",Ut.f("비밀번호가 틀렸습니다."));
 		}
 		return ResultData.from("S-1",Ut.f("로그인 성공"));
@@ -142,6 +153,27 @@ public class MemberService {
 	public List<Member> getMemberList(String searchName) {
 		
 		return memberRepository.getMemberList(searchName);
+	}
+	
+	public ResultData notifyTempLoginPwByEmailRd(Member actor) {
+		String title = "[" + siteName + "] 임시 패스워드 발송";
+		String tempPassword = Ut.getTempPassword(6);
+		String body = "<h1>임시 패스워드 : " + tempPassword + "</h1>";
+		body += "<a href=\"" + siteMainUri + "/usr/member/login\" target=\"_blank\">로그인 하러가기</a>";
+
+		ResultData sendResultData = mailService.send(actor.getEmail(), title, body);
+
+		if (sendResultData.isFail()) {
+			return sendResultData;
+		}
+
+		setTempPassword(actor, tempPassword);
+
+		return ResultData.from("S-1", "계정의 이메일주소로 임시 패스워드가 발송되었습니다.");
+	}
+
+	private void setTempPassword(Member actor, String tempPassword) {
+		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null);
 	}
 	
 }

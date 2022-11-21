@@ -24,4 +24,7 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 	background-color: #dfdfdf;
 	padding: 20px;
 	margin: 20px;
+	width: 300px;
+	height: 150px;
+	border-radius: 20px;
 }

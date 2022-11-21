@@ -236,5 +236,7 @@ public class UsrMemberController {
 		model.addAttribute("memberList",memberList);
 		return "/usr/member/administrator";
 	}
+	
+	
 
 }
