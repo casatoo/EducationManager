@@ -12,8 +12,16 @@
     font-weight: normal;
     font-style: normal;
 }
-html>body{
-	font-family: 'TTCrownMychewR';
+html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>body .ProseMirror, html>body .toastui-editor-md-mode{
+	font-family: 'TTCrownMychewR', sans-serif;
+	text-underline-position: under;
 }
 
+/** 라이브러리 */
 
+.educationCourse{
+	border: 1px solid black;
+	background-color: #dfdfdf;
+	padding: 20px;
+	margin: 20px;
+}

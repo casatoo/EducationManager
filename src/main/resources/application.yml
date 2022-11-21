@@ -2,14 +2,6 @@ server:
   port: 8081
   
 spring:
-  mail:
-      host: smtp.gmail.com
-      port: 587
-      username: casato6666@gmail.com
-      password: mkop9074!@
-      properties:
-        mail.smtp.auth: true
-        mail.smtp.starttls.enable: true
   mvc:
     view:
       prefix: /WEB-INF/jsp/
