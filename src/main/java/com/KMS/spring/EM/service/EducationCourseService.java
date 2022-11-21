@@ -23,15 +23,26 @@ public class EducationCourseService {
 	@Autowired
 	public EducationCourseRepository educationCourseRepository;
 	
+	/**
+	 * 생성자
+	 * @param educationCourseRepository
+	 */
 	public EducationCourseService(EducationCourseRepository educationCourseRepository) {
 		this.educationCourseRepository = educationCourseRepository;
 	}
-	
+	/**
+	 * 교육과정 전체 리스트 조회
+	 * @return List<EducationCourse>
+	 */
 	public List<EducationCourse> getEducationCourseList(){
 		
 		return educationCourseRepository.getEducationCourseList();
 	}
-
+	/**
+	 * 교육과정 상세 조회
+	 * @param id
+	 * @return EducationCourse
+	 */
 	public EducationCourse getEducationCourse(int id) {
 		return educationCourseRepository.getEducationCourse(id);
 	}
