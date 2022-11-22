@@ -21,11 +21,10 @@
 	</form>
 
 	<form action="../member/findLoginPw">
+	<input type="hidden" name="afterFindLoginPwUri" value="${param.afterLoginUri}"/>
 		<label>name</label> <input id="name" name="name" type="text">
 		<label>loginId</label> <input id="loginId" name="loginId" type="text">
 		<label>email</label> <input id="email" name="email" type="email">
-		<a>인증코드 발송</a> <input type="text" name="accessCode"
-			placeholder="인증코드 입력" />
 		<button type="submit">비밀번호 찾기</button>
 	</form>
 

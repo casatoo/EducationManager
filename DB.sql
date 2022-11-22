@@ -25,7 +25,7 @@ delDate DATETIME COMMENT '탈퇴날짜'
 
 # 테스트 데이터 입력
 INSERT INTO `member`(regDate,updateDate,loginId,loginPw,birthDay,`authLevel`,`name`,englishName,cellphoneNum,email)VALUES
-(NOW(),NOW(),'admin','admin',DATE(19970203),1,'관리자','kimminwoo','01012341234','asd@gmail.com'),
+(NOW(),NOW(),'admin','admin',DATE(19970203),1,'관리자','kimminwoo','01012341234','casato6666@gmail.com'),
 (NOW(),NOW(),'id1','pw1',DATE(19970203),1,'직원','user1','0101235678','a333d@gmail.com'),
 (NOW(),NOW(),'id2','pw2',DATE(19991003),3,'사용자2','user2','01012345678','asddd@gmail.com'),
 (NOW(),NOW(),'id3','pw3',DATE(20011103),3,'사용자3','user3','01056789012','a21233@gmail.com'),
@@ -42,8 +42,8 @@ CREATE TABLE educationCourse(
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 regDate DATETIME NOT NULL,
 updateDate DATETIME NOT NULL,
-startOfEducation DATETIME COMMENT '교육시작일',
-endOfEducation DATETIME COMMENT '교육종료일',
+startOfEducation DATE COMMENT '교육시작일',
+endOfEducation DATE COMMENT '교육종료일',
 title VARCHAR(50) COMMENT '교육과정명',
 place VARCHAR(50) COMMENT '교육장소',
 managerMemberId INT COMMENT '담당자',

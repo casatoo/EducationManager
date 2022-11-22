@@ -155,6 +155,17 @@ public class MemberService {
 		return memberRepository.getMemberList(searchName);
 	}
 	
+	/**
+	 * 맴버 객체 actor 받음
+	 * 전역변수 사이트 이름, 주소 설정
+	 * utill.getTempPassword에서 무작위 난수6자리 받음
+	 * 이메일 내용 작성
+	 * 메일서비스.send로 메일 전송하고 ResultData 받음
+	 * 메일 발송 실패 메세지일 경우 결과값 그냥 리턴
+	 * 임시 비밀번호로 비밀번호 변경
+	 * @param actor
+	 * @return ResultData(성공메세지,코드)
+	 */
 	public ResultData notifyTempLoginPwByEmailRd(Member actor) {
 		String title = "[" + siteName + "] 임시 패스워드 발송";
 		String tempPassword = Ut.getTempPassword(6);
@@ -171,7 +182,12 @@ public class MemberService {
 
 		return ResultData.from("S-1", "계정의 이메일주소로 임시 패스워드가 발송되었습니다.");
 	}
-
+	
+	/**
+	 * 맴버와 임시비밀번호 받아서 해당 맴버의 비밀번호 임시비밀번호로 변경
+	 * @param actor
+	 * @param tempPassword
+	 */
 	private void setTempPassword(Member actor, String tempPassword) {
 		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null);
 	}

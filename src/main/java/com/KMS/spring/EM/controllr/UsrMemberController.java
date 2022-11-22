@@ -193,22 +193,34 @@ public class UsrMemberController {
 	}
 	/**
 	 * 비밀번호 찾기
-	 * 인증코드는 비동기로 구현 예정
-	 * 비밀번호는 재설정 하도록 유도
-	 * 미구현
+	 * 이름, 아이디 이메일 검사
+	 * 임시비밀번호 서비스로 member 전달.
 	 * @param name
 	 * @param loginId
 	 * @param email
 	 * @param accessCode
-	 * @return
+	 * @return String(afterloginUri)
 	 */
 	@RequestMapping("/usr/member/findLoginPw")
 	@ResponseBody
-	public ResultData findLoginPw(String name , String loginId, String email, String accessCode) {
+	public String findLoginPw(String name , String loginId, String email , @RequestParam(defaultValue = "/") String afterFindLoginPwUri) {
 		
-		ResultData rd = memberService.findLoginId(name,email);
+		Member member = memberService.getMemberByLoginId(loginId);
+
+		if (member == null) {
+			return Ut.jsHistoryBack("일치하는 회원이 없습니다.");
+		}
+		if (member.getName() == null) {
+			return Ut.jsHistoryBack("이름이 일치하지 않습니다.");
+		}
 		
-		return rd;
+		if (member.getEmail().equals(email) == false) {
+			return Ut.jsHistoryBack("이메일이 일치하지 않습니다.");
+		}
+
+		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmailRd(member);
+
+		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getMsg(), afterFindLoginPwUri);
 	}
 	/**
 	 * 인증 코드 생성
