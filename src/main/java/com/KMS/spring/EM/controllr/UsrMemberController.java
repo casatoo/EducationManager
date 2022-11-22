@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.KMS.exam.demo.vo.Attr;
 import com.KMS.spring.EM.service.MemberService;
 import com.KMS.spring.EM.utill.Ut;
 import com.KMS.spring.EM.vo.Member;
@@ -248,7 +249,79 @@ public class UsrMemberController {
 		model.addAttribute("memberList",memberList);
 		return "/usr/member/administrator";
 	}
-	
+	@RequestMapping("/usr/member/doModify")
+	@ResponseBody
+	public String doModify(String name, String nickname, String cellphoneNum, String email,String memberModifyAuthKey, Model model) {
+		
+		if(memberModifyAuthKey == null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
+		}
+		
+		Attr getAttr = attrService.get("member", rq.getLoginedMemberId(), "extra", "memberModifyAuthKey");
+		
+		if(getAttr==null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 만료되었습니다. 다시 시도해주세요"));
+		}
+		if(!getAttr.getValue().equals(memberModifyAuthKey)) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 일치하지 않습니다. 다시 시도해주세요"));
+		}
+		
+		if(Ut.empty(nickname)) {
+			return Ut.jsHistoryBack(Ut.f("닉네임을 입력해주세요"));
+		}
+		if(Ut.empty(cellphoneNum)) {
+			return Ut.jsHistoryBack(Ut.f("전화번호를 입력해주세요"));
+		}
+		if(Ut.empty(email)) {
+			return Ut.jsHistoryBack(Ut.f("이메일을 입력해주세요"));
+		}
+		
+		ResultData doModifyRd = memberService.doModify(name, nickname, cellphoneNum, email, rq.getLoginedMemberId());
+
+		if(doModifyRd.isFail()) {
+			if(doModifyRd.getResultCode().equals("F-1")) {
+				return Ut.jsHistoryBack(Ut.f("중복된 회원 정보입니다."));
+			}
+		}
+		Member member = memberService.getMember((int) doModifyRd.getData1());
+		ResultData resultRd = ResultData.newData(doModifyRd,"member",member);
+		return Ut.jsReplace("개인정보 수정완료","../member/info");
+	}
+	@RequestMapping("/usr/member/doChangePassword")
+	@ResponseBody
+	public String doChangePassword(String loginPwCheck, String loginPw, String memberPasswordAuthKey) {
+		
+		if(memberPasswordAuthKey == null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
+		}
+		
+		Attr getAttr = attrService.get("member", rq.getLoginedMemberId(), "extra", "memberModifyAuthKey");
+		
+		if(getAttr==null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 만료되었습니다. 다시 시도해주세요"));
+		}
+		
+		if(!getAttr.getValue().equals(memberPasswordAuthKey)) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 일치하지 않습니다.다시 시도해주세요"));
+		}
+		
+		Member member = memberService.getMember(rq.getLoginedMemberId());
+		if(Ut.empty(loginPwCheck)) {
+			return Ut.jsHistoryBack(Ut.f("기존비밀번호를 입력해주세요"));
+		}
+		if(Ut.empty(loginPw)) {
+			return Ut.jsHistoryBack(Ut.f("새로운 비밀번호를 입력해주세요"));
+		}
+		if(!member.getLoginPw().equals(loginPwCheck)) {
+			return Ut.jsHistoryBack(Ut.f("비밀번호가 틀렸습니다."));
+		}
+		if(loginPwCheck.equals(loginPw)) {
+			return Ut.jsHistoryBack(Ut.f("기존비밀번호와 동일한 비밀번호 입니다."));
+		}
+		ResultData doChangePasswordRd = memberService.doChangePassword(member.getId() , loginPw);
+		
+		return Ut.jsReplace(Ut.f("비밀번호가 수정되었습니다!"), "../member/info");
+	}
 	
 
 }
