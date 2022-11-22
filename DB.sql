@@ -56,17 +56,101 @@ INSERT INTO educationCourse(regDate,updateDate,startOfEducation,endOfEducation,t
 (NOW(),NOW(),DATE(20220821),DATE(20220920),'22-1기','3교육장',2);
 
 
+# 부가정보테이블
+DROP TABLE IF EXISTS attr;
+CREATE TABLE attr (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    `relTypeCode` CHAR(20) NOT NULL,
+    `relId` INT(10) UNIQUE NOT NULL,
+    `typeCode` CHAR(30) NOT NULL,
+    `type2Code` CHAR(70) NOT NULL,
+    `value` TEXT NOT NULL
+);
+
+# attr 유니크 인덱스 걸기
+## 중복변수 생성금지
+## 변수찾는 속도 최적화
+ALTER TABLE `attr` ADD UNIQUE INDEX (`relTypeCode`, `relId`, `typeCode`, `type2Code`);
+
+## 특정 조건을 만족하는 회원 또는 게시물(기타 데이터)를 빠르게 찾기 위해서
+ALTER TABLE `attr` ADD INDEX (`relTypeCode`, `typeCode`, `type2Code`);
+
+# attr에 만료날짜 추가
+ALTER TABLE `attr` ADD COLUMN `expireDate` DATETIME NULL AFTER `value`;
+
+#게시판테이블 생성
+DROP TABLE IF EXISTS article;
+CREATE TABLE article(
+id INT(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+regDate DATETIME NOT NULL,
+updateDate DATETIME NOT NULL,
+memberId INT(10) NOT NULL,
+boardId INT(10) UNSIGNED NOT NULL,
+title VARCHAR(200) NOT NULL,
+`body` TEXT NOT NULL,
+hit INT(10) NOT NULL DEFAULT 0,
+goodReactionPoint INT(10) NOT NULL DEFAULT 0,
+badReactionPoint INT(10) NOT NULL DEFAULT 0
+);
+
+INSERT INTO article(regDate,updateDate,memberId,boardId,title,`body`)VALUES
+(NOW(),NOW(),1,1,'제목1','내용1'),
+(NOW(),NOW(),2,1,'제목2','내용2'),
+(NOW(),NOW(),3,2,'제목3','내용3'),
+(NOW(),NOW(),1,2,'제목4','내용4'),
+(NOW(),NOW(),3,3,'제목5','내용6'),
+(NOW(),NOW(),1,3,'제목5','내용6');
+
+# 게시판 종류 테이블
+DROP TABLE IF EXISTS board;
+CREATE TABLE board(
+id INT(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+regDate DATETIME NOT NULL,
+updateDate DATETIME NOT NULL,
+`code` VARCHAR(50) NOT NULL UNIQUE COMMENT 'notice(공지사항), free1(자유게시판1), free2(자유게시판2), ...',
+`name` VARCHAR(50) NOT NULL UNIQUE COMMENT '게시판이름',
+delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부 (0=삭제 전, 1= 삭제 후)',
+delDate DATETIME COMMENT '삭제날짜'
+);
+INSERT INTO board(regDate,updateDate,`code`,`name`)VALUES
+(NOW(),NOW(),'notice','공지사항'),
+(NOW(),NOW(),'free','자유'),
+(NOW(),NOW(),'Q&A','Q&A');
+
+# 리엑션 테이블
+DROP TABLE IF EXISTS reactionPoint;
+CREATE TABLE reactionPoint (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    relTypeCode CHAR(50) NOT NULL COMMENT '관련 데이터 타입 코드',
+	relId INT(10) NOT NULL COMMENT '관련 데이터  번호',
+    `point` SMALLINT(2) NOT NULL COMMENT '좋아요 = 1, 싫어요= -1',
+    FOREIGN KEY (relId) REFERENCES article(id) ON DELETE CASCADE
+);
+
+INSERT INTO reactionPoint (regDate,updateDate,memberId,relTypeCode,relId,`point`)VALUES
+(NOW(),NOW(),1,'article',1,1),
+(NOW(),NOW(),2,'article',1,1),
+(NOW(),NOW(),3,'article',1,-1),
+(NOW(),NOW(),1,'article',2,1),
+(NOW(),NOW(),2,'article',2,1),
+(NOW(),NOW(),3,'article',2,-1),
+(NOW(),NOW(),1,'article',3,1),
+(NOW(),NOW(),2,'article',3,1),
+(NOW(),NOW(),3,'article',3,-1),
+(NOW(),NOW(),1,'article',4,1),
+(NOW(),NOW(),2,'article',4,1),
+(NOW(),NOW(),3,'article',4,-1);
+
 # 연습 쿼리
-DESC `member`;
+SELECT * FROM attr;
 SELECT * FROM `member`;
 SELECT * FROM educationCourse;
-SELECT E.*, M.name FROM educationCourse AS E INNER JOIN `member` AS M ON E.managerMemberId = M.id;
+SELECT * FROM article;
+SELECT * FROM board;
 
-FROM article AS A
-		INNER JOIN `member` AS M
-		ON A.memberId
-		= M.id
-	SELECT * FROM `member` 
-	WHERE `name` 
-	LIKE '%3%'
-	ORDER BY id DESC;
+

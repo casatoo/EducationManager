@@ -10,7 +10,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class Ut {
 	
@@ -21,13 +20,25 @@ public class Ut {
 	 * @return boolean
 	 */
 	public static boolean empty(Object obj) {
-		if(obj == null) {
+
+		if (obj == null) {
 			return true;
 		}
-		if(obj instanceof String == false) {
+
+		if (obj instanceof Integer) {
+			return ((int) obj) == 0;
+		}
+
+		if (obj instanceof Long) {
+			return ((long) obj) == 0;
+		}
+
+		if (obj instanceof String == false) {
 			return true;
 		}
+
 		String str = (String) obj;
+
 		return str.trim().length() == 0;
 	}
 	
@@ -99,7 +110,7 @@ public class Ut {
 	}
 	
 	/**
-	 * 현재시간에서 +1초 반환
+	 * 현재시간에서 변수*1분 반환
 	 * @param seconds
 	 * @return String
 	 */
@@ -149,9 +160,11 @@ public class Ut {
 
 	
 	public static String getAttr(Map map, String attrName, String defaultValue) {
+
 		if (map.containsKey(attrName)) {
 			return (String) map.get(attrName);
 		}
+ 
 		return defaultValue;
 	}
 	

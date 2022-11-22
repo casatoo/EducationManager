@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.KMS.spring.EM.repository.CommentRepository">
+
+	<update id="doModify">
+		UPDATE `comment`
+		<set>
+			<if test="comment != null and comment != ''">`comment` = #{comment},</if>
+			updateDate = NOW()
+		</set>
+		WHERE id = #{id}
+	</update>
+</mapper>

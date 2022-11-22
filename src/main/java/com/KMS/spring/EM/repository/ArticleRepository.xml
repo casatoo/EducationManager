@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.KMS.spring.EM.repository.ArticleRepository">
+	<insert id="writeArticle">
+		INSERT INTO article
+		SET regDate = NOW(),
+		updateDate =
+		NOW(),
+		memberId = #{memberId},
+		title = #{title},
+		`body` = #{body},
+		boardId = #{boardId}
+	</insert>
+
+	<select id="getTotalArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM article AS A
+		INNER JOIN `member` AS M
+		ON A.memberId
+		= M.id
+		<if test="boardId !=0">
+			AND A.boardId = #{boardId}
+		</if>
+		<if test="searchWord !=''">
+			<choose>
+				<when test="searchFrom != ''">
+					AND ${searchFrom} LIKE '%${searchWord}%'
+				</when>
+				<otherwise>
+					AND (
+					A.title LIKE '%${searchWord}%'
+					OR A.body LIKE
+					'%${searchWord}%'
+					)
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+
+	<select id="getArticles" resultType="Article">
+		SELECT A.*, M.nickname AS
+		extra__writerName
+		FROM article AS A
+		INNER
+		JOIN
+		`member` AS M
+		ON A.memberId
+		= M.id
+		<if test="boardId !=0">
+			AND A.boardId = #{boardId}
+		</if>
+		<if test="searchWord !=''">
+			<choose>
+				<when test="searchFrom != ''">
+					AND ${searchFrom} LIKE '%${searchWord}%'
+				</when>
+				<otherwise>
+					AND (
+					A.title LIKE '%${searchWord}%'
+					OR A.body LIKE
+					'%${searchWord}%'
+					)
+				</otherwise>
+			</choose>
+		</if>
+		ORDER BY A.id DESC
+		LIMIT #{limitFrom} , #{itemsInAPage}
+	</select>
+
+	<select id="getForPrintArticle" resultType="Article">
+		SELECT A.*,
+		M.nickname AS extra__writerName
+		FROM article AS A
+		LEFT JOIN
+		`member` AS M
+		ON A.memberId = M.id
+		WHERE A.id = #{id}
+	</select>
+
+	<delete id="deleteArticle">
+		DELETE FROM article
+		WHERE id = #{id}
+	</delete>
+
+	<update id="modifyArticle">
+		UPDATE article
+		<set>
+			<if test="title != null and title != ''">title = #{title},</if>
+			<if test="body != null and body != ''">`body` = #{body},</if>
+			updateDate = NOW()
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<select id="getLastInsertId" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+
+	<update id="increseHit">
+		UPDATE article
+		SET hit = hit+1
+		WHERE id = ${id}
+	</update>
+
+	<select id="getArticleHitCount" resultType="int">
+		SELECT hit
+		FROM
+		article
+		WHERE id = #{id}
+	</select>
+	
+	<update id="increseGoodReactionPoint">
+		UPDATE article
+		SET goodReactionPoint = goodReactionPoint+#{point}
+		WHERE id = ${relId}
+	</update>
+
+	<update id="increseBadReactionPoint">
+		UPDATE article
+		SET badReactionPoint = badReactionPoint+#{point}
+		WHERE id = ${relId}
+	</update>
+</mapper>

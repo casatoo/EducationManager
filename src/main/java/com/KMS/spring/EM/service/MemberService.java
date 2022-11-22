@@ -28,11 +28,14 @@ public class MemberService {
 	private String siteMainUri;
 	@Value("${custom.siteName}")
 	private String siteName;
+	@Autowired
+	private AttrService attrService;
 	
 	private MailService mailService;
 
-	public MemberService( MailService mailService, MemberRepository memberRepository) {
+	public MemberService( MailService mailService,AttrService attrService, MemberRepository memberRepository) {
 		this.mailService = mailService;
+		this.attrService = attrService;
 		this.memberRepository = memberRepository;
 	}
 
@@ -137,12 +140,15 @@ public class MemberService {
 	}
 	/**
 	 * 10자리 인증코드 생성
+	 * attrService에 값 생성
 	 * @param loginMemberId
-	 * @return
+	 * @return String
 	 */
 	public String genMemberModifyAuthKey(int loginMemberId) {
 		String memberModifyAuthKey = Ut.getTempPassword(10);
 
+		attrService.setValue("member", loginMemberId, "extra", "memberModifyAuthKey", memberModifyAuthKey,
+				Ut.getDateStrLater(60 * 5));
 
 		return memberModifyAuthKey;
 	}
@@ -191,5 +197,39 @@ public class MemberService {
 	private void setTempPassword(Member actor, String tempPassword) {
 		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null);
 	}
+	
+	/**
+	 * 개인정보 수정
+	 * 
+	 * @param name
+	 * @param nickname
+	 * @param cellphoneNum
+	 * @param email
+	 * @param memberId
+	 * @return ResultData(memberId)
+	 */
+	public ResultData doModify(String birthDay, String name, String englishName, String cellphoneNum, String email, int memberId) {
+
+		Member existsMember = memberRepository.getMemberByNameAndEmail(name, email);
+		if(existsMember != null) {
+			return ResultData.from("F-1",Ut.f("중복된 회원 정보입니다. %s, %s",name, email));
+		}
+		memberRepository.doModify(birthDay, englishName, cellphoneNum, email, memberId);
+		return ResultData.from("S-1","회원정보 수정 성공","memberId",memberId);
+	}
+	
+	/**
+	 * 비밀번호 변경
+	 * @param memberId
+	 * @param loginPw
+	 * @return
+	 */
+	public ResultData doChangePassword(int memberId ,String loginPw) {
+		
+		memberRepository.doChangePassword(memberId,Ut.sha256(loginPw));
+		
+		return ResultData.from("S-1","비밀번호 수정 성공");
+	}
+	
 	
 }

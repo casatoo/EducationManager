@@ -6,10 +6,14 @@
 <body>
 	<div>메인 페이지</div>
 	<div>
-		<a href="${rq.joinUri}"><span>회원가입</span></a> <a href="${rq.loginUri}"><span>로그인</span></a>
-		<a href="${rq.logoutUri}"><span>로그아웃</span></a> <a
-			href="../member/userInfo"><span>내 정보</span></a> <a
-			href="../member/administrator"><span>관리자 페이지</span></a>
+		<a href="${rq.joinUri}"><span>회원가입</span></a> 
+		<a href="${rq.loginUri}"><span>로그인</span></a>
+		<a href="${rq.logoutUri}"><span>로그아웃</span></a> 
+		<a href="../member/userInfo"><span>내 정보</span></a> 
+		<a href="../member/administrator"><span>관리자 페이지</span></a>
+		<a href="../article/list?boardId=2"><span>자유게시판</span></a>
+		<a href="../article/list?boardId=1"><span>공지사항</span></a>
+		<a href="../article/list?boardId=3"><span>Q&amp;A</span></a>
 	</div>
 	<c:if test="${empty educationCourses}">
 		<div>진행중인 교육과정이 없습니다.</div>

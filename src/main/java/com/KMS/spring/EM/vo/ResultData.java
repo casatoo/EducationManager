@@ -15,7 +15,14 @@ public class ResultData<DT> {
 	private DT data1;
 	@Getter
     private String data1Name;
-
+	@Getter
+	private Object data2;
+	@Getter
+	private String data2Name;
+	@Getter
+	private Object data3;
+	@Getter
+	private String data3Name;
 	/**
 	 * 보고서 형식 from
 	 * 결과 코드와 메세지로 구성
@@ -79,5 +86,16 @@ public class ResultData<DT> {
     public static <DT> ResultData<DT> newData(ResultData Rd, String data1Name, DT data1) {
         return from(Rd.getResultCode(), Rd.getMsg(), data1Name, data1);
     }
+    
+	public void setData2(String dataName, Object data) {
+		data2Name = dataName;
+		data2 = data;
+	}
+	
+	public void setData3(String dataName, Object data) {
+		data3Name = dataName;
+		data3 = data;
+		
+	}
 }
 

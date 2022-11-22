@@ -26,6 +26,10 @@ public interface MemberRepository {
 
 	public List<Member> getMemberList(String name);
 	
+	public void doModify(String birthDay, String englishName ,String cellphoneNum, String email, int memberId);
+	
+	public void doChangePassword(int memberId, String loginPw);
+	
 	@Update("""
 			<script>
 			UPDATE `member`

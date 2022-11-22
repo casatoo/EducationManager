@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.KMS.spring.EM.interceptor.BeforeActionInterceptor;
+import com.KMS.spring.EM.interceptor.NeedAdnimistratorInterceptor;
 import com.KMS.spring.EM.interceptor.NeedLoginInterceptor;
 
 @Configuration
@@ -17,6 +18,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 	// NeedLoginInterceptor 불러오기
 	@Autowired
 	NeedLoginInterceptor needLoginInterceptor;
+	@Autowired
+	NeedAdnimistratorInterceptor needAdnimistratorInterceptor;
 	// /resource/common.css
 	// 인터셉터 적용
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -33,7 +36,21 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 			.addPathPatterns("/usr/member/doLogout")
 			.addPathPatterns("/usr/member/userInfo")
 			.addPathPatterns("/usr/member/doModify")
-			.addPathPatterns("/usr/member/quitMember");
-	}
+			.addPathPatterns("/usr/member/quitMember")
+			.addPathPatterns("/usr/article/doAdd")
+			.addPathPatterns("/usr/article/write")
+			.addPathPatterns("/usr/article/modify")
+			.addPathPatterns("/usr/article/doModify")
+			.addPathPatterns("/usr/article/doDelete")
+			.addPathPatterns("/usr/member/administrator")			
+			.addPathPatterns("/usr/reaction/doReaction")
+			.addPathPatterns("/usr/comment/doAdd")
+			.addPathPatterns("/usr/comment/doDelete")
+			.addPathPatterns("/usr/comment/doModify");
+			
+		ir = registry.addInterceptor(needAdnimistratorInterceptor)
+			.addPathPatterns("/usr/member/administrator");
+		
+		}
 
 }

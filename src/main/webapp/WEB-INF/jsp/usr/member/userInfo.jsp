@@ -70,6 +70,8 @@ const createAuthKey = () => {
 $.get('../member/createAuthKey',{
 	ajaxMode : 'Y'
 }, function(AuthKey){
+	
+	console.log(AuthKey);
 	$('#memberModifyAuthKey').val(AuthKey);
 	$('#memberPasswordAuthKey').val(AuthKey);
 });
@@ -79,6 +81,7 @@ $.get('../member/createAuthKey',{
 
 <script>
 const memberInfoModify =()=>{
+	$('#birthDay').removeAttr('disabled');
 	$('#englishName').removeAttr('disabled');
 	$('#cellphoneNum').removeAttr('disabled');
 	$('#email').removeAttr('disabled');
@@ -118,6 +121,7 @@ const passwordChangeCancle = () =>{
 
 <script>
 const memberCancleModify =()=>{
+	$('#birthDay').attr("disabled", true).val('${member.birthDay}');
 	$('#englishName').attr("disabled", true).val('${member.englishName}');
 	$('#cellphoneNum').attr("disabled", true).val('${member.cellphoneNum}');
 	$('#email').attr("disabled", true).val('${member.email}');
@@ -141,23 +145,23 @@ const memberCancleModify =()=>{
 			<input disabled type="hidden" name="loginPwCheck" id="loginPwCheck" autocomplete="off" required>
 			<label class="hidden" id="new-password-label" for="grid-last-name"> 새 비밀번호 </label> 
 			<input disabled type="hidden" name="loginPw" id="loginPw" value="${member.loginPw}" autocomplete="off" required>
-			<button type="button" id="changePasswordBtn" onclick="passwordChange(); createAuthKey();">비밀번호 변경 </button>
-			<button class="hidden" type="submit" id="changePasswordConfirm">비밀번호 변경</button>
+			<button type="button" id="changePasswordBtn" onclick="passwordChange(); createAuthKey();">비밀번호 변경하기 </button>
+			<button class="hidden" type="submit" id="changePasswordConfirm">변경</button>
 			<button class="hidden" type="button" id="changePasswordCancle" onclick="passwordChangeCancle()">취소</button>
 		</form>
 		
-		<label for="grid-password"> 생년월일 </label> 
-		<input type="text" name="birthDay" id="birthDay" autocomplete="off" value="${member.birthDay}" required disabled>
-		<label for="grid-password"> NAME </label> 
-		<input type="text" name="name" id="name" autocomplete="off" value="${member.name}" required disabled>
 		<form action="../member/doModify?" onsubmit="memberInfoModify__submitForm(this); return false;">
+			<label for="grid-password"> 생년월일 </label> 
+			<input type="text" name="birthDay" id="birthDay" value="${member.birthDay}" required disabled>
+			<label for="grid-password"> NAME </label> 
+			<input type="text" name="name" id="name"  value="${member.name}" required disabled>
 			<input type="hidden" name="memberModifyAuthKey" id="memberModifyAuthKey"/>
 			<label for="grid-password"> ENGLISH NAME </label> 
-			<input type="text" name="englishName" id="englishName" autocomplete="off" value="${member.englishName}" required disabled>
+			<input type="text" name="englishName" id="englishName" value="${member.englishName}" required disabled>
 			<label for="grid-password"> PHONE NUMBER </label> 
 			<input type="tel" id="cellphoneNum" name="cellphoneNum" value="${member.cellphoneNum}" pattern="[0-9]{11}" autocomplete="off" required disabled>
 			<label for="grid-password"> E-MAIL </label> 
-			<input type="email" name="email" id="email" autocomplete="off" value="${member.email}" required disabled>
+			<input type="email" name="email" id="email" value="${member.email}" required disabled>
 			<button class="hidden" type="submit" id="doModify">수정 완료</button>
 			<button class="hidden" type="button" id="cancleModify" onclick="memberCancleModify()">취소</button>
 			<button type="button" id="modifyBtn" onclick="memberInfoModify(); createAuthKey();">회원정보 수정</button>

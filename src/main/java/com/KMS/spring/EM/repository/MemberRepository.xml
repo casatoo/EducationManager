@@ -63,6 +63,23 @@
 	LIKE '%${name}%'
 	ORDER BY id DESC;
 	</select>
+	
+	<update id="doModify">
+		UPDATE `member` SET
+		updateDate = NOW(),
+		birthDay = #{birthDay},
+		englishName = #{englishName},
+		cellphoneNum = #{cellphoneNum},
+		email = #{email}
+		WHERE id = #{memberId}
+	</update>
+	
+	<update id="doChangePassword">
+		UPDATE `member` SET
+		updateDate = NOW(),
+		loginPw = #{loginPw}
+		WHERE id = #{memberId}
+	</update>
 
 
 </mapper>
