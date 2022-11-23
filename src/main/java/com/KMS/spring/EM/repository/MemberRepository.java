@@ -30,29 +30,4 @@ public interface MemberRepository {
 	
 	public void doChangePassword(int memberId, String loginPw);
 	
-	@Update("""
-			<script>
-			UPDATE `member`
-			<set>
-				updateDate = NOW(),
-				<if test="loginPw != null">
-					loginPw = #{loginPw},
-				</if>
-				<if test="name != null">
-					name = #{name},
-				</if>
-				<if test="nickname != null">
-					nickname = #{nickname},
-				</if>
-				<if test="cellphoneNum != null">
-					cellphoneNum = #{cellphoneNum},
-				</if>
-				<if test="email != null">
-					email = #{email}
-				</if>
-			</set>
-			WHERE id = #{id};
-			</script>
-				""")
-	void modify(int id, String loginPw, String name, String nickname, String cellphoneNum, String email);
 }

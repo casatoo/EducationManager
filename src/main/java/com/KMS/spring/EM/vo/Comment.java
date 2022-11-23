@@ -15,8 +15,7 @@ public class Comment {
 	private int memberId;
 	private String comment;
 	private int relId;
-	private int goodReactionPoint;
-	private int badReactionPoint;
+	private int delStatus;
 	
 	private String extra__writerName;
 }

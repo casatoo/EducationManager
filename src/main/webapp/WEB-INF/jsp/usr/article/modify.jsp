@@ -4,32 +4,11 @@
 <c:set var="pageTitle" value="detail" />
 <%@ include file="../common/head.jspf"%>
 <body>
-<script>
-	let ArticleModify__submitDone = false;
-	function ArticleModify__submit(form) {
-		if (ArticleModify__submitDone) {
-			return;
-		}
-		const editor = $(form).find('.toast-ui-editor').data(
-				'data-toast-editor');
-		const markdown = editor.getMarkdown().trim();
-		if (markdown.length == 0) {
-			alert('내용을 입력해주세요');
-			editor.focus();
-			return;
-		}
-		form.body.value = markdown;
-		ArticleModify__submitDone = true;
 
-		form.submit();
-	}
-	
-</script>
-
-<div class="mt-11 ml-11">
-		<div class="text-4xl mb-11 ml-11">${article.id}번글수정</div>
+<div>
+		<div>${article.id}번글수정</div>
 		<c:set var="article" value="${article}" />
-		<form action="../article/doModify" onsubmit="ArticleModify__submit(this); return false;">
+		<form action="../article/doModify">
 				<div>
 						<input type="hidden" id="id" name="id" value="${article.id}" /> 
 						<input type="hidden" id="body" name="body" />
@@ -40,12 +19,9 @@
 				</div>
 				<div class="mt-11">
 						<label for="body">글 내용</label>
-						<div class="toast-ui-editor">
-						
-								<script type="text/x-template">${article.body}</script>
-						</div>
+						<textarea name="body" id="body" cols="30" rows="10">${article.body}</textarea>
 				</div>
-				<button class="mt-11 btn btn-outline" type="submit">글 수정</button>
+				<button type="submit">글 수정</button>
 		</form>
 </div>
 </body>

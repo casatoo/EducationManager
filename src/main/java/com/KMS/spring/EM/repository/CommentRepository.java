@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.KMS.spring.EM.vo.Comment;
 
@@ -14,14 +15,15 @@ import com.KMS.spring.EM.vo.Comment;
 public interface CommentRepository {
 
 	@Select("""
-			SELECT C.*, M.nickname AS
+			SELECT C.*, M.name AS
 			extra__writerName
 			FROM `comment` AS C
 			INNER JOIN
 			`member` AS M
 			ON C.memberId
 			= M.id
-			WHERE relId = #{relId}
+			WHERE C.relId = #{relId}
+			AND C.delStatus = 0
 			ORDER BY C.id ASC;
 						""")
 	public List<Comment> getComments(int relId);
@@ -38,11 +40,21 @@ public interface CommentRepository {
 	public int doWrite(int relId, int memberId, String comment, String relTypeCode);
 
 	@Delete("""
-			DELETE FROM `comment`
+			UPDATE comment SET 
+			delStatus = 1 
 			WHERE id = #{id}
 			""")
 	public int doDelete(int id);
-
+	@Update("""
+			<script>
+			UPDATE `comment`
+			<set>
+				<if test="comment != null and comment != ''">`comment` = #{comment},</if>
+			updateDate = NOW()
+			</set>
+				WHERE id = #{id}
+			</script>
+			""")
 
 	public int doModify(int id, String comment);
 }

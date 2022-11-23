@@ -80,6 +80,8 @@
 		loginPw = #{loginPw}
 		WHERE id = #{memberId}
 	</update>
+	
+	
 
 
 </mapper>

@@ -40,7 +40,7 @@
 	</select>
 
 	<select id="getArticles" resultType="Article">
-		SELECT A.*, M.nickname AS
+		SELECT A.*, M.name AS
 		extra__writerName
 		FROM article AS A
 		INNER
@@ -51,6 +51,7 @@
 		<if test="boardId !=0">
 			AND A.boardId = #{boardId}
 		</if>
+		AND A.delStatus = 0
 		<if test="searchWord !=''">
 			<choose>
 				<when test="searchFrom != ''">
@@ -71,18 +72,19 @@
 
 	<select id="getForPrintArticle" resultType="Article">
 		SELECT A.*,
-		M.nickname AS extra__writerName
+		M.name AS extra__writerName
 		FROM article AS A
 		LEFT JOIN
 		`member` AS M
 		ON A.memberId = M.id
 		WHERE A.id = #{id}
 	</select>
-
-	<delete id="deleteArticle">
-		DELETE FROM article
-		WHERE id = #{id}
-	</delete>
+	
+	<update id="deleteArticle">
+		UPDATE article SET 
+		delStatus = 1 
+		WHERE id = #{id};
+	</update>
 
 	<update id="modifyArticle">
 		UPDATE article
