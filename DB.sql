@@ -51,11 +51,15 @@ managerMemberId INT COMMENT '담당자',
 );
 
 INSERT INTO educationCourse(regDate,updateDate,startOfEducation,endOfEducation,title,place,managerMemberId)VALUES
-(NOW(),NOW(),DATE(20221021),DATE(20221120),'22-3기','1교육장',1),
-(NOW(),NOW(),DATE(20220921),DATE(20221020),'22-2기','2교육장',2),
-(NOW(),NOW(),DATE(20220821),DATE(20220920),'22-1기','3교육장',2);
+(NOW(),NOW(),DATE(20220101),DATE(20220130),'22-1기','1교육장',1),
+(NOW(),NOW(),DATE(20220301),DATE(20220330),'22-2기','2교육장',2),
+(NOW(),NOW(),DATE(20220501),DATE(20220530),'22-3기','3교육장',2),
+(NOW(),NOW(),DATE(20220701),DATE(20220730),'22-4기','1교육장',1),
+(NOW(),NOW(),DATE(20220901),DATE(20220930),'22-5기','2교육장',2),
+(NOW(),NOW(),DATE(20221101),DATE(20221130),'22-6기','3교육장',2);
 
-
+UPDATE educationCourse SET `status`=1 WHERE id=1;
+UPDATE educationCourse SET `status`=1 WHERE id=2;
 # 부가정보테이블
 DROP TABLE IF EXISTS attr;
 CREATE TABLE attr (
@@ -91,13 +95,16 @@ boardId INT(10) UNSIGNED NOT NULL,
 title VARCHAR(200) NOT NULL,
 `body` TEXT NOT NULL,
 hit INT(10) NOT NULL DEFAULT 0,
+delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부 (0=삭제 전, 1= 삭제 후)',
 goodReactionPoint INT(10) NOT NULL DEFAULT 0,
 badReactionPoint INT(10) NOT NULL DEFAULT 0
 );
 
 INSERT INTO article(regDate,updateDate,memberId,boardId,title,`body`)VALUES
-(NOW(),NOW(),1,1,'제목1','내용1'),
-(NOW(),NOW(),2,1,'제목2','내용2'),
+(NOW(),NOW(),1,1,'공지사항1','내용1'),
+(NOW(),NOW(),2,1,'공지사항2','내용2'),
+(NOW(),NOW(),1,1,'공지사항3','내용3'),
+(NOW(),NOW(),2,1,'공지사항4','내용4'),
 (NOW(),NOW(),3,2,'제목3','내용3'),
 (NOW(),NOW(),1,2,'제목4','내용4'),
 (NOW(),NOW(),3,3,'제목5','내용6'),
@@ -146,6 +153,26 @@ INSERT INTO reactionPoint (regDate,updateDate,memberId,relTypeCode,relId,`point`
 (NOW(),NOW(),2,'article',4,1),
 (NOW(),NOW(),3,'article',4,-1);
 
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment`(
+id INT(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+regDate DATETIME NOT NULL,
+updateDate DATETIME NOT NULL,
+memberId INT(10) NOT NULL,
+relTypeCode CHAR(50) NOT NULL COMMENT '관련 데이터 타입 코드',
+relId INT(10) NOT NULL,
+`comment` VARCHAR(200) NOT NULL,
+delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부 (0=삭제 전, 1= 삭제 후)',
+FOREIGN KEY (relId) REFERENCES article(id) ON DELETE CASCADE
+);
+
+INSERT INTO `comment`(regDate, updateDate, memberId,relTypeCode,relId,`comment`)VALUES
+(NOW(),NOW(),2,'article',1,'댓글1'),
+(NOW(),NOW(),2,'article',1,'댓글2'),
+(NOW(),NOW(),3,'article',1,'댓글3'),
+(NOW(),NOW(),3,'article',1,'댓글4'),
+(NOW(),NOW(),1,'article',1,'댓글5');
+
 # 연습 쿼리
 SELECT * FROM attr;
 SELECT * FROM `member`;
@@ -153,4 +180,9 @@ SELECT * FROM educationCourse;
 SELECT * FROM article;
 SELECT * FROM board;
 
-
+SELECT E.*, M.name AS extra__managerName
+FROM educationCourse AS E 
+INNER JOIN `member` AS M 
+ON E.managerMemberId = M.id
+ORDER BY E.id DESC
+LIMIT 0,6;

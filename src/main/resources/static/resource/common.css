@@ -46,7 +46,7 @@ body{
 	border-right: 1px solid #8D8D8D;
 }
 .solid-border-box{
-	border:1px solid black;
+	border:1px solid #8D8D8D;
 }
 .top-bar-menu{
 	display: flex;
