@@ -3,18 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
-<body>
-	<div>메인 페이지</div>
-	<div>
-		<a href="${rq.joinUri}"><span>회원가입</span></a> 
-		<a href="${rq.loginUri}"><span>로그인</span></a>
-		<a href="${rq.logoutUri}"><span>로그아웃</span></a> 
-		<a href="../member/userInfo"><span>내 정보</span></a> 
-		<a href="../member/administrator"><span>관리자 페이지</span></a>
-		<a href="../article/list?boardId=2"><span>자유게시판</span></a>
-		<a href="../article/list?boardId=1"><span>공지사항</span></a>
-		<a href="../article/list?boardId=3"><span>Q&amp;A</span></a>
-	</div>
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
+<img src="/resource/main.jpg" class="w-full" />
+
+
 	<c:if test="${empty educationCourses}">
 		<div>진행중인 교육과정이 없습니다.</div>
 	</c:if>

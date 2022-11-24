@@ -1,23 +1,21 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'ChosunCentennial';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'KOFIHDrLEEJWTTF-B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/KOFIHDrLEEJWTTF-B.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
-@font-face {
-    font-family: 'TTCrownMychewR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+
 html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>body .ProseMirror, html>body .toastui-editor-md-mode{
-	font-family: 'TTCrownMychewR', sans-serif;
+	font-family: 'KOFIHDrLEEJWTTF-B', sans-serif;
 	text-underline-position: under;
 }
 
-/** 라이브러리 */
+/** 커스텀 */
+body{
+	min-width: 1024px;
+}
 
 .educationCourse{
 	border: 1px solid black;
@@ -27,4 +25,8 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 	width: 300px;
 	height: 150px;
 	border-radius: 20px;
+}
+
+.simple-border-box{
+	border: 1px solid #000000;
 }

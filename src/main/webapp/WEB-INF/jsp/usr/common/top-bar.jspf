@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="top-bar h-52 flex justify-around simple-border-box text-xl">
+	<a href="#" class="logo flex justify-end h-full items-center font-bold">OOO 교육원</a>
+	<nav class="menu-box-1">
+		<ul class="flex justify-end h-full">
+			<li><a href="../article/list?boardId=1" class="flex items-center h-full px-7 font-bold ">공지사항</a></li>
+			<li><a href="../article/list?boardId=2" class="flex items-center h-full px-7 font-bold ">자유게시판</a></li>
+			<li><a href="../article/list?boardId=3" class="flex items-center h-full px-7 font-bold ">Q&A</a></li>
+			<li><a href="../educationCourse/list" class="flex items-center h-full px-7 font-bold ">교육일정</a></li>
+			<li><a href="../member/userInfo" class="flex items-center h-full px-7 font-bold ">내정보</a></li>
+			<c:if test="${rq.isLogined()}">
+				<li><a href="${rq.logoutUri}" class="flex items-center h-full px-7 font-bold ">로그아웃</a></li>
+			</c:if>
+			<c:if test="${!rq.isLogined()}">
+				<li><a href="${rq.loginUri}" class="flex items-center h-full px-7 font-bold ">로그인</a></li>
+			</c:if>
+		</ul>
+	</nav>
+</div>
