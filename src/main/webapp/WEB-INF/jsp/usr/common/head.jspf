@@ -4,7 +4,7 @@
 <html data-theme="light">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>교육관리시스템</title>
 <link rel="stylesheet" href="/resource/common.css" />
 
 <%-- 제이쿼리 --%>

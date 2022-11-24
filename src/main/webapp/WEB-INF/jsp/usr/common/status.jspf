@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <body>
 	<div class="status-bar h-7 flex simple-border-box ">
-		<div class="status-box ml-auto flex w-1/5 justify-around items-center">
+		<div class="status-box ml-auto flex w-2/5 justify-around items-center">
 		<a class="btn-theme-toggle flex-grow-0" href="javascript:Theme__toggle();">
-						<span>🌞</span> <span>🌚</span>
+						<span>화이트모드 전환</span> <span>다크모드 전환</span>
 					</a>
 			<c:if test="${rq.isLogined()}">
 			<div class="icon flex-grow-0">
