@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="detail" />
 <%@ include file="../common/head.jspf"%>
-<body>
+<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
 		<%-- 전역변수 설정 --%>
 		<script>
 	var reaction = ${reactionRd};

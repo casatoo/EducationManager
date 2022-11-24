@@ -9,7 +9,7 @@ import com.KMS.spring.EM.vo.EducationCourse;
 @Mapper
 public interface EducationCourseRepository {
 	
-	public List<EducationCourse> getEducationCourseList();
+	public List<EducationCourse> getEducationCourseList(int limitFrom, int itemsInAPage);
 
 	public EducationCourse getEducationCourse(int id);
 }

@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
-
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
 <%-- 개인정보 입력 제한사항 --%>
 <script>
 	let memberInfoModify__submitFormDone = false;
@@ -130,7 +131,6 @@ const memberCancleModify =()=>{
 	$('#cancleModify').addClass('hidden');
 }
 </script>
-<body>
 
 		<label> 회원 등급 </label> 
 		<div>${level} 회원</div>

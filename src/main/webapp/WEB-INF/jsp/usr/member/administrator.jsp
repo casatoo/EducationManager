@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
-<body>
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
 			<form action="../member/administrator">
 				<input type="text" placeholder="검색어를 입력해주세요" name="searchName"/>
 				<button type="submit">검색</button>

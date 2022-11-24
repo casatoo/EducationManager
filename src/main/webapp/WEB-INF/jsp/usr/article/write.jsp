@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="detail" />
 <%@ include file="../common/head.jspf"%>
-<body>
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
 
 <script>
 	let submitWriteFormDone = false;

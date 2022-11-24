@@ -13,6 +13,18 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 }
 
 /** 커스텀 */
+/** 테마 */
+.btn-theme-toggle > span:first-child {
+  display:none;
+}
+
+html[data-theme="dark"] .btn-theme-toggle > span:first-child {
+  display:inline;
+}
+
+html[data-theme="dark"] .btn-theme-toggle > span:last-child {
+  display:none;
+}
 body{
 	min-width: 1024px;
 }
@@ -28,5 +40,14 @@ body{
 }
 
 .simple-border-box{
-	border: 1px solid #000000;
+	border-bottom:1px solid #8D8D8D;
+	border-left: 1px solid #8D8D8D;
+	border-right: 1px solid #8D8D8D;
+}
+.top-bar-menu{
+	display: flex;
+	align-items: center;
+	height: 100%;
+	font-weight: bold;
+	padding: 0 28px;
 }

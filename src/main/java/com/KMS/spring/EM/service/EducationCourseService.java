@@ -34,9 +34,9 @@ public class EducationCourseService {
 	 * 교육과정 전체 리스트 조회
 	 * @return List<EducationCourse>
 	 */
-	public List<EducationCourse> getEducationCourseList(){
+	public List<EducationCourse> getEducationCourseList( int limitFrom, int itemsInAPage){
 		
-		return educationCourseRepository.getEducationCourseList();
+		return educationCourseRepository.getEducationCourseList(limitFrom,itemsInAPage);
 	}
 	/**
 	 * 교육과정 상세 조회

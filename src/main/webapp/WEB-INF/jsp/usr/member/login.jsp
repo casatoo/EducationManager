@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
-<body>
+<%@ include file="../common/status.jspf"%>
+<%@ include file="../common/top-bar.jspf"%>
 	<div>로그인 페이지</div>
 	<form action="../member/doLogin?">
 		<input type="hidden" name="afterLoginUri" id="afterLoginUri"

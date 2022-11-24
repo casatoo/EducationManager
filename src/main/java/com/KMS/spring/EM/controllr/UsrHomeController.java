@@ -7,20 +7,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.KMS.spring.EM.service.ArticleService;
 import com.KMS.spring.EM.service.EducationCourseService;
+import com.KMS.spring.EM.vo.Article;
 import com.KMS.spring.EM.vo.EducationCourse;
+import com.KMS.spring.EM.vo.Rq;
 
 @Controller
 public class UsrHomeController {
 	@Autowired
-	EducationCourseService educationCourseService;
+	private EducationCourseService educationCourseService;
+	@Autowired
+	private ArticleService articleService;
+	@Autowired
+	private Rq rq;
 	
 	@RequestMapping("usr/home/main")
 	public String showMain(Model model) {
 		
-		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList();
-		
+		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList(0,6);
+		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), 1, 0, 4, "", "");
 		model.addAttribute("educationCourses",educationCourses);
+		model.addAttribute("articles",articles);
 		return "usr/home/main";
 	}
 
