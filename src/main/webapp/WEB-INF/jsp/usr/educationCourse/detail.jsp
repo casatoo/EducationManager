@@ -12,6 +12,11 @@
 		<div>교육죵료일: ${educationCourse.endOfEducation.substring(0,10)}</div>
 		<div>교육장소: ${educationCourse.place}</div>
 		<div>담당자: ${educationCourse.extra__managerName}</div>
-		<div>현재상태: ${educationCourse.status}</div>
+		<c:if test="${educationCourse.status == 0}">
+		<div>현재상태: 진행중</div>
+		</c:if> 
+		<c:if test="${educationCourse.status == 1}">
+		<div>현재상태: 종료됨</div>
+		</c:if>
 </body>
 </html>

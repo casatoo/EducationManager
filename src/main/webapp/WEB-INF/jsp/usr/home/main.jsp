@@ -19,7 +19,7 @@
 				</c:if>
 				<c:forEach var="educationCourse" items="${educationCourses}">
 						<div class="solid-border-box w-60 h-36 rounded-3xl flex m-3">
-						<a href="#">
+						<a href="../educationCourse/detail?id=${educationCourse.id}">
 								<ul>
 										<li class="font-bold m-3 text-2xl">${educationCourse.title}</li>
 										<li class="ml-3 mb-3">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</li>
