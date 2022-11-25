@@ -59,3 +59,7 @@ body{
 	width: 1024px;
 	margin: 0 auto;
 }
+.weather-box{
+	width:780px;
+	height: 300px;
+}
