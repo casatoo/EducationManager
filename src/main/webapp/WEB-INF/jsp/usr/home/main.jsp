@@ -7,43 +7,49 @@
 <%@ include file="../common/top-bar.jspf"%>
 
 <script>
+/** 현재 년월일 구하는 함수 */
+function getCurrentDate()
+{
+    var date = new Date();
+    var year = date.getFullYear().toString();
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();
+
+    return year + month + day ;
+}
 	const API_KEY = 'UDknKWMcEt2j1IlOazmpJzieEdhjjaSOMbGQwmF0nEXiBUE2QKGJosC8yLqyllGhvAVgbU3JrtQDaWwPQYfE4w%3D%3D';
-	var TMP;
-	var POP;
-	var PTY;
-	var SKY;
-	var VEC;
-	var WSD;
+	
 	async function getData() {
-		const url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey='+API_KEY+'&numOfRows=10&pageNo=1&base_date=20221125&base_time=1700&nx=36&ny=127&dataType=JSON';
+		var base_date = getCurrentDate();
+		const url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey='+API_KEY+'&numOfRows=10&pageNo=1&base_date='+base_date+'&base_time=1700&nx=36&ny=127&dataType=JSON';
 		const response = await fetch(url);
 		const data = await response.json();
 		for(var weather of data.response.body.items.item){
-			if(weather.category == 'TMP'){
-				TMP = weather.fcstValue;
-			}
-			if(weather.category == 'POP'){
-				POP = weather.fcstValue;
-			}
-			if(weather.category == 'PTY'){
-				PTY = weather.fcstValue;
-			}
-			if(weather.category == 'SKY'){
-				SKY = weather.fcstValue;
-			}
-			if(weather.category == 'VEC'){
-				VEC = weather.fcstValue;
-			}
-			if(weather.category == 'WSD'){
-				WSD = weather.fcstValue;
-			}
+			console.log(base_date);
+			switch(weather.category){
+				case 'TMP' :
+					$('.tmp').html(weather.fcstValue);
+					break;
+				case 'POP' :
+					$('.pop').html(weather.fcstValue);
+					break;
+				case 'PTY' :
+					$('.pty').html(weather.fcstValue);
+					break;
+				case 'SKY' :
+					$('.sky').html(weather.fcstValue);
+					break;
+				case 'VEC' :
+					$('.vec').html(weather.fcstValue);
+					break;
+				case 'WSD' :
+					$('.wsd').html(weather.fcstValue);
+					break;
+				}
 		}
-		$('.tmp').html(TMP);	
-		$('.pop').html(POP);	
-		$('.pty').html(PTY);	
-		$('.sky').html(SKY);	
-		$('.vec').html(VEC);	
-		$('.wsd').html(WSD);	
 	}
 	getData();
 </script>
