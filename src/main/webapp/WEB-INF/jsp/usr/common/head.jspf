@@ -19,7 +19,6 @@
 
 <script src="/resource/common.js" defer="defer"></script>
 <link rel="shortcut icon" href="/favicon.ico" />
-
 <script>
 function Theme__toggle() {
   const theme = localStorage.getItem("theme") ?? "light";

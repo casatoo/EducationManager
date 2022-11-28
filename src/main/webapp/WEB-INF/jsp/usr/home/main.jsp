@@ -143,8 +143,6 @@ function getCurrentTime()
 	getData();
 </script>
 
-<img src="/resource/main.jpg" class="main-img" />
-
 
 <div class="educationCourses-box mt-6">
 	<div class="flex flex-wrap text-2xl">
@@ -163,13 +161,12 @@ function getCurrentTime()
 						<li class="font-bold m-3 text-2xl">${educationCourse.title}</li>
 						<li class="ml-3 mb-3">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</li>
 						<li class="ml-3">담당자:${educationCourse.extra__managerName}</li>
-						<li class="float-right">
-						<c:if test="${educationCourse.status == 0}">
-							<div class="text-blue-600">진행중</div>
-						</c:if> 
-						<c:if test="${educationCourse.status == 1}">
-							<div class="text-red-600">종료됨</div>
-						</c:if></li>
+						<li class="float-right"><c:if
+								test="${educationCourse.status == 0}">
+								<div class="text-blue-600">진행중</div>
+							</c:if> <c:if test="${educationCourse.status == 1}">
+								<div class="text-red-600">종료됨</div>
+							</c:if></li>
 					</ul>
 				</a>
 			</div>
@@ -205,21 +202,24 @@ function getCurrentTime()
 		<div class="text-blue-600">날씨정보</div>
 	</div>
 </div>
-<div class="educationCourses-box ">
+<div>
 	<div class="flex flex-wrap justify-center">
-		<c:if test="${empty articles}">
-			<div>날씨정보를 불러오지 못합니다.</div>
-		</c:if>
-		<div>
-				<div class="solid-border-box weather-box rounded-3xl flex m-3">
-					<ul>
-						<li class="ml-3">기온: <div class="tmp"></div></li>
-						<li class="ml-3">강수확률: <div class="pop"></div></li>
-						<li class="ml-3">현재상태:<div class="pty"></div></li>
-						<li class="ml-3">구름: <div class="sky"></div></li>
-						<li class="ml-3">풍향: <div class="vec"></div></li>
-						<li class="ml-3">풍속: <div class="wsd"></div></li>
-					</ul>
+		<div
+			class="solid-border-box weather-box rounded-3xl flex m-3 flex justify-around">
+			<div class="weather-1 flex flex-col justify-center items-center">
+				<div class="pty text-8xl">
+					<span>☀</span>
+				</div>
+				<div class="tmp text-3xl">20℃</div>
+			</div>
+			<div class="weather-2 flex flex-col justify-around items-center">
+				<div></div>
+				<div class="vec text-3xl">
+					풍향 <i class="fa-solid fa-wind"></i> SE-S
+				</div>
+				<div class="wsd text-3xl">풍속 10m/s</div>
+				<div class="pop text-3xl">강수확률 30%</div>
+				<div></div>
 			</div>
 		</div>
 	</div>

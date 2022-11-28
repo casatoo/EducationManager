@@ -47,6 +47,7 @@ body{
 }
 .solid-border-box{
 	border:1px solid #8D8D8D;
+	box-shadow: 3px 3px 10px 3px #8D8D8D;
 }
 .top-bar-menu{
 	display: flex;
