@@ -208,7 +208,7 @@ public class UsrMemberController {
 	 */
 	@RequestMapping("/usr/member/findLoginPw")
 	@ResponseBody
-	public String findLoginPw(String name , String loginId, String email , @RequestParam(defaultValue = "/") String afterFindLoginPwUri) {
+	public String findLoginPw(String name , String loginId, String email , @RequestParam(defaultValue = "/") String afterLoginUri) {
 		
 		Member member = memberService.getMemberByLoginId(loginId);
 
@@ -225,7 +225,7 @@ public class UsrMemberController {
 
 		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmailRd(member);
 
-		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getMsg(), afterFindLoginPwUri);
+		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getMsg(), Ut.f("../member/login?afterLoginUri=%s",afterLoginUri));
 	}
 	/**
 	 * 인증 코드 생성
