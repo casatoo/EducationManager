@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
-
+<%@ include file="../common/side-bar.jspf"%>
 <script>
 /** 현재 년월일 구하는 함수 */
 function getCurrentDate()
@@ -196,93 +195,90 @@ function getCurrentTime()
 	getData();
 </script>
 
+<section class="dashboard">
+	<div class="top">
+		<i class="uil uil-bars sidebar-toggle"></i>
+		<c:if test="${rq.isLogined()}">
+			<img
+				src="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427__480.jpg"
+				alt="">
+		</c:if>
+	</div>
 
-<div class="educationCourses-box mt-6">
-		<div class="flex flex-wrap text-2xl">
-				<div class="text-blue-600">최신 교육과정</div>
-		</div>
-</div>
-<div class="educationCourses-box ">
-		<div class="flex flex-wrap justify-center">
-				<c:if test="${empty educationCourses}">
-						<div>진행중인 교육과정이 없습니다.</div>
-				</c:if>
+	<div class="dash-content">
+		<div class="overview">
+			<div class="title">
+				<i class="uil uil-location-arrow"></i> <span class="text">교육과정
+					바로가기</span>
+			</div>
+			<c:if test="${empty educationCourses}">
+				<div>진행중인 교육과정이 없습니다.</div>
+			</c:if>
+			<div class="boxes">
+			
 				<c:forEach var="educationCourse" items="${educationCourses}">
-						<div class="solid-border-box w-60 h-36 rounded-3xl flex m-3">
-								<a href="../educationCourse/detail?id=${educationCourse.id}">
-										<ul>
-												<li class="font-bold m-3 text-2xl">${educationCourse.title}</li>
-												<li class="ml-3 mb-3">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</li>
-												<li class="ml-3">담당자:${educationCourse.extra__managerName}</li>
-												<li class="float-right"><c:if test="${educationCourse.status == 0}">
-																<div class="text-blue-600">진행중</div>
-														</c:if> <c:if test="${educationCourse.status == 1}">
-																<div class="text-red-600">종료됨</div>
-														</c:if></li>
-										</ul>
-								</a>
+						<div class="box box1" onclick="location.href='../educationCourse/detail?id=${educationCourse.id}';">
+							<span class="text-title"><i class="uil uil-pen"></i>${educationCourse.title}</span> <span
+								class="text-date">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</span>
+							<span class="text-manager">담당자:${educationCourse.extra__managerName}</span>
+							<c:if
+									test="${educationCourse.status == 0}">
+									<span class="text-status color-green">진행중</span>
+								</c:if> <c:if test="${educationCourse.status == 1}">
+									<span class="text-status text-red">종료됨</span>
+								</c:if>
 						</div>
 				</c:forEach>
+			</div>
 		</div>
-</div>
-<div class="educationCourses-box mt-6">
-		<div class="flex flex-wrap text-2xl">
-				<div class="text-blue-600">최신 소식</div>
-		</div>
-</div>
-<div class="educationCourses-box ">
-		<div class="flex flex-wrap justify-center">
-				<c:if test="${empty articles}">
-						<div>게시물이 없습니다.</div>
-				</c:if>
-				<c:forEach var="article" items="${articles}">
-						<div class="solid-border-box w-44 h-60 rounded-3xl flex m-3">
-								<a href="${rq.getArticleDetailUriFromArticleList(article)}">
-										<ul>
-												<li class="font-bold m-3 text-2xl">${article.title}</li>
-												<li class="ml-3 h-32">${article.body}</li>
-												<li class="ml-3">작성자:${article.extra__writerName}</li>
-												<li class="ml-3">${article.regDate.substring(5,16)}</li>
-										</ul>
-								</a>
-						</div>
-				</c:forEach>
-		</div>
-</div>
-<div class="educationCourses-box mt-6">
-		<div class="flex flex-wrap text-2xl">
-				<div class="text-blue-600">날씨정보</div>
-		</div>
-</div>
-<div>
-		<div class="flex flex-wrap justify-center">
-				<div class="solid-border-box weather-box rounded-3xl flex m-3 flex justify-around">
-						<div class="weather-1 flex flex-col justify-center items-center">
-								<div class="pty text-8xl">☀</div>
-								<div class="text-3xl inline-block">
-								<div class="tmp text-3xl inline-block"></div>
-								℃
-								</div>
-						</div>
-						<div class="weather-2 flex flex-col justify-around items-center">
-								<div></div>
-								<div class="text-3xl inline-block">
-										<i class="fa-solid fa-wind"></i>
-										<div class="vec text-3xl inline-block"></div>
-								</div>
-								<div class="text-3xl inline-block">
-								<div class="wsd text-3xl inline-block"></div>
-								m/s
-								</div>
-								<div class="text-3xl inline-block">
-										강수확률
-										<div class="pop text-3xl inline-block"></div>
-										%
-								</div>
-								<div></div>
-						</div>
+
+		<div class="activity">
+			<div class="title">
+				<i class="uil uil-clock-three"></i> <span class="text">Recent
+					Activity</span>
+			</div>
+
+			<div class="activity-data">
+				<div class="data names">
+					<span class="data-title">Name</span> <span class="data-list">Prem
+						Shahi</span> <span class="data-list">Deepa Chand</span> <span
+						class="data-list">Manisha Chand</span> <span class="data-list">Pratima
+						Shahi</span> <span class="data-list">Man Shahi</span> <span
+						class="data-list">Ganesh Chand</span> <span class="data-list">Bikash
+						Chand</span>
 				</div>
+				<div class="data email">
+					<span class="data-title">Email</span> <span class="data-list">premshahi@gmail.com</span>
+					<span class="data-list">deepachand@gmail.com</span> <span
+						class="data-list">prakashhai@gmail.com</span> <span
+						class="data-list">manishachand@gmail.com</span> <span
+						class="data-list">pratimashhai@gmail.com</span> <span
+						class="data-list">manshahi@gmail.com</span> <span
+						class="data-list">ganeshchand@gmail.com</span>
+				</div>
+				<div class="data joined">
+					<span class="data-title">Joined</span> <span class="data-list">2022-02-12</span>
+					<span class="data-list">2022-02-12</span> <span class="data-list">2022-02-13</span>
+					<span class="data-list">2022-02-13</span> <span class="data-list">2022-02-14</span>
+					<span class="data-list">2022-02-14</span> <span class="data-list">2022-02-15</span>
+				</div>
+				<div class="data type">
+					<span class="data-title">Type</span> <span class="data-list">New</span>
+					<span class="data-list">Member</span> <span class="data-list">Member</span>
+					<span class="data-list">New</span> <span class="data-list">Member</span>
+					<span class="data-list">New</span> <span class="data-list">Member</span>
+				</div>
+				<div class="data status">
+					<span class="data-title">Status</span> <span class="data-list">Liked</span>
+					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
+					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
+					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
+				</div>
+			</div>
 		</div>
-</div>
+	</div>
+</section>
+
+<!--<script src="script.js"></script>-->
 </body>
 </html>

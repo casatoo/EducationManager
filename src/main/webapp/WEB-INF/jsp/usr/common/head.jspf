@@ -4,6 +4,8 @@
 <html data-theme="light">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>교육관리시스템</title>
 <link rel="stylesheet" href="/resource/common.css" />
 
@@ -17,34 +19,11 @@
 <%-- 폰트 어썸 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
+<%-- unicons CSS --%>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 <script src="/resource/common.js" defer="defer"></script>
 <link rel="shortcut icon" href="/favicon.ico" />
-<script>
-function Theme__toggle() {
-  const theme = localStorage.getItem("theme") ?? "light";
-
-  if ( theme == 'light' ) {
-    localStorage.setItem("theme", "dark");
-    //Theme__applyTo('dark');
-  }
-  else {
-    localStorage.setItem("theme", "light");
-    //Theme__applyTo('light');
-  }
-
-  location.reload();
-}
-
-function Theme__applyTo(themeName) {
-  $('html').attr('data-theme', themeName);
-}
-
-function Theme__init() {
-  const theme = localStorage.getItem("theme") ?? "light";
-  Theme__applyTo(theme);
-}
-
-Theme__init();
-</script>
 
 </head>
+<body>

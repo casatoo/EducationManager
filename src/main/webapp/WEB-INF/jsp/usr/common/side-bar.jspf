@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/resource/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">EduManager</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="../member/userInfo">
+                    <i class="uil uil-user"></i>
+                    <span class="link-name">내 정보</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-user-exclamation"></i>
+                    <span class="link-name">나의 교육정보</span>
+                </a></li>
+                <li><a href="../article/list?boardId=1">
+                    <i class="uil uil-bell"></i>
+                    <span class="link-name">공지사항</span>
+                </a></li>
+                <li><a href="../article/list?boardId=2">
+                    <i class="uil uil-list-ul"></i>
+                    <span class="link-name">자유게시판</span>
+                </a></li>
+                <li><a href="../article/list?boardId=3">
+                    <i class="uil uil-question"></i>
+                    <span class="link-name">Q&A</span>
+                </a></li>
+                <li><a href="../educationCourse/list">
+                    <i class="uil uil-calendar-alt"></i>
+                    <span class="link-name">교육일정</span>
+                </a></li>
+
+            </ul>
+            
+            <ul class="logout-mode">
+            	<c:if test="${rq.isLogined()}">
+                <li><a href="${rq.logoutUri}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">로그아웃</span>
+                </a></li>
+				</c:if>
+				<c:if test="${!rq.isLogined()}">
+                <li><a href="${rq.loginUri}">
+                    <i class="uil uil-signin"></i>
+                    <span class="link-name">로그인</span>
+                </a></li>
+				</c:if>
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
