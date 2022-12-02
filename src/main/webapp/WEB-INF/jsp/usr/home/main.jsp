@@ -215,65 +215,59 @@ function getCurrentTime()
 				<div>진행중인 교육과정이 없습니다.</div>
 			</c:if>
 			<div class="boxes">
-			
+
 				<c:forEach var="educationCourse" items="${educationCourses}">
-						<div class="box box1" onclick="location.href='../educationCourse/detail?id=${educationCourse.id}';">
-							<span class="text-title"><i class="uil uil-pen"></i>${educationCourse.title}</span> <span
-								class="text-date">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</span>
-							<span class="text-manager">담당자:${educationCourse.extra__managerName}</span>
-							<c:if
-									test="${educationCourse.status == 0}">
-									<span class="text-status color-green">진행중</span>
-								</c:if> <c:if test="${educationCourse.status == 1}">
-									<span class="text-status text-red">종료됨</span>
-								</c:if>
-						</div>
+					<div class="box box1"
+						onclick="location.href='../educationCourse/detail?id=${educationCourse.id}';">
+						<span class="text-title"><i class="uil uil-pen"></i>${educationCourse.title}</span>
+						<span class="text-date">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</span>
+						<span class="text-manager">담당자:${educationCourse.extra__managerName}</span>
+						<c:if test="${educationCourse.status == 0}">
+							<span class="text-status text-blue-600">진행중</span>
+						</c:if>
+						<c:if test="${educationCourse.status == 1}">
+							<span class="text-status text-red-400">종료됨</span>
+						</c:if>
+					</div>
 				</c:forEach>
 			</div>
 		</div>
 
 		<div class="activity">
 			<div class="title">
-				<i class="uil uil-clock-three"></i> <span class="text">Recent
-					Activity</span>
+				<i class="uil uil-bell"></i><span class="text">최근 공지사항</span>
 			</div>
 
 			<div class="activity-data">
-				<div class="data names">
-					<span class="data-title">Name</span> <span class="data-list">Prem
-						Shahi</span> <span class="data-list">Deepa Chand</span> <span
-						class="data-list">Manisha Chand</span> <span class="data-list">Pratima
-						Shahi</span> <span class="data-list">Man Shahi</span> <span
-						class="data-list">Ganesh Chand</span> <span class="data-list">Bikash
-						Chand</span>
-				</div>
-				<div class="data email">
-					<span class="data-title">Email</span> <span class="data-list">premshahi@gmail.com</span>
-					<span class="data-list">deepachand@gmail.com</span> <span
-						class="data-list">prakashhai@gmail.com</span> <span
-						class="data-list">manishachand@gmail.com</span> <span
-						class="data-list">pratimashhai@gmail.com</span> <span
-						class="data-list">manshahi@gmail.com</span> <span
-						class="data-list">ganeshchand@gmail.com</span>
-				</div>
-				<div class="data joined">
-					<span class="data-title">Joined</span> <span class="data-list">2022-02-12</span>
-					<span class="data-list">2022-02-12</span> <span class="data-list">2022-02-13</span>
-					<span class="data-list">2022-02-13</span> <span class="data-list">2022-02-14</span>
-					<span class="data-list">2022-02-14</span> <span class="data-list">2022-02-15</span>
-				</div>
-				<div class="data type">
-					<span class="data-title">Type</span> <span class="data-list">New</span>
-					<span class="data-list">Member</span> <span class="data-list">Member</span>
-					<span class="data-list">New</span> <span class="data-list">Member</span>
-					<span class="data-list">New</span> <span class="data-list">Member</span>
-				</div>
-				<div class="data status">
-					<span class="data-title">Status</span> <span class="data-list">Liked</span>
-					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
-					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
-					<span class="data-list">Liked</span> <span class="data-list">Liked</span>
-				</div>
+				<table class=" w-full table-fixed text-center">
+					<thead class="bg-black text-white text-xl">
+						<tr>
+							<th class="w-11">번호</th>
+							<th class="w-40">작성일시</th>
+							<th class="w-64">제목</th>
+							<th class="w-20">작성자</th>
+							<th class="w-20">조회수</th>
+							<th class="w-40">추천수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="article" items="${articles}">
+							<tr
+								class="hover:bg-gray-400 transition duration-75 hover:text-white">
+								<th>${article.id}</th>
+								<td>${article.regDate.substring(5,16)}</td>
+								<td
+									onClick="location.href='${rq.getArticleDetailUriFromArticleList(article)}'"
+									style="cursor: pointer;">${article.title}</td>
+								<td>${article.extra__writerName}</td>
+								<td>${article.hit}</td>
+								<td><span class="badge"><i
+										class="fa-solid fa-thumbs-up"></i>&nbsp;&nbsp;${article.goodReactionPoint}</span>&nbsp;<span
+									class="badge"><i class="fa-solid fa-thumbs-down"></i>&nbsp;&nbsp;${article.badReactionPoint}</span></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

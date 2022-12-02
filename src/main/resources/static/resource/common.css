@@ -339,7 +339,7 @@ nav.close ~ .dashboard .top{
     border-radius: 12px;
     width: calc(100% / 3 - 15px);
     padding: 15px 20px;
-    background-color: var(--box1-color);
+    background-color: var(--box2-color);
     transition: var(--tran-05);
     cursor: pointer;
 }
@@ -355,21 +355,20 @@ nav.close ~ .dashboard .top{
 }
 .boxes .box .text-date{
     white-space: nowrap;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--text-color);
 }
 .boxes .box .text-manager{
     white-space: nowrap;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: bold;
     color: var(--text-color);
 }
 .boxes .box .text-status{
     white-space: nowrap;
     font-size: 18px;
-    font-weight: 500;
-    color: var(--text-color);
+    font-weight: bold;
 }
 .boxes .box .number{
     font-size: 40px;
@@ -382,33 +381,8 @@ nav.close ~ .dashboard .top{
 .boxes .box.box3{
     background-color: var(--box3-color);
 }
-.dash-content .activity .activity-data{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.activity
 }
-.activity .activity-data{
-    display: flex;
-}
-.activity-data .data{
-    display: flex;
-    flex-direction: column;
-    margin: 0 15px;
-}
-.activity-data .data-title{
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color);
-}
-.activity-data .data .data-list{
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 20px;
-    white-space: nowrap;
-    color: var(--text-color);
-}
-
 @media (max-width: 1000px) {
     nav{
         width: 73px;
