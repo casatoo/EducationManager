@@ -121,15 +121,18 @@ function getCurrentTime()
 						switch (weather.fcstValue){
 							case '1':
 								$('.pty').text('🌧');
+								$('.weatherMsg').text('비');
 								pty = 1;
 							case '2':
 								break;
 							case '3':
 								$('.pty').text('🌨');
+								$('.weatherMsg').text('눈');
 								pty = 1;
 								break;
 							case '4':
 								$('.pty').text('⛈');
+								$('.weatherMsg').text('눈비');
 								pty = 1;
 								break;
 						}
@@ -143,13 +146,16 @@ function getCurrentTime()
 						case 7:
 						case 8:
 							$('.pty').text('⛅');
+							$('.weatherMsg').text('조금흐림');
 							break;
 						case 9:
 						case 10:
 							$('.pty').text('☁');
+							$('.weatherMsg').text('흐림');
 							break;
 						default:
 							$('.pty').text('☀');
+							$('.weatherMsg').text('맑음');
 						}
 					}
 					$('.tmp').html(weather.fcstValue);
@@ -240,7 +246,7 @@ function getCurrentTime()
 
 			<div class="activity-data">
 				<table class=" w-full table-fixed text-center">
-					<thead class="bg-black text-white text-xl">
+					<thead class="bg-gray-400 text-white font-thin">
 						<tr>
 							<th class="w-11">번호</th>
 							<th class="w-40">작성일시</th>
@@ -268,6 +274,20 @@ function getCurrentTime()
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="weather">
+			<div class="title">
+				<i class="uil uil-sunset"></i> <span class="text">날씨</span>
+			</div>
+			<div class="boxes">
+					<div class="box box3">
+						<span class="text-pty pty"></span>
+						<span class="text-weatherMsg weatherMsg"></span>
+						<span class="text-tmp"><div class="tmp"></div>℃</span>
+						<span class="text-vec vec"></span>
+						<span class="text-wsd"><div class="wsd"></div>m/s</span>
+					</div>
 			</div>
 		</div>
 	</div>

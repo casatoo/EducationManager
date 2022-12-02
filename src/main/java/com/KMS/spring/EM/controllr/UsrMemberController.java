@@ -323,6 +323,13 @@ public class UsrMemberController {
 		
 		return Ut.jsReplace(Ut.f("비밀번호가 수정되었습니다!"), "../member/userInfo");
 	}
-	
+	@RequestMapping("/usr/member/checkLoginId")
+	@ResponseBody
+	public ResultData checkLoginId(String loginId) {
+		
+		ResultData rd = memberService.doCheckLoginId(loginId);
+		
+		return rd;
+	}
 
 }

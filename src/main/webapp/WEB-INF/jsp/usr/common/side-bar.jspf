@@ -3,10 +3,10 @@
     <nav>
         <div class="logo-name">
             <div class="logo-image">
-                <img src="/resource/logo.png" alt="">
+                <a href="../home/main"><img src="/resource/logo.png" alt=""></a>
             </div>
 
-            <span class="logo_name">EduManager</span>
+            <a href="../home/main"><span class="logo_name">EduManager</span></a>
         </div>
 
         <div class="menu-items">

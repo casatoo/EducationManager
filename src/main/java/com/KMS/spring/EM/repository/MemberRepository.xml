@@ -81,6 +81,13 @@
 		WHERE id = #{memberId}
 	</update>
 	
+		<select id="matchLoginId" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		`member`
+		WHERE loginId
+		= #{loginId}
+	</select>
 	
 
 

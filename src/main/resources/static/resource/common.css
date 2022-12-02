@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'TTCrownMychewR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /** 커스텀 */
 /** 테마 */
 
@@ -25,6 +32,9 @@
 	left:50%;
 	transform:translate(-50%,-50%);
 }
+.activity-data{
+	color: var(--text-color);
+}
 
 /** 사이드 바 */
 /* ===== Google Font Import - Poppins ===== */
@@ -33,7 +43,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'TTCrownMychewR', sans-serif;
 }
 
 :root{
@@ -57,7 +67,6 @@
 
 body{
     min-height: 100vh;
-    background-color: var(--primary-color);
 }
 body.dark{
     --primary-color: #3A3B3C;
@@ -256,7 +265,6 @@ nav.close ~ .dashboard{
     padding: 10px 14px;
     background-color: var(--panel-color);
     transition: var(--tran-05);
-    z-index: 10;
 }
 nav.close ~ .dashboard .top{
     left: 73px;
@@ -375,13 +383,40 @@ nav.close ~ .dashboard .top{
     font-weight: 500;
     color: var(--text-color);
 }
+.boxes .box .text-pty{
+    white-space: nowrap;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.boxes .box .text-weatherMsg{
+    white-space: nowrap;
+    font-size: 30px;
+    color: var(--text-color);
+}
+.boxes .box .text-tmp{
+    white-space: nowrap;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.boxes .box .text-vec{
+    white-space: nowrap;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.boxes .box .text-wsd{
+    white-space: nowrap;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--text-color);
+}
 .boxes .box.box2{
     background-color: var(--box2-color);
 }
 .boxes .box.box3{
     background-color: var(--box3-color);
-}
-.activity
 }
 @media (max-width: 1000px) {
     nav{

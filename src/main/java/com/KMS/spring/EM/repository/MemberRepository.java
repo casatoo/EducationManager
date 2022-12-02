@@ -30,4 +30,6 @@ public interface MemberRepository {
 	
 	public void doChangePassword(int memberId, String loginPw);
 	
+	public int matchLoginId(String loginId);
+	
 }

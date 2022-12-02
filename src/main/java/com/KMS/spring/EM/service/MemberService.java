@@ -222,7 +222,7 @@ public class MemberService {
 	 * 비밀번호 변경
 	 * @param memberId
 	 * @param loginPw
-	 * @return
+	 * @return ResultData
 	 */
 	public ResultData doChangePassword(int memberId ,String loginPw) {
 		
@@ -230,6 +230,18 @@ public class MemberService {
 		
 		return ResultData.from("S-1","비밀번호 수정 성공");
 	}
-	
+	/**
+	 * 
+	 * @param loginId
+	 * @return ResultData
+	 */
+	public ResultData<String> doCheckLoginId(String loginId) {
+		int matchLoginId = memberRepository.matchLoginId(loginId);
+		
+		if(matchLoginId == 1) {
+			return ResultData.from("F-1",Ut.f("이미 사용중인 아이디 입니다."));
+		}
+		return ResultData.from("S-1",Ut.f("사용가능한 아이디 입니다."));
+	}
 	
 }

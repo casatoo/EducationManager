@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="detail" />
+<c:set var="pageTitle" value="modify"/>
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
+<%@ include file="../common/side-bar.jspf"%>
 
+<section class="dashboard">
+		<div class="top">
+		<i class="uil uil-bars sidebar-toggle"></i>
+		</div>
 <div>
 		<div>${article.id}번글수정</div>
 		<c:set var="article" value="${article}" />
@@ -25,5 +28,6 @@
 				<button type="submit">글 수정</button>
 		</form>
 </div>
+</section>
 </body>
 </html>

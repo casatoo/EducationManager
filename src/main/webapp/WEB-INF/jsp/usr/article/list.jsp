@@ -3,13 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="articleListPage"/>
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
+<%@ include file="../common/side-bar.jspf"%>
 
-<div class="text-center text-3xl mt-11">
-	<h1>${board.name}게시판</h1>
-</div>
-
+<section class="dashboard">
+		<div class="top">
+		<i class="uil uil-bars sidebar-toggle"></i>
+		</div>
 <div class="overflow-x-auto mx-40 mt-11 text-center table-box-type-1">
 	<div class="h-14 relative ">
 		<div class="absolute"><span class="badge">게시글: ${getTotalArticle}개</span></div>
@@ -90,5 +89,6 @@
 		</div>
 	</div>
 </div>
+</section>
 </body>
 </html>

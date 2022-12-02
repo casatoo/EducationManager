@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="MAIN" />
+<c:set var="pageTitle" value="관리자" />
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
-			<form action="../member/administrator">
+<%@ include file="../common/side-bar.jspf"%>
+
+<section class="dashboard">
+		<div class="top">
+				<i class="uil uil-bars sidebar-toggle"></i>
+		</div>
+<form action="../member/administrator">
 				<input type="text" placeholder="검색어를 입력해주세요" name="searchName"/>
 				<button type="submit">검색</button>
 			</form>
@@ -36,7 +40,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	</div>
+	</section>
 </body>
 </html>
 

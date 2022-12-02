@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="detail" />
+<c:set var="pageTitle" value="write"/>
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
+<%@ include file="../common/side-bar.jspf"%>
 
 <script>
 	let submitWriteFormDone = false;
@@ -36,10 +35,10 @@
 	}
 </script>
 
-
-<div class="text-center text-3xl mt-11">
-		<h1>새로운 글 작성</h1>
-</div>
+<section class="dashboard">
+		<div class="top">
+		<i class="uil uil-bars sidebar-toggle"></i>
+		</div>
 <div class="m-11">
 		<form onsubmit="submitWriteForm(this); return false;" action="../article/doAdd?">
 		<input type="hidden" name="body" id="body" />
@@ -58,5 +57,6 @@
 				<button class="btn btn-outline mt-11" type="submit">글 작성</button>
 		</form>
 </div>
+</section>
 </body>
 </html>

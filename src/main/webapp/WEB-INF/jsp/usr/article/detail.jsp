@@ -3,9 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="detail" />
 <%@ include file="../common/head.jspf"%>
-<%@ include file="../common/head.jspf"%>
-<%@ include file="../common/status.jspf"%>
-<%@ include file="../common/top-bar.jspf"%>
+<%@ include file="../common/side-bar.jspf"%>
 <%-- 전역변수 설정 --%>
 <script>
 	var reaction = ${reactionRd};
@@ -158,7 +156,10 @@ const loginAlert = () => {
 }
 </script>
 
-
+<section class="dashboard">
+		<div class="top">
+		<i class="uil uil-bars sidebar-toggle"></i>
+		</div>
 <h1>${article.id}번게시글</h1>
 <table>
 	<tbody>
@@ -217,6 +218,7 @@ const loginAlert = () => {
 </c:if>
 
 <%@ include file="../article/comment.jspf"%>
+</section>
 </body>
 </html>
 
