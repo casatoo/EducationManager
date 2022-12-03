@@ -4,6 +4,9 @@
 <c:set var="pageTitle" value="calender" />
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
+<script>
+console.log('${educationCourses}');
+</script>
 <section class="dashboard">
 	<div class="top">
 		<i class="uil uil-bars sidebar-toggle"></i>

@@ -31,12 +31,12 @@ public class EducationCourseService {
 		this.educationCourseRepository = educationCourseRepository;
 	}
 	/**
-	 * 교육과정 전체 리스트 조회
+	 * 교육과정 일부 리스트 조회
 	 * @return List<EducationCourse>
 	 */
-	public List<EducationCourse> getEducationCourseList( int limitFrom, int itemsInAPage){
+	public List<EducationCourse> getEducationCourseSomeList( int limitFrom, int itemsInAPage){
 		
-		return educationCourseRepository.getEducationCourseList(limitFrom,itemsInAPage);
+		return educationCourseRepository.getEducationCourseSomeList(limitFrom,itemsInAPage);
 	}
 	/**
 	 * 교육과정 상세 조회
@@ -46,4 +46,9 @@ public class EducationCourseService {
 	public EducationCourse getEducationCourse(int id) {
 		return educationCourseRepository.getEducationCourse(id);
 	}
+	public List<EducationCourse> getEducationCourseList(){
+		
+		return educationCourseRepository.getEducationCourseList();
+	}
+	
 }

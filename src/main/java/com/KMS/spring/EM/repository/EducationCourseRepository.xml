@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.KMS.spring.EM.repository.EducationCourseRepository">
-	<select id="getEducationCourseList" resultType="EducationCourse">
+	<select id="getEducationCourseSomeList" resultType="EducationCourse">
 		SELECT E.*, M.name AS extra__managerName
 		FROM educationCourse AS E 
 		INNER JOIN `member` AS M 
@@ -17,5 +17,12 @@
 		INNER JOIN `member` AS M 
 		ON E.managerMemberId = M.id
 		WHERE E.id = #{id}
+	</select>
+	
+	<select id="getEducationCourseList" resultType="EducationCourse">
+		SELECT E.*, M.name AS extra__managerName
+		FROM educationCourse AS E 
+		INNER JOIN `member` AS M 
+		ON E.managerMemberId = M.id
 	</select>
 </mapper>

@@ -25,7 +25,7 @@ public class UsrHomeController {
 	@RequestMapping("usr/home/main")
 	public String showMain(Model model) {
 		
-		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList(0,3);
+		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseSomeList(0,3);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), 1, 0, 6, "", "");
 		model.addAttribute("educationCourses",educationCourses);
 		model.addAttribute("articles",articles);

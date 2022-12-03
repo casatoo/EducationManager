@@ -1,5 +1,7 @@
 package com.KMS.spring.EM.controllr;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,9 @@ public class UsrEducationCourseController {
 		return "usr/educationCourse/detail";
 	}
 	@RequestMapping("usr/educationCourse/calendar")
-	public String detail() {
+	public String detail(Model model) {
+		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList();
+		model.addAttribute("educationCourses",educationCourses);
 		
 		return "usr/educationCourse/calendar";
 	}
