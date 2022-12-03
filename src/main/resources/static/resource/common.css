@@ -631,3 +631,12 @@ nav.close ~ .dashboard .top{
 	height: 30px;
 	border-radius: 0.25rem;
 }
+/** calendar page*/
+.calendar-box{
+	display: flex;
+	justify-content: center;
+}
+.calendar{
+	margin-top: 50px;
+	width:1024px;
+}

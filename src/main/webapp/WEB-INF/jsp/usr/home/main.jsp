@@ -130,18 +130,18 @@ function getCurrentTime()
 				case 'PTY' :
 						switch (weather.fcstValue){
 							case '1':
-								$('.pty').empty().append('<img src="/resource/rain.png" alt="rain" height="100px" width="100px"/>');
+								$('.pty').empty().append('<img src="/resource/img/rain.png" alt="rain" height="100px" width="100px"/>');
 								$('.weatherMsg').text('비');
 								pty = 1;
 							case '2':
 								break;
 							case '3':
-								$('.pty').empty().append('<img src="/resource/snow.png" alt="snow" height="100px" width="100px"/>');
+								$('.pty').empty().append('<img src="/resource/img/snow.png" alt="snow" height="100px" width="100px"/>');
 								$('.weatherMsg').text('눈');
 								pty = 1;
 								break;
 							case '4':
-								$('.pty').empty().append('<img src="/resource/sleet.png" alt="sleet" height="100px" width="100px"/>');
+								$('.pty').empty().append('<img src="/resource/img/sleet.png" alt="sleet" height="100px" width="100px"/>');
 								$('.weatherMsg').text('진눈꺠비');
 								pty = 1;
 								break;
@@ -155,16 +155,16 @@ function getCurrentTime()
 						case 6:
 						case 7:
 						case 8:
-							$('.pty').empty().append('<img src="/resource/few.png" alt="few" height="100px" width="100px"/>');
+							$('.pty').empty().append('<img src="/resource/img/few.png" alt="few" height="100px" width="100px"/>');
 							$('.weatherMsg').text('조금흐림');
 							break;
 						case 9:
 						case 10:
-							$('.pty').empty().append('<img src="/resource/cloud.png" alt="cloud" height="100px" width="100px"/>');
+							$('.pty').empty().append('<img src="/resource/img/cloud.png" alt="cloud" height="100px" width="100px"/>');
 							$('.weatherMsg').text('흐림');
 							break;
 						default:
-							$('.pty').empty().append('<img src="/resource/sun.png" alt="sun" height="100px" width="100px"/>');
+							$('.pty').empty().append('<img src="/resource/img/sun.png" alt="sun" height="100px" width="100px"/>');
 							$('.weatherMsg').text('맑음');
 						}
 					}

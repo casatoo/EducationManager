@@ -30,5 +30,10 @@ public class UsrEducationCourseController {
 		
 		return "usr/educationCourse/detail";
 	}
+	@RequestMapping("usr/educationCourse/calendar")
+	public String detail() {
+		
+		return "usr/educationCourse/calendar";
+	}
 
 }
