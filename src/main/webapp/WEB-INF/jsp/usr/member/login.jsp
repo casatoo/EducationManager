@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="LOGIN" />
 <%@ include file="../common/head.jspf"%>
@@ -45,111 +46,133 @@ const findLoginId = (form) =>{
 	}, 'json');
 }
 </script>
+<%-- 모달창 외부 클릭 닫기 --%>
+<script>
+
+</script>
 
 <section class="dashboard">
-		<div class="top">
+	<div class="top">
 		<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
-		<div class="findLoginId-modal-bg hidden">
-				<div class="findLoginId-modal w-full">
-						<section class="flex justify-center mt-14">
-								<div class="w-full w-2/4">
-										<form action="../member/findLoginId" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-												<div class="text-center text-3xl">
-														<h1>아이디 찾기</h1>
-												</div>
-												<div class="mb-4">
-														<label class="block text-gray-700 text-sm font-bold mb-2" for="username"> 이름 </label> <input
-																class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-																id="name" name="name" type="text" placeholder="아름을 입력해주세요">
-												</div>
-												<div class="mb-6">
-														<label class="block text-gray-700 text-sm font-bold mb-2" for="email"> 이메일 </label> <input
-																class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-																id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
-												</div>
-												<div class="flex items-center justify-between">
-														<button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-																type="button" onclick="findLoginId(this.form)">찾기</button>
-														<button
-																class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-																type="button" onclick="findLoginIdCancleBtn()">닫기</button>
-												</div>
-												<div class="findLoginIdMessage"></div>
-										</form>
-								</div>
-						</section>
+	</div>
+	<div class="findLoginId-modal-bg hidden" onclick="findLoginIdCancleBtn()">
+		<div class="findLoginId-modal" onclick="event.stopPropagation()">
+			<section class="flex justify-center mt-14">
+				<div class="w-full w-96">
+					<form action="../member/findLoginId"
+						class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+						<div class="text-center text-3xl">
+							<h1>아이디 찾기</h1>
+						</div>
+						<div class="mb-4">
+							<label class="block text-gray-700 text-sm font-bold mb-2"
+								for="username"> 이름 </label> <input
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								name="name" type="text" placeholder="아름을 입력해주세요">
+						</div>
+						<div class="mb-6">
+							<label class="block text-gray-700 text-sm font-bold mb-2"
+								for="email"> 이메일 </label> <input
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								name="email" type="email" placeholder="이메일을 입력해주세요">
+						</div>
+						<div class="flex items-center justify-between">
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								type="button" onclick="findLoginId(this.form)">찾기</button>
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								type="button" onclick="findLoginIdCancleBtn()">닫기</button>
+						</div>
+						<div class="findLoginIdMessage"></div>
+					</form>
 				</div>
+			</section>
 		</div>
-		<div class="findPassword-modal-bg hidden">
-				<div class="findPassword-modal w-full">
-						<section class="flex justify-center mt-14">
-								<div class="w-full w-2/4">
-										<form action="../member/findLoginPw" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-												<input type="hidden" name="afterLoginUri" id="afterLoginUri" value="${param.afterLoginUri}" />
-												<div class="text-center text-3xl">
-														<h1>비밀번호 찾기</h1>
-												</div>
-												<div class="mb-4">
-														<label class="block text-gray-700 text-sm font-bold mb-2" for="loginId"> 아이디 </label> <input
-																class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-																id="loginId" name="loginId" type="text" placeholder="아이디를 입력해주세요">
-												</div>
-												<div class="mb-6">
-														<label class="block text-gray-700 text-sm font-bold mb-2" for="username"> 이름 </label> <input
-																class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-																id="name" name="name" type="text" placeholder="이름을 입력해주세요">
-												</div>
-												<div class="mb-6">
-														<label class="block text-gray-700 text-sm font-bold mb-2" for="email"> 이메일 </label> <input
-																class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-																id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
-												</div>
-												<div class="flex items-center justify-between">
-														<button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-																type="submit">찾기</button>
-														<div
-																class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-																onclick="findPasswordCancleBtn()">닫기</div>
-												</div>
-										</form>
-								</div>
-						</section>
+	</div>
+	<div class="findPassword-modal-bg hidden" onclick="findPasswordCancleBtn()">
+		<div class="findPassword-modal " onclick="event.stopPropagation()">
+			<section class="flex justify-center mt-14">
+				<div class="w-full w-96">
+					<form action="../member/findLoginPw"
+						class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+						<input type="hidden" name="afterLoginUri"
+							value="${param.afterLoginUri}" />
+						<div class="text-center text-3xl">
+							<h1>비밀번호 찾기</h1>
+						</div>
+						<div class="mb-4">
+							<label class="block text-gray-700 text-sm font-bold mb-2"
+								for="loginId"> 아이디 </label> <input
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								name="loginId" type="text" placeholder="아이디를 입력해주세요">
+						</div>
+						<div class="mb-6">
+							<label class="block text-gray-700 text-sm font-bold mb-2"
+								for="username"> 이름 </label> <input
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								name="name" type="text" placeholder="이름을 입력해주세요">
+						</div>
+						<div class="mb-6">
+							<label class="block text-gray-700 text-sm font-bold mb-2"
+								for="email"> 이메일 </label> <input
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								name="email" type="email" placeholder="이메일을 입력해주세요">
+						</div>
+						<div class="flex items-center justify-between">
+							<button
+								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								type="submit">찾기</button>
+							<div
+								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								onclick="findPasswordCancleBtn()">닫기</div>
+						</div>
+					</form>
 				</div>
+			</section>
 		</div>
-		<section class="flex justify-center mt-14">
-				<div class="w-full w-2/4">
-						<form action="../member/doLogin?" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-								<div class="text-center text-3xl">
-										<h1>
-												<i class="uil uil-signin"></i>로그인
-										</h1>
-								</div>
-								<input type="hidden" name="afterLoginUri" id="afterLoginUri" value="${param.afterLoginUri}" />
-								<div class="mb-4">
-										<label class="block text-gray-700 text-sm font-bold mb-2" for="username"> 아이디 </label> <input
-												class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-												id="loginId" name="loginId" type="text" placeholder="아이디를 입력해주세요">
-								</div>
-								<div class="mb-6">
-										<label class="block text-gray-700 text-sm font-bold mb-2" for="password"> 비밀번호 </label> <input
-												class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-												id="loginPw" name="loginPw" type="password" placeholder="비밀번호를 입력해주세요">
-								</div>
-								<div class="flex flex-col justify-center">
-										<button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3" type="submit">로그인</button>
-										<a class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
-												type="button" href="../member/join"> 회원가입 </a>
-										<div
-												class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
-												onClick="findLoginIdModal()">아이디 찾기</div>
-										<div
-												class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
-												onClick="findPasswordModal()">비밀번호 찾기</div>
-								</div>
-						</form>
+	</div>
+	<section class="flex justify-center mt-14">
+		<div class="w-full w-96">
+			<form action="../member/doLogin?"
+				class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+				<div class="text-center text-3xl">
+					<h1>
+						<i class="uil uil-signin"></i>로그인
+					</h1>
 				</div>
-		</section>
+				<input type="hidden" name="afterLoginUri"
+					value="${param.afterLoginUri}" />
+				<div class="mb-4">
+					<label class="block text-gray-700 text-sm font-bold mb-2"
+						for="username"> 아이디 </label> <input
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						id="loginId" name="loginId" type="text" placeholder="아이디를 입력해주세요">
+				</div>
+				<div class="mb-6">
+					<label class="block text-gray-700 text-sm font-bold mb-2"
+						for="password"> 비밀번호 </label> <input
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						id="loginPw" name="loginPw" type="password"
+						placeholder="비밀번호를 입력해주세요">
+				</div>
+				<div class="flex flex-col justify-center">
+					<button
+						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3"
+						type="submit">로그인</button>
+					<a
+						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						type="button" href="../member/join"> 회원가입 </a>
+					<div
+						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						onClick="findLoginIdModal()">아이디 찾기</div>
+					<div
+						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						onClick="findPasswordModal()">비밀번호 찾기</div>
+				</div>
+			</form>
+		</div>
+	</section>
 </section>
 </body>
 </html>

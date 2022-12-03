@@ -9,11 +9,21 @@
 function getCurrentDate()
 {
     var date = new Date();
-		var nowDate = new Date();
+	var nowDate = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
 		var yesterday = new Date(date.setDate(date.getDate() - 1));
     if(hours < 2){
+        var year = yesterday.getFullYear().toString();
+        var month = yesterday.getMonth() + 1;
+        month = month < 10 ? '0' + month.toString() : month.toString();
+
+        var day = yesterday.getDate();
+        day = day < 10 ? '0' + day.toString() : day.toString();
+
+        return year + month + day ;
+    }
+    if(hours = 2 && minutes<10){
         var year = yesterday.getFullYear().toString();
         var month = yesterday.getMonth() + 1;
         month = month < 10 ? '0' + month.toString() : month.toString();
@@ -120,19 +130,19 @@ function getCurrentTime()
 				case 'PTY' :
 						switch (weather.fcstValue){
 							case '1':
-								$('.pty').text('🌧');
+								$('.pty').empty().append('<img src="/resource/rain.png" alt="rain" height="100px" width="100px"/>');
 								$('.weatherMsg').text('비');
 								pty = 1;
 							case '2':
 								break;
 							case '3':
-								$('.pty').text('🌨');
+								$('.pty').empty().append('<img src="/resource/snow.png" alt="snow" height="100px" width="100px"/>');
 								$('.weatherMsg').text('눈');
 								pty = 1;
 								break;
 							case '4':
-								$('.pty').text('⛈');
-								$('.weatherMsg').text('눈비');
+								$('.pty').empty().append('<img src="/resource/sleet.png" alt="sleet" height="100px" width="100px"/>');
+								$('.weatherMsg').text('진눈꺠비');
 								pty = 1;
 								break;
 						}
@@ -145,16 +155,16 @@ function getCurrentTime()
 						case 6:
 						case 7:
 						case 8:
-							$('.pty').text('⛅');
+							$('.pty').empty().append('<img src="/resource/few.png" alt="few" height="100px" width="100px"/>');
 							$('.weatherMsg').text('조금흐림');
 							break;
 						case 9:
 						case 10:
-							$('.pty').text('☁');
+							$('.pty').empty().append('<img src="/resource/cloud.png" alt="cloud" height="100px" width="100px"/>');
 							$('.weatherMsg').text('흐림');
 							break;
 						default:
-							$('.pty').text('☀');
+							$('.pty').empty().append('<img src="/resource/sun.png" alt="sun" height="100px" width="100px"/>');
 							$('.weatherMsg').text('맑음');
 						}
 					}
@@ -169,27 +179,27 @@ function getCurrentTime()
 				case 'VEC' :
 					const vec = parseInt(weather.fcstValue);
 					if(vec >= 337 || vec <= 22){
-						$('.vec').text('북');
+						$('.vec').text('북풍');
 					}else if( 23 <= vec <= 67){
-						$('.vec').text('북동');
+						$('.vec').text('북동풍');
 					}
 					else if( 68 <= vec <= 112){
-						$('.vec').text('동');
+						$('.vec').text('동풍');
 					}
 					else if( 113 <= vec <= 157){
-						$('.vec').text('남동');
+						$('.vec').text('남동풍');
 					}
 					else if( 158 <= vec <= 202){
-						$('.vec').text('남');
+						$('.vec').text('남풍');
 					}
 					else if( 203 <= vec <= 247){
-						$('.vec').text('남서');
+						$('.vec').text('남서풍');
 					}
 					else if( 248 <= vec <= 292){
-						$('.vec').text('서');
+						$('.vec').text('서풍');
 					}
 					else if( 293 <= vec <= 336){
-						$('.vec').text('북서');
+						$('.vec').text('북서풍');
 					}
 					break;
 				case 'WSD' :
@@ -198,10 +208,12 @@ function getCurrentTime()
 				}
 		}
 	}
-	getData();
+	$( document ).ready(function() {
+		getData();
+	});
 </script>
-
 <section class="dashboard">
+
 	<div class="top">
 		<i class="uil uil-bars sidebar-toggle"></i>
 		<c:if test="${rq.isLogined()}">
@@ -238,56 +250,59 @@ function getCurrentTime()
 				</c:forEach>
 			</div>
 		</div>
+		<div class="section-2">
+			<div class="activity">
+				<div class="title">
+					<i class="uil uil-bell"></i><span class="text">최근 공지사항</span>
+				</div>
 
-		<div class="activity">
-			<div class="title">
-				<i class="uil uil-bell"></i><span class="text">최근 공지사항</span>
-			</div>
-
-			<div class="activity-data">
-				<table class=" w-full table-fixed text-center">
-					<thead class="bg-gray-400 text-white font-thin">
-						<tr>
-							<th class="w-11">번호</th>
-							<th class="w-40">작성일시</th>
-							<th class="w-64">제목</th>
-							<th class="w-20">작성자</th>
-							<th class="w-20">조회수</th>
-							<th class="w-40">추천수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="article" items="${articles}">
-							<tr
-								class="hover:bg-gray-400 transition duration-75 hover:text-white">
-								<th>${article.id}</th>
-								<td>${article.regDate.substring(5,16)}</td>
-								<td
-									onClick="location.href='${rq.getArticleDetailUriFromArticleList(article)}'"
-									style="cursor: pointer;">${article.title}</td>
-								<td>${article.extra__writerName}</td>
-								<td>${article.hit}</td>
-								<td><span class="badge"><i
-										class="fa-solid fa-thumbs-up"></i>&nbsp;&nbsp;${article.goodReactionPoint}</span>&nbsp;<span
-									class="badge"><i class="fa-solid fa-thumbs-down"></i>&nbsp;&nbsp;${article.badReactionPoint}</span></td>
+				<div class="activity-data">
+					<table class="main-list-table">
+						<colgroupo>
+						<col width="50%">
+						<col width="30%">
+						<col width="20%">
+						</colgroupo>
+						<thead class="article-list-thead">
+							<tr>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>조회수</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody class="article-list-tbody">
+							<c:forEach var="article" items="${articles}">
+								<tr>
+									<td
+										onClick="location.href='${rq.getArticleDetailUriFromArticleList(article)}'"
+										style="cursor: pointer;">${article.title}</td>
+									<td>${article.extra__writerName}</td>
+									<td>${article.hit}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="weather">
-			<div class="title">
-				<i class="uil uil-sunset"></i> <span class="text">날씨</span>
-			</div>
-			<div class="boxes">
-					<div class="box box3">
-						<span class="text-pty pty"></span>
-						<span class="text-weatherMsg weatherMsg"></span>
-						<span class="text-tmp"><div class="tmp"></div>℃</span>
-						<span class="text-vec vec"></span>
-						<span class="text-wsd"><div class="wsd"></div>m/s</span>
+			<div class="weather">
+				<div class="title">
+					<i class="uil uil-sunset"></i> <span class="text">날씨</span>
+				</div>
+				<div class="boxes">
+					<div class="weather-box box2">
+						<div class="pty-box">
+							<span class="text-pty pty"></span>
+							<div>
+								<span class="text-weatherMsg weatherMsg"></span> <span
+									class="text-tmp"><span class="tmp"></span>&nbsp;℃</span>
+							</div>
+						</div>
+						<div class="wsd-box">
+							<span class="text-vec vec"></span> <span class="text-wsd"><span
+								class="wsd"></span>&nbsp;m/s</span>
+						</div>
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>

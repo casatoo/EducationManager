@@ -7,34 +7,6 @@
     font-style: normal;
 }
 
-/** 커스텀 */
-/** 테마 */
-
-.findLoginId-modal-bg{
-  position: fixed;
-  top:0; left: 0; bottom: 0; right: 0;
-  background: rgba(0, 0, 0, 0.8);
-}
-.findLoginId-modal{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-}
-.findPassword-modal-bg{
-	position: fixed;
-  top:0; left: 0; bottom: 0; right: 0;
-  background: rgba(0, 0, 0, 0.8);
-}
-.findPassword-modal{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-}
-.activity-data{
-	color: var(--text-color);
-}
 
 /** 사이드 바 */
 /* ===== Google Font Import - Poppins ===== */
@@ -48,14 +20,14 @@
 
 :root{
     /* ===== Colors ===== */
-    --primary-color: #0E4BF1;
+    --primary-color: #bcd0ec;
     --panel-color: #FFF;
     --text-color: #000;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
     --toggle-color: #DDD;
-    --box1-color: #4DA3FF;
-    --box2-color: #FFE6AC;
+    --box1-color: #bcd0ec;
+    --box2-color: #bcd0ec;
     --box3-color: #E7D1FC;
     --title-icon-color: #fff;
     
@@ -69,15 +41,14 @@ body{
     min-height: 100vh;
 }
 body.dark{
-    --primary-color: #3A3B3C;
+    --primary-color: #1d2053;
     --panel-color: #242526;
     --text-color: #CCC;
     --black-light-color: #CCC;
     --border-color: #4D4C4C;
     --toggle-color: #FFF;
     --box1-color: #3A3B3C;
-    --box2-color: #3A3B3C;
-    --box3-color: #3A3B3C;
+    --box2-color: #3Argb(0, 255, 255)    --box3-color: #3A3B3C;
     --title-icon-color: #CCC;
 }
 /* === Custom Scroll Bar CSS === */
@@ -88,13 +59,13 @@ body.dark{
     background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
+    background: var(--black-light-color);
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0b3cc1;
+    background:var(--primary-color);
 }
 
 body.dark::-webkit-scrollbar-thumb:hover,
@@ -167,7 +138,7 @@ nav .menu-items{
     width: 5px;
     border-radius: 50%;
     background-color: var(--primary-color);
-}
+}                  
 body.dark li a:hover:before{
     background-color: var(--text-color);
 }
@@ -347,7 +318,7 @@ nav.close ~ .dashboard .top{
     border-radius: 12px;
     width: calc(100% / 3 - 15px);
     padding: 15px 20px;
-    background-color: var(--box2-color);
+    background-color: var(--primary-color);
     transition: var(--tran-05);
     cursor: pointer;
 }
@@ -383,30 +354,30 @@ nav.close ~ .dashboard .top{
     font-weight: 500;
     color: var(--text-color);
 }
-.boxes .box .text-pty{
+.text-pty{
     white-space: nowrap;
     font-size: 50px;
     font-weight: bold;
     color: var(--text-color);
 }
-.boxes .box .text-weatherMsg{
+.text-weatherMsg{
     white-space: nowrap;
     font-size: 30px;
     color: var(--text-color);
 }
-.boxes .box .text-tmp{
+.text-tmp{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
     color: var(--text-color);
 }
-.boxes .box .text-vec{
+.text-vec{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
     color: var(--text-color);
 }
-.boxes .box .text-wsd{
+.text-wsd{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
@@ -417,6 +388,47 @@ nav.close ~ .dashboard .top{
 }
 .boxes .box.box3{
     background-color: var(--box3-color);
+}
+.weather-box{
+	display:flex;
+	justify-content:space-between;
+ 	border-radius: 12px;
+    width: calc(100%);
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    transition: var(--tran-05);
+    cursor: pointer;
+}
+.pty-box{
+	display:flex;
+	flex-grow:1;
+	flex-direction:column;
+	align-items:center;
+}
+.wsd-box{
+	display:flex;
+	flex-grow:1;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+.main-list-table{
+	width: calc(100%);
+	text-align:center;
+    border-collapse:collapse;
+	table-layout:fixed;
+	color: var(--text-color);
+}
+.section-2{
+	display: flex;
+	justify-content: space-between;
+}
+.activity{
+	width: calc(50% - 50px);
+}
+.weather{
+	width: calc(50% - 50px);
 }
 @media (max-width: 1000px) {
     nav{
@@ -459,6 +471,7 @@ nav.close ~ .dashboard .top{
     }
     .activity .activity-data{
         overflow-X: scroll;
+        color: var(--text-color);
     }
 }
 
@@ -512,4 +525,109 @@ nav.close ~ .dashboard .top{
         left: 0;
         width: 100%;
     }
+}
+/** 커스텀 */
+
+/** 로그인 페이지 css*/
+.findLoginId-modal-bg{
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+.findLoginId-modal{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.findPassword-modal-bg{
+	position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+.findPassword-modal{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+
+
+/** 게시판 페이지 css*/
+.article-list-thead{
+  background-color:var(--primary-color);
+}
+.article-list-table{
+  text-align:center;
+  border-collapse:collapse;
+  table-layout:fixed;
+  color: var(--text-color);
+}
+.article-list-thead>tr>th{
+  height:50px;
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+}
+.article-list-tbody>tr>td{
+  height:30px;
+  white-space:nowrap;
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  
+}
+.article-list-tbody>tr{
+	transition:0.3s;
+}
+.article-list-tbody>tr:hover{
+  background-color:var(--border-color);
+}
+.article-list-box{
+  display:flex;
+  flex-direction:column;
+  width:auto;
+  margin:0 150px;
+  min-width:740px;
+  margin-top: 100px;
+}
+.search-box{
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  margin-bottom: 10px;
+  height:50px;
+}
+.input-article-search{
+	width:300px;
+}
+.input-article-select{
+	appearance: none;
+}
+
+.article-list-search-btn{
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	width:100px;
+	border-radius:8px;
+	display:inline-block;
+}
+.article-list-search-btn > button{
+	width:100%;
+	height:40px;
+}
+.article-badge{
+	background-color: var(--primary-color);
+	margin-right: 0.5rem;
+	padding-left: 0.625rem;
+	padding-right: 0.625rem;
+	padding-top: 0.125rem;
+	padding-bottom: 0.125rem;
+	border-radius: 0.25rem;
+	color: var(--text-color);
+}
+.page-move-btn{
+	background-color: var(--primary-color);
+	width:30px;
+	height: 30px;
+	border-radius: 0.25rem;
 }

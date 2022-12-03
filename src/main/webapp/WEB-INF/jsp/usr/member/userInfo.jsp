@@ -211,7 +211,7 @@ const memberCancleModify =()=>{
 												<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
 														생년월일 </label> <input
 														class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-														type="text" name="birthDay" id="birthDay" autocomplete="off" value="${member.birthDay}" required disabled>
+														type="date" name="birthDay" id="birthDay" autocomplete="off" value="${member.birthDay}" required disabled>
 										</div>
 								</div>
 								<div class="flex flex-wrap -mx-3">
@@ -240,7 +240,7 @@ const memberCancleModify =()=>{
 								<button
 										class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 										type="button" id="modifyBtn" onclick="memberInfoModify(); createAuthKey();">회원정보 수정</button>
-								<a type="button" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="if(confirm('정말 탈퇴하시겠습니까?') == false) return false;" href="../member/quitMember?id=${member.id }">탈퇴</a>
+								<a type="button" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="if(confirm('정말 탈퇴하시겠습니까?') == false) return false;" href="../member/quitMember?id=${member.id }">탈퇴하기</a>
 						</form>
 				</div>
 		</section>
