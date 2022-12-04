@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KMS.spring.EM.service.EducationCourseService;
 import com.KMS.spring.EM.vo.EducationCourse;
+import com.KMS.spring.EM.vo.ResultData;
 
 @Controller
 public class UsrEducationCourseController {
@@ -35,9 +37,21 @@ public class UsrEducationCourseController {
 	@RequestMapping("usr/educationCourse/calendar")
 	public String detail(Model model) {
 		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList();
-		model.addAttribute("educationCourses",educationCourses);
 		
+		model.addAttribute("educationCourses",educationCourses);
 		return "usr/educationCourse/calendar";
+	}
+	
+	@RequestMapping("usr/educationCourse/schedule")
+	@ResponseBody
+	public ResultData schedule(Model model) {
+		
+		
+		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList();
+		
+		ResultData rd = ResultData.from("S-1", "조회성공", "educationCourses",educationCourses);
+		
+		return rd;
 	}
 
 }

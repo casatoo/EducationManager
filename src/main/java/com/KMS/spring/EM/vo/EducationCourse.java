@@ -25,5 +25,6 @@ public class EducationCourse {
 	private int status;
 	
 	private String extra__managerName;
-	
+	private String start;
+	private String end;
 }

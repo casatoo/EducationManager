@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="getEducationCourseList" resultType="EducationCourse">
-		SELECT E.*, M.name AS extra__managerName
+		SELECT E.*, M.name AS extra__managerName,E.startOfEducation AS start, E.endOfEducation AS end
 		FROM educationCourse AS E 
 		INNER JOIN `member` AS M 
 		ON E.managerMemberId = M.id

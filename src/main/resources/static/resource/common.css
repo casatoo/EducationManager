@@ -637,6 +637,7 @@ nav.close ~ .dashboard .top{
 	justify-content: center;
 }
 .calendar{
+	background-color:white;
 	margin-top: 50px;
 	width:1024px;
 }
