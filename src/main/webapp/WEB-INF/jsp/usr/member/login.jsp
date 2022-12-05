@@ -158,16 +158,16 @@ const findLoginId = (form) =>{
 				</div>
 				<div class="flex flex-col justify-center">
 					<button
-						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3"
+						class="loginPage-btn"
 						type="submit">로그인</button>
 					<a
-						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						class="loginPage-btn"
 						type="button" href="../member/join"> 회원가입 </a>
 					<div
-						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						class="loginPage-btn"
 						onClick="findLoginIdModal()">아이디 찾기</div>
 					<div
-						class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline m-3 text-center"
+						class="loginPage-btn"
 						onClick="findPasswordModal()">비밀번호 찾기</div>
 				</div>
 			</form>

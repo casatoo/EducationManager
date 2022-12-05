@@ -6,6 +6,16 @@
     font-weight: normal;
     font-style: normal;
 }
+/** 노말라이즈 */
+body, ul, li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color:inherit;
+}
 
 
 /** 사이드 바 */
@@ -20,7 +30,7 @@
 
 :root{
     /* ===== Colors ===== */
-    --primary-color: #bcd0ec;
+    --primary-color: #21ABE2;
     --panel-color: #FFF;
     --text-color: #000;
     --black-light-color: #707070;
@@ -28,7 +38,7 @@
     --toggle-color: #DDD;
     --box1-color: #bcd0ec;
     --box2-color: #bcd0ec;
-    --box3-color: #E7D1FC;
+    --box3-color: #FFF;
     --title-icon-color: #fff;
     
     /* ====== Transition ====== */
@@ -49,6 +59,7 @@ body.dark{
     --toggle-color: #FFF;
     --box1-color: #3A3B3C;
     --box2-color: #3Argb(0, 255, 255)    --box3-color: #3A3B3C;
+    --box3-color: #bcd0ec;
     --title-icon-color: #CCC;
 }
 /* === Custom Scroll Bar CSS === */
@@ -315,34 +326,36 @@ nav.close ~ .dashboard .top{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border:1px solid var(--primary-color);
     border-radius: 12px;
     width: calc(100% / 3 - 15px);
     padding: 15px 20px;
-    background-color: var(--primary-color);
+    background-color: var(--box3-color);
     transition: var(--tran-05);
     cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .boxes .box i{
     font-size: 35px;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .boxes .box .text-title{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .boxes .box .text-date{
     white-space: nowrap;
     font-size: 15px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .boxes .box .text-manager{
     white-space: nowrap;
     font-size: 18px;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .boxes .box .text-status{
     white-space: nowrap;
@@ -352,52 +365,48 @@ nav.close ~ .dashboard .top{
 .boxes .box .number{
     font-size: 40px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .text-pty{
     white-space: nowrap;
     font-size: 50px;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .text-weatherMsg{
     white-space: nowrap;
     font-size: 30px;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .text-tmp{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .text-vec{
     white-space: nowrap;
-    font-size: 35px;
+    font-size: 50px;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 .text-wsd{
     white-space: nowrap;
     font-size: 35px;
     font-weight: bold;
-    color: var(--text-color);
-}
-.boxes .box.box2{
-    background-color: var(--box2-color);
-}
-.boxes .box.box3{
-    background-color: var(--box3-color);
+    color: var(--primary-color);
 }
 .weather-box{
 	display:flex;
 	justify-content:space-between;
+	border:1px solid var(--primary-color);
  	border-radius: 12px;
     width: calc(100%);
     padding: 15px 20px;
-    background-color: var(--primary-color);
+    background-color: var(--box3-color);
     transition: var(--tran-05);
     cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .pty-box{
 	display:flex;
@@ -410,7 +419,7 @@ nav.close ~ .dashboard .top{
 	flex-grow:1;
 	flex-direction:column;
 	align-items:center;
-	justify-content:center;
+	justify-content:space-around;
 }
 
 .main-list-table{
@@ -419,6 +428,7 @@ nav.close ~ .dashboard .top{
     border-collapse:collapse;
 	table-layout:fixed;
 	color: var(--text-color);
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .section-2{
 	display: flex;
@@ -429,6 +439,10 @@ nav.close ~ .dashboard .top{
 }
 .weather{
 	width: calc(50% - 50px);
+}
+
+.title > i{
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 1000px) {
     nav{
@@ -551,12 +565,26 @@ nav.close ~ .dashboard .top{
 	left:50%;
 	transform:translate(-50%,-50%);
 }
-
+.loginPage-btn{
+	text-align:center;
+	background-color:var(--primary-color);
+	color: var(--text-color);
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 0.25rem;
+	margin: 0.75rem;
+}
+.loginPage-btn:hover{
+	background-color: blue;
+}
 
 
 /** 게시판 페이지 css*/
 .article-list-thead{
-  background-color:var(--primary-color);
+  background-color:var(--box3-color);
+  color:var(--primary-color);
 }
 .article-list-table{
   text-align:center;
@@ -635,9 +663,11 @@ nav.close ~ .dashboard .top{
 .calendar-box{
 	display: flex;
 	justify-content: center;
+	
 }
 .calendar{
 	background-color:white;
 	margin-top: 50px;
 	width:1024px;
+	z-index: 100;
 }
