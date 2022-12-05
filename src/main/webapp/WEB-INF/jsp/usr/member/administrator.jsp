@@ -36,8 +36,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>
 
 

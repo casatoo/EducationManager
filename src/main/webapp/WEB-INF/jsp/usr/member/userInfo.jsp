@@ -128,10 +128,6 @@ const memberCancleModify =()=>{
 	$('#cancleModify').addClass('hidden');
 }
 </script>
-<section class="dashboard">
-		<div class="top">
-				<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
 		<section class="flex justify-center mt-14">
 				<div class="w-full max-w-lg">
 						<div class="flex flex-wrap -mx-3">
@@ -244,6 +240,4 @@ const memberCancleModify =()=>{
 						</form>
 				</div>
 		</section>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

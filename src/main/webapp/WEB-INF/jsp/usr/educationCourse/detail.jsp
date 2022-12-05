@@ -18,5 +18,4 @@
 		<c:if test="${educationCourse.status == 1}">
 		<div>현재상태: 종료됨</div>
 		</c:if>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

@@ -48,8 +48,6 @@
 		form.submit();
 	}
 </script>
-<section class="dashboard">
-
 	<section class="flex justify-center mt-14">
 		<form action="../member/dojoin?" class="w-full max-w-lg"
 			onsubmit="memberJoin__submitForm(); return false;">
@@ -134,6 +132,4 @@
 				type="submit">Sign up</button>
 		</form>
 	</section>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

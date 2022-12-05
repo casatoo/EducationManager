@@ -25,6 +25,4 @@
 				<button type="submit">글 수정</button>
 		</form>
 </div>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

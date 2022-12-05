@@ -247,6 +247,7 @@ nav.close ~ .dashboard{
     padding: 10px 14px;
     background-color: var(--panel-color);
     transition: var(--tran-05);
+    z-index: 1000;
 }
 nav.close ~ .dashboard .top{
     left: 73px;
@@ -664,6 +665,7 @@ nav.close ~ .dashboard .top{
 	width:30px;
 	height: 30px;
 	border-radius: 0.25rem;
+	color: var(--text-color);
 }
 /** calendar page*/
 .calendar-box{
@@ -673,7 +675,6 @@ nav.close ~ .dashboard .top{
 }
 .calendar{
 	background-color:white;
-	margin-top: 50px;
+	margin-top: 90px;
 	width:1024px;
-	z-index: 100;
 }

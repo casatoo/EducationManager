@@ -295,8 +295,4 @@ function getCurrentTime()
 			</div>
 		</div>
 	</div>
-</section>
-
-<!--<script src="script.js"></script>-->
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

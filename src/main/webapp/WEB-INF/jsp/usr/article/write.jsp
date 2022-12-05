@@ -53,6 +53,4 @@
 				<button class="btn btn-outline mt-11" type="submit">글 작성</button>
 		</form>
 </div>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>

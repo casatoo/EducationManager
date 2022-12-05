@@ -215,7 +215,5 @@ const loginAlert = () => {
 </c:if>
 
 <%@ include file="../article/comment.jspf"%>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>
 

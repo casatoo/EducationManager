@@ -37,7 +37,6 @@
     				for(var i of data.data1){
     					var courseUrl = 'http://127.0.0.1:8081/usr/educationCourse/detail?id='+i.id
     					calendar.addEvent({title:i.title,start:i.start,end:i.end,url:courseUrl});
-    					console.log(courseUrl);
     				}
     			});
     		};
@@ -49,6 +48,4 @@
 	<div class="calendar-box">
 		<div id='calendar' class="calendar"></div>
 	</div>
-</section>
-</body>
-</html>
+<%@ include file="../common/foot.jspf"%>
