@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="detail" />
+<c:set var="pageTitle" value="eduDetail" />
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/side-bar.jspf"%>
 <body>
 	<div>과정 상세보기</div>
 		<div>과정번호: ${educationCourse.id}</div>

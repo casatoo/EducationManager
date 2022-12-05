@@ -9,7 +9,7 @@
 function getCurrentDate()
 {
     var date = new Date();
-	var nowDate = new Date();
+		var nowDate = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
 		var yesterday = new Date(date.setDate(date.getDate() - 1));
