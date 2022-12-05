@@ -46,7 +46,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 			.addPathPatterns("/usr/reaction/doReaction")
 			.addPathPatterns("/usr/comment/doAdd")
 			.addPathPatterns("/usr/comment/doDelete")
-			.addPathPatterns("/usr/comment/doModify");
+			.addPathPatterns("/usr/comment/doModify")
+			.addPathPatterns("/usr/educationCourse/eduStatus");
 			
 		ir = registry.addInterceptor(needAdnimistratorInterceptor)
 			.addPathPatterns("/usr/member/administrator");

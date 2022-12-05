@@ -245,7 +245,7 @@ function getCurrentTime()
 					<i class="uil uil-bell"></i><span class="text">최근 공지사항</span>
 				</div>
 
-				<div class="activity-data">
+				<div class="recentNotice">
 					<table class="main-list-table">
 						<colgroupo>
 						<col width="50%">

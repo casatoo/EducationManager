@@ -368,6 +368,14 @@ nav.close ~ .dashboard .top{
     font-weight: 500;
     color: var(--primary-color);
 }
+
+.recentNotice{
+	border:1px solid var(--primary-color);
+	border-radius: 12px;
+	background-color: var(--box3-color);
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .text-pty{
     white-space: nowrap;
     font-size: 50px;
@@ -424,19 +432,19 @@ nav.close ~ .dashboard .top{
 }
 
 .main-list-table{
-	width: calc(100%);
+	width: calc(97%);
 	text-align:center;
-    border-collapse:collapse;
+  border-collapse:collapse;
 	table-layout:fixed;
 	color: var(--text-color);
-	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+	margin: 3px;
 }
 .section-2{
 	display: flex;
 	justify-content: space-between;
 }
 .activity{
-	width: calc(50% - 50px);
+	width: calc(50% - 38px);
 }
 .weather{
 	width: calc(50% - 50px);

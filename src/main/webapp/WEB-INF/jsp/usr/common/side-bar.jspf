@@ -15,7 +15,7 @@
                     <i class="uil uil-user"></i>
                     <span class="link-name">내 정보</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="../educationCourse/eduStatus">
                     <i class="uil uil-user-exclamation"></i>
                     <span class="link-name">나의 교육정보</span>
                 </a></li>

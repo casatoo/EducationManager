@@ -173,16 +173,51 @@ INSERT INTO `comment`(regDate, updateDate, memberId,relTypeCode,relId,`comment`)
 (NOW(),NOW(),3,'article',1,'댓글4'),
 (NOW(),NOW(),1,'article',1,'댓글5');
 
+# 수강신청 테이블생성
+DROP TABLE IF EXISTS registeInfo;
+CREATE TABLE registeInfo(
+id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+regDate DATETIME NOT NULL,
+updateDate DATETIME NOT NULL,
+courseId INT NOT NULL,
+memberId INT NOT NULL,
+`status` INT DEFAULT 0 COMMENT '0 = 미수료, 1 = 수료'
+);
+
+INSERT INTO registeInfo(regDate,updateDate,courseId,memberId)VALUES
+(NOW(),NOW(),6,3),
+(NOW(),NOW(),6,4),
+(NOW(),NOW(),6,5),
+(NOW(),NOW(),5,6),
+(NOW(),NOW(),5,7);
+
 # 연습 쿼리
 SELECT * FROM attr;
 SELECT * FROM `member`;
 SELECT * FROM educationCourse;
 SELECT * FROM article;
 SELECT * FROM board;
+SELECT * FROM registeInfo;
 
-SELECT E.*, M.name AS extra__managerName
-FROM educationCourse AS E 
-INNER JOIN `member` AS M 
-ON E.managerMemberId = M.id
-ORDER BY E.id DESC
-LIMIT 0,6;
+#        - 과목 명
+#        - 과목 기간
+#        - 진행 상황 %
+#        - 수료 / 미수료
+#        - 담당자 ( 담당자 전화번호 )
+SELECT * FROM registeInfo WHERE memberId = 3;
+
+SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`
+FROM registeInfo AS R 
+INNER JOIN 
+educationCourse AS E 
+ON R.courseId = E.id
+WHERE memberId = 3;
+
+SELECT A.*,M.name FROM `member` AS M
+INNER JOIN (SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`
+FROM registeInfo AS R 
+INNER JOIN 
+educationCourse AS E 
+ON R.courseId = E.id
+WHERE memberId = 3) AS A
+ON M.id = A.manager;

@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.KMS.spring.EM.service.EducationCourseService;
 import com.KMS.spring.EM.vo.EducationCourse;
 import com.KMS.spring.EM.vo.ResultData;
+import com.KMS.spring.EM.vo.Rq;
+import com.KMS.spring.EM.vo.registeInfo;
 
 @Controller
 public class UsrEducationCourseController {
 	
 	@Autowired
 	EducationCourseService educationCourseService;
-	
+	@Autowired
+	private Rq rq;
 	/**
 	 * 교육과정 상세보기
 	 * 디테일 페이지로 이동
@@ -52,6 +55,13 @@ public class UsrEducationCourseController {
 		ResultData rd = ResultData.from("S-1", "조회성공", "educationCourses",educationCourses);
 		
 		return rd;
+	}
+	@RequestMapping("usr/educationCourse/eduStatus")
+	public String eduStatus(Model model) {
+		List<registeInfo> myeduStatus = educationCourseService.getMyeduStatus(rq.getLoginedMemberId());
+		
+		model.addAttribute("myeduStatus",myeduStatus);
+		return "usr/educationCourse/eduStatus";
 	}
 
 }

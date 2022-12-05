@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.KMS.spring.EM.repository.EducationCourseRepository;
 import com.KMS.spring.EM.repository.MemberRepository;
 import com.KMS.spring.EM.vo.EducationCourse;
+import com.KMS.spring.EM.vo.registeInfo;
 
 /**
  * 
@@ -49,6 +50,10 @@ public class EducationCourseService {
 	public List<EducationCourse> getEducationCourseList(){
 		
 		return educationCourseRepository.getEducationCourseList();
+	}
+	public List<registeInfo> getMyeduStatus(int id) {
+		
+		return educationCourseRepository.getMyeduStatus(id);
 	}
 	
 }

@@ -25,4 +25,15 @@
 		INNER JOIN `member` AS M 
 		ON E.managerMemberId = M.id
 	</select>
+	
+	<select id="getMyeduStatus" resultType="registeInfo">
+	SELECT A.*,M.name FROM `member` AS M
+	INNER JOIN (SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`
+	FROM registeInfo AS R 
+	INNER JOIN 
+	educationCourse AS E 
+	ON R.courseId = E.id
+	WHERE memberId = #{id}) AS A
+	ON M.id = A.manager;
+	</select>
 </mapper>
