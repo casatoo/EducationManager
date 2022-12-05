@@ -4,10 +4,6 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
 
-<section class="dashboard">
-		<div class="top">
-				<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
 <form action="../member/administrator">
 				<input type="text" placeholder="검색어를 입력해주세요" name="searchName"/>
 				<button type="submit">검색</button>

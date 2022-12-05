@@ -156,10 +156,7 @@ const loginAlert = () => {
 }
 </script>
 
-<section class="dashboard">
-		<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
+
 <h1>${article.id}번게시글</h1>
 <table>
 	<tbody>

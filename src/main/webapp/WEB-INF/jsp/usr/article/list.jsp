@@ -5,10 +5,6 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
 
-<section class="dashboard">
-	<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-	</div>
 	<div class="article-list-box">
 		<div class="search-box">
 			<div>

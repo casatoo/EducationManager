@@ -51,10 +51,6 @@ const findLoginId = (form) =>{
 
 </script>
 
-<section class="dashboard">
-	<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-	</div>
 	<div class="findLoginId-modal-bg hidden" onclick="findLoginIdCancleBtn()">
 		<div class="findLoginId-modal" onclick="event.stopPropagation()">
 			<section class="flex justify-center mt-14">
@@ -158,16 +154,16 @@ const findLoginId = (form) =>{
 				</div>
 				<div class="flex flex-col justify-center">
 					<button
-						class="loginPage-btn"
+						class="loginPage-btn bg-blue-200"
 						type="submit">로그인</button>
 					<a
-						class="loginPage-btn"
+						class="loginPage-btn bg-blue-200"
 						type="button" href="../member/join"> 회원가입 </a>
 					<div
-						class="loginPage-btn"
+						class="loginPage-btn bg-blue-200"
 						onClick="findLoginIdModal()">아이디 찾기</div>
 					<div
-						class="loginPage-btn"
+						class="loginPage-btn bg-blue-200"
 						onClick="findPasswordModal()">비밀번호 찾기</div>
 				</div>
 			</form>

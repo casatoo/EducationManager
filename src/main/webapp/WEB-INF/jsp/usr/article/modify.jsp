@@ -5,10 +5,7 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
 
-<section class="dashboard">
-		<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
+
 <div>
 		<div>${article.id}번글수정</div>
 		<c:set var="article" value="${article}" />

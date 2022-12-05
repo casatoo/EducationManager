@@ -35,10 +35,6 @@
 	}
 </script>
 
-<section class="dashboard">
-		<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-		</div>
 <div class="m-11">
 		<form onsubmit="submitWriteForm(this); return false;" action="../article/doAdd?">
 		<input type="hidden" name="body" id="body" />

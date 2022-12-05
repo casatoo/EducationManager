@@ -541,6 +541,12 @@ nav.close ~ .dashboard .top{
     }
 }
 /** 커스텀 */
+.login-status{
+	margin-right:10px;
+}
+.login-status-text{
+	color:var(--text-color);
+}
 
 /** 로그인 페이지 css*/
 .findLoginId-modal-bg{
@@ -567,7 +573,6 @@ nav.close ~ .dashboard .top{
 }
 .loginPage-btn{
 	text-align:center;
-	background-color:var(--primary-color);
 	color: var(--text-color);
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
@@ -577,7 +582,8 @@ nav.close ~ .dashboard .top{
 	margin: 0.75rem;
 }
 .loginPage-btn:hover{
-	background-color: blue;
+	background-color:var(--primary-color);
+	color:var(--text-color);
 }
 
 

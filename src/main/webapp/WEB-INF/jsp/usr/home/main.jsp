@@ -212,17 +212,6 @@ function getCurrentTime()
 		getData();
 	});
 </script>
-<section class="dashboard">
-
-	<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-		<c:if test="${rq.isLogined()}">
-			<img
-				src="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427__480.jpg"
-				alt="">
-		</c:if>
-	</div>
-
 	<div class="dash-content">
 		<div class="overview">
 			<div class="title">

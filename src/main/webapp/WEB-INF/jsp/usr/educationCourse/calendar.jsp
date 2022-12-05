@@ -14,7 +14,7 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 // Tool Bar 목록 document : https://fullcalendar.io/docs/toolbar
                 headerToolbar: {
-                    left: 'prevYear,prev,next,nextYear today',
+                    left: 'prev,next,today',
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,dayGridDay'
                 },
@@ -35,7 +35,9 @@
     				ajaxMode : 'Y'
     				}, function(data) {
     				for(var i of data.data1){
-    					calendar.addEvent({title:i.title,start:i.start,end:i.end});
+    					var courseUrl = 'http://127.0.0.1:8081/usr/educationCourse/detail?id='+i.id
+    					calendar.addEvent({title:i.title,start:i.start,end:i.end,url:courseUrl});
+    					console.log(courseUrl);
     				}
     			});
     		};
@@ -44,10 +46,6 @@
         });
 
     </script>
-<section class="dashboard">
-	<div class="top">
-		<i class="uil uil-bars sidebar-toggle"></i>
-	</div>
 	<div class="calendar-box">
 		<div id='calendar' class="calendar"></div>
 	</div>
