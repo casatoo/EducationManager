@@ -4,6 +4,7 @@
 <c:set var="pageTitle" value="detail" />
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
+<%@ include file="../common/toastUi.jspf"%>
 <%-- 전역변수 설정 --%>
 <script>
 	var reaction = ${reactionRd};
@@ -155,57 +156,61 @@ const loginAlert = () => {
 	alert("로그인해주세요");
 }
 </script>
-
-
-<h1>${article.id}번게시글</h1>
-<table>
-	<tbody>
-		<tr>
-			<th class="w-20">번호</th>
-			<td>${article.id}</td>
-		</tr>
-		<tr>
-			<th class="w-36">작성날짜</th>
-			<td>${article.regDate}</td>
-		</tr>
-		<tr>
-			<th class="w-36">수정날짜</th>
-			<td>${article.updateDate}</td>
-		</tr>
-		<tr>
-			<th class="w-20">조회수</th>
-			<td><span class="article-detail__hit">${article.hit}</span></td>
-		</tr>
-		<tr>
-			<th>추천</th>
-			<td>
-				<button class="goodReaction"
-					onclick="ArticleDetail__goodReactionPoint()">
-					좋아요<i class="fa-solid fa-thumbs-up"></i>&nbsp;&nbsp;<span
-						class="article-detail__goodReaction">${article.goodReactionPoint}</span>
-				</button>
-				<button class="badReaction"
-					onclick="ArticleDetail__badReactionPoint()">
-					싫어요<i class="fa-solid fa-thumbs-down"></i>&nbsp;&nbsp;<span
-						class="article-detail__badReaction">${article.badReactionPoint}</span>
-				</button>
-			</td>
-		</tr>
-		<tr>
-			<th class="w-36">작성자</th>
-			<td>${article.extra__writerName}</td>
-		</tr>
-		<tr>
-			<th class="w-36">제목</th>
-			<td>${article.title}</td>
-		</tr>
-		<tr>
-			<th class="w-36 h-96">내용</th>
-			<td class="text-left"><div id="body">${article.body}</div></td>
-		</tr>
-	</tbody>
-</table>
-
+<div class="article-detail-box">
+	<div class="article-detail-status-box">
+		<div class="article-detail-status-content">
+			<div class="article-detail-status-img-box">
+				<img src="/resource/img/basicUserImg.jpg" alt="">
+			</div>
+			<div class="article-detail-status-content-info">
+				<div class="article-detail-status-content-title">
+					<div>${article.title}</div>
+				</div>
+				<div class="article-detail-status-content-writer">
+					<div>${article.extra__writerName}</div>
+				</div>
+				<div class="article-detail-status-content-attr">
+					<div class="article-detail-status-content-attr-item">
+						글번호:&nbsp;&nbsp;
+						<div>${article.id}</div>
+					</div>
+					<div class="article-detail-status-content-attr-item">
+						글 작성일:&nbsp;&nbsp;
+						<div>${article.regDate}</div>
+					</div>
+					<div class="article-detail-status-content-attr-item">
+						글 수정일:&nbsp;&nbsp;
+						<div>${article.updateDate}</div>
+					</div>
+					<div class="article-detail-status-content-attr-item">
+						조회수:&nbsp;&nbsp;
+						<div class="article-detail__hit">${article.hit}</div>
+					</div>
+				</div>
+				<div class="article-detail-status-reaction-box">
+					<div>
+						<button class="goodReaction"
+							onclick="ArticleDetail__goodReactionPoint()">
+							좋아요<i class="fa-solid fa-thumbs-up"></i>&nbsp;&nbsp;<span
+								class="article-detail__goodReaction">${article.goodReactionPoint}</span>
+						</button>
+					</div>
+					<div>
+						<button class="badReaction"
+							onclick="ArticleDetail__badReactionPoint()">
+							싫어요<i class="fa-solid fa-thumbs-down"></i>&nbsp;&nbsp;<span
+								class="article-detail__badReaction">${article.badReactionPoint}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="toast-ui-viewer">
+		<script type="text/x-template">${article.body}</script>
+	</div>
+</div>
+<div class="article-detail-btn-box">
 <button onclick="location.href='${param.listUri }'">리스트로 돌아가기</button>
 <c:if test="${rq.loginedMemberId eq article.memberId}">
 	<button
@@ -213,7 +218,7 @@ const loginAlert = () => {
 	<button
 		onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false; location.href='../article/doDelete?id=${article.id }&boardId=${article.boardId}';">삭제</button>
 </c:if>
-
+</div>
 <%@ include file="../article/comment.jspf"%>
 <%@ include file="../common/foot.jspf"%>
 

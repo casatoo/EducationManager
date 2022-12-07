@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="write"/>
+<c:set var="pageTitle" value="write" />
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
+<%@ include file="../common/toastUi.jspf"%>
 
 <script>
 	let submitWriteFormDone = false;
@@ -30,27 +31,38 @@
 		}
 		form.body.value = markdown;
 		form.submit();
-		
+
 		submitWrtieFormDone = true;
 	}
 </script>
 
-<div class="m-11">
-		<form onsubmit="submitWriteForm(this); return false;" action="../article/doAdd?">
+<script>
+	const editor = new toastui.Editor({
+		el : document.querySelector('#editor'),
+		height : '500px',
+		initialValue : content,
+		initialEditType : 'wysiwyg'
+	});
+</script>
+<div class="article-write-box">
+	<form onsubmit="submitWriteForm(this); return false;"
+		action="../article/doAdd?">
 		<input type="hidden" name="body" id="body" />
-				<select class="select select-bordered w-full max-w-xs block ml-12 mb-11" name="boardId" required>
-						<option disabled selected>게시판 선택</option>
-						<option value="1">공지사항</option>
-						<option value="2">자유게시판</option>
-				</select> <label for="title">글 제목</label> <input type="text" placeholder="제목" id="title" name="title" size="30"
-						class="input input-bordered input-sm w-full max-w-xs" required />
-				<div class="mt-5">
-				<label>글 내용</label>
-						<div class="toast-ui-editor">
-								<script type="text/x-template"></script>
-						</div>
-				</div>
-				<button class="btn btn-outline mt-11" type="submit">글 작성</button>
-		</form>
+		<div class="article-write-title-box">
+			<select name="boardId" required>
+				<option disabled selected>게시판 선택</option>
+				<option value="1">공지사항</option>
+				<option value="2">자유게시판</option>
+				<option value="3">Q&A</option>
+			</select> <input type="text" placeholder="글 제목" id="title" name="title"
+				size="30" />
+		</div>
+		<div class="article-write-body-box">
+			<div class="toast-ui-editor">
+				<script type="text/x-template"></script>
+			</div>
+		</div>
+		<div class="article-write-submit-btn"><button type="submit">글 작성</button></div>
+	</form>
 </div>
 <%@ include file="../common/foot.jspf"%>

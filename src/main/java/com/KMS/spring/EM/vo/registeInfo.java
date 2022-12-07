@@ -21,7 +21,10 @@ public class registeInfo {
 	private int memberId;
 	private int status;
 	
+	private String extra__managerCellphoneNum;
 	private String extra__managerName;
 	private String start;
 	private String end;
+	private String title;
+	
 }

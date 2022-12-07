@@ -206,15 +206,15 @@ SELECT * FROM registeInfo;
 #        - 담당자 ( 담당자 전화번호 )
 SELECT * FROM registeInfo WHERE memberId = 3;
 
-SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`
+SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`,E.title AS title
 FROM registeInfo AS R 
 INNER JOIN 
 educationCourse AS E 
 ON R.courseId = E.id
 WHERE memberId = 3;
 
-SELECT A.*,M.name FROM `member` AS M
-INNER JOIN (SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`
+SELECT A.*,M.name AS extra__managerName, M.cellphoneNum AS extra__managerCellphoneNum FROM `member` AS M
+INNER JOIN (SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`,E.title AS title
 FROM registeInfo AS R 
 INNER JOIN 
 educationCourse AS E 
