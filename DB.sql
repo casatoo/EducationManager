@@ -221,3 +221,5 @@ educationCourse AS E
 ON R.courseId = E.id
 WHERE memberId = 3) AS A
 ON M.id = A.manager;
+
+SELECT VERSION();

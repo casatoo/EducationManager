@@ -578,7 +578,6 @@ nav.close ~ .dashboard .top{
 }
 .loginPage-btn{
 	text-align:center;
-	color: var(--text-color);
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 	padding-left: 1rem;
@@ -590,7 +589,6 @@ nav.close ~ .dashboard .top{
 }
 .loginPage-btn:hover{
 	background-color:var(--primary-color);
-	color:var(--text-color);
 }
 
 
