@@ -128,6 +128,8 @@ public class UsrArticleController {
 	public String showDetail( Model model, int id, String listUri) {
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 		
+		String setBody = article.getBody().replaceAll( "<br>","\r\n");
+		
 		ResultData<Integer> getReactionResultRd  = reactionService.getReactionResult(id,rq.getLoginedMemberId());
 		
 		List<Comment> comments = commentService.getForPrintComments(id);
@@ -140,6 +142,7 @@ public class UsrArticleController {
 		model.addAttribute("listUri", Ut.getUriEncoded(listUri));
 		model.addAttribute("comments", comments);
 		model.addAttribute("article", article);
+		model.addAttribute("setBody", setBody);		
 		model.addAttribute("reactionRd",reactionRd);
 		return "usr/article/detail";
 	}

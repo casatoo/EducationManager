@@ -207,7 +207,7 @@ const loginAlert = () => {
 		</div>
 	</div>
 	<div class="toast-ui-viewer">
-		<script type="text/x-template">${article.body}</script>
+		<script type="text/x-template">${setBody}</script>
 	</div>
 </div>
 <div class="article-detail-btn-box">
