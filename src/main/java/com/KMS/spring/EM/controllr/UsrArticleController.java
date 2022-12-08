@@ -42,7 +42,7 @@ public class UsrArticleController {
 	// 액션메서드
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
-	public String doAdd(String title, String body, Integer boardId, Model model) {
+	public String doAdd(String title, String body, Integer boardId, Model model, String listUri) {
 		if(boardId == null) {
 			return Ut.jsHistoryBack(Ut.f("게시판을 선택해주세요"));
 		}
@@ -58,7 +58,7 @@ public class UsrArticleController {
 		
 		int id = (int) writeArticleRd.getData1();
 		
-		return Ut.jsReplace(Ut.f("%d번 게시물 작성", id),  Ut.f("../article/detail?id=%d", id));
+		return Ut.jsReplace(Ut.f("%d번 게시물 작성", id),  Ut.f("../article/detail?id=%d&listUri=%s", id,listUri));
 	}
 
 	@RequestMapping("/usr/article/list")
@@ -160,8 +160,10 @@ public class UsrArticleController {
 	}
 	
 	@RequestMapping("usr/article/write")
-	public String articleWriteForm(HttpServletRequest req, Model model) {
-		return "usr/article/write" ;
+	public String articleWriteForm(HttpServletRequest req, Model model,String listUri) {
+		
+		model.addAttribute("listUri", Ut.getUriEncoded(listUri));
+		return "usr/article/write";
 	}
 	@RequestMapping("usr/article/modify")
 	public String articleModifyForm( Model model,int id, String listUri) {

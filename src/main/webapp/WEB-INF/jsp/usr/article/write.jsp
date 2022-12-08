@@ -37,18 +37,15 @@
 </script>
 
 <script>
-	const editor = new toastui.Editor({
-		el : document.querySelector('#editor'),
-		height : '500px',
-		initialValue : content,
-		initialEditType : 'wysiwyg'
-	});
+console.log('${listUri}');
 </script>
 <div class="article-write-box">
 	<form onsubmit="submitWriteForm(this); return false;"
 		action="../article/doAdd?">
+		<input type="hidden" name="listUri" id="listUri" value="${listUri}"/>
 		<input type="hidden" name="body" id="body" />
 		<div class="article-write-title-box">
+		
 			<select name="boardId" required>
 				<option disabled selected>게시판 선택</option>
 				<option value="1">공지사항</option>
