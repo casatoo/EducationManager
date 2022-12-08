@@ -11,21 +11,17 @@
 --%>
 <script>
 const modifyBtn = (count) => {
-		$("#showComment"+count).removeAttr('disabled').removeClass('border-none');
-		$("#comment-modify-submit"+count).removeClass('hidden');
-		$("#comment-modify-cancle"+count).removeClass('hidden');
-		$(".comment-modify-btn"+count).addClass('hidden');
-		$(".comment-delete-btn"+count).addClass('hidden');
+		$("#showComment"+count).removeAttr('disabled').addClass('border-solid');
+		$(".comment-list-submit-btn-box"+count).removeClass('hidden');
+		$(".comment-list-btn-box"+count).addClass('hidden');
 }
 </script>
 <%-- 수정 취소 --%>
 <script>
 const modifyCancleBtn = (count) =>{
 	$("#showComment"+count).attr("disabled", true).addClass('border-none');
-	$("#comment-modify-submit"+count).addClass('hidden');
-	$("#comment-modify-cancle"+count).addClass('hidden');
-	$(".comment-modify-btn"+count).removeClass('hidden');
-	$(".comment-delete-btn"+count).removeClass('hidden');
+	$(".comment-list-submit-btn-box"+count).addClass('hidden');
+	$(".comment-list-btn-box"+count).removeClass('hidden');
 }
 
 </script>
@@ -41,50 +37,40 @@ const modifyCancleBtn = (count) =>{
 		});
 	}
 	</script>
-<div class="mx-40 text-sm">
+<div class="comment-box">
 	<c:if test="${rq.isLogined()}">
-		<form action="../comment/doAdd" method="post"
-			onsubmit="CommentWrite__submitForm(this); return false;">
-			<input type="hidden" value="${article.id}" name="id" /> <input
-				type="hidden" value="article" name="relTypeCode" /> <input
-				type="hidden" value="${listUri}" name="listUri" /> <label
-				for="comment">댓글작성 :</label> <input type="text" placeholder="댓글"
-				id="commentWrite" name="comment" class="h-9 w-auto" size="70"
-				required />
-			<button class="h-9 comment-write-btn largeBtn" type="submit">댓글 작성</button>
+	<div class="comment-input-box">
+		<form action="../comment/doAdd" method="post" onsubmit="CommentWrite__submitForm(this); return false;">
+			<input type="hidden" value="${article.id}" name="id" />
+			<input type="hidden" value="article" name="relTypeCode" />
+			<input type="hidden" value="${listUri}" name="listUri" />
+			<label for="comment" class="comment-input-label">댓글남기기 :&nbsp;</label> 
+			<input type="text" placeholder="댓글" id="commentWrite" name="comment" class="comment-input" required />
+			<div class="comment-input-btn"><button type="submit">작성</button></div>
 		</form>
-	</c:if>
-	<div class="overflow-x-auto mt-4 mb-4 text-center table-box-type-1">
-		<table class="w-full">
-			<tbody>
-				<c:forEach var="comment" items="${comments}" varStatus="status">
-					<tr>
-						<th>${status.count}</th>
-						<td>${comment.extra__writerName}</td>
-						<td class="text-left">
-							<form action="../comment/doModify"
-								method="post" class="comment${status.count} inline-block w-4/5">
-								<input type="hidden" value="${comment.id}" name="id" /> <input
-									type="hidden" value="${comment.relId}" name="relId" /> <input
-									type="hidden" value="${listUri}" name="listUri" /> <input
-									type="text" id="showComment${status.count}" name="comment"
-									class="h-6 w-auto border-none box-border" disabled
-									value="${comment.comment}" required />
-								<button class="comment-modify-btn smallBtn hidden" type="submit"
-									id="comment-modify-submit${status.count}">수정</button>
-								<button class="comment-modify-btn smallBtn hidden" type="button"
-									id="comment-modify-cancle${status.count}" onclick="modifyCancleBtn(${status.count})">취소</button>
-							</form>
-								<c:if test="${rq.loginedMemberId eq comment.memberId}">
-									<button class="comment-modify-btn${status.count} smallBtn" onclick="modifyBtn(${status.count})">수정</button>
-									<button class="comment-delete-btn${status.count} smallBtn"
-										onclick="location.href='../comment/doDelete?id=${comment.id}&relId=${comment.relId}&listUri=${listUri}';">삭제</button>
-								</c:if>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
 	</div>
-	<div id="commentTest"></div>
+	</c:if>
+	<div>
+	<c:forEach var="comment" items="${comments}" varStatus="status">
+		<div class="comment-list">
+		<form action="../comment/doModify" method="post" class="comment${status.count}">
+			<input type="hidden" value="${comment.id}" name="id" /> 
+			<input type="hidden" value="${comment.relId}" name="relId" /> 
+			<input type="hidden" value="${listUri}" name="listUri" />
+			<div class="comment-list-writer">${comment.extra__writerName}</div>
+			<input type="text" id="showComment${status.count}" name="comment"  disabled value="${comment.comment}" class="comment-list-body" required />
+			<c:if test="${rq.loginedMemberId eq comment.memberId}">
+				<div class="comment-list-submit-btn-box comment-list-submit-btn-box${status.count} hidden">
+					<button class="comment-list-modify-btn" type="submit" >수정</button>
+					<button class="comment-list-cancle-btn" type="button" onclick="modifyCancleBtn(${status.count})">취소</button>
+				</div>
+				<div class="comment-list-btn-box comment-list-btn-box${status.count}">
+					<div class="comment-list-modify-btn" onclick="modifyBtn(${status.count})">수정</div>
+					<div class="comment-list-delete-btn" onclick="location.href='../comment/doDelete?id=${comment.id}&relId=${comment.relId}&listUri=${listUri}';">삭제</div>
+				</div>
+			</c:if>
+		</form>
+		</div>
+	</c:forEach>
+	</div>
 </div>

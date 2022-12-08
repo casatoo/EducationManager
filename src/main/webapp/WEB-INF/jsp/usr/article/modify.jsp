@@ -36,14 +36,6 @@
 	}
 </script>
 
-<script>
-	const editor = new toastui.Editor({
-		el : document.querySelector('#editor'),
-		height : '500px',
-		initialValue : content,
-		initialEditType : 'wysiwyg'
-	});
-</script>
 <c:set var="article" value="${article}" />
 <div class="article-write-box">
 	<form onsubmit="submitWriteForm(this); return false;" action="../article/doModify">
