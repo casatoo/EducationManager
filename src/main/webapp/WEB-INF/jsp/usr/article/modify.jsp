@@ -55,7 +55,7 @@
 		</div>
 		<div class="article-write-body-box">
 			<div class="toast-ui-editor">
-				<script type="text/x-template">${article.body}</script>
+				<script type="text/x-template">${setBody}</script>
 			</div>
 		</div>
 		<div class="article-write-submit-btn"><button type="submit">글 작성</button></div>

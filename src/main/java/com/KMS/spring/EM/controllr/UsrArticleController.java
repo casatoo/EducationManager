@@ -171,11 +171,13 @@ public class UsrArticleController {
 	@RequestMapping("usr/article/modify")
 	public String articleModifyForm( Model model,int id, String listUri) {
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+		String setBody = article.getBody().replaceAll( "<br>","\r\n");
 		if (article.getMemberId() != rq.getLoginedMemberId()) {
 				return rq.jsHistoryBackOnView("권한이 없습니다.");
 		}
 		model.addAttribute("listUri", Ut.getUriEncoded(listUri));
 		model.addAttribute("article", article);
+		model.addAttribute("setBody", setBody);	
 		return "usr/article/modify" ;
 	}
 }
