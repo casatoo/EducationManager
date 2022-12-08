@@ -82,4 +82,10 @@
 			</div>
 			
 		</c:if>
+		<c:if test="${!rq.isLogined()}">
+			<div class="login-status">
+				<div class="login-status-text">로그아웃 중</div>
+			</div>
+			
+		</c:if>
 	</div>

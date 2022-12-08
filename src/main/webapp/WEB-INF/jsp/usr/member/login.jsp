@@ -74,10 +74,10 @@ const findLoginId = (form) =>{
 						</div>
 						<div class="flex items-center justify-between">
 							<button
-								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								class="loginPage-btn bg-blue-200"
 								type="button" onclick="findLoginId(this.form)">찾기</button>
 							<button
-								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								class="loginPage-btn bg-blue-200"
 								type="button" onclick="findLoginIdCancleBtn()">닫기</button>
 						</div>
 						<div class="findLoginIdMessage"></div>
@@ -117,10 +117,10 @@ const findLoginId = (form) =>{
 						</div>
 						<div class="flex items-center justify-between">
 							<button
-								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								class="loginPage-btn bg-blue-200"
 								type="submit">찾기</button>
 							<div
-								class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+								class="loginPage-btn bg-blue-200"
 								onclick="findPasswordCancleBtn()">닫기</div>
 						</div>
 					</form>

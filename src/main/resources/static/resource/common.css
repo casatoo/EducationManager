@@ -556,6 +556,7 @@ nav.close ~ .dashboard .top{
   position: fixed;
   top:0; left: 0; bottom: 0; right: 0;
   background: rgba(0, 0, 0, 0.8);
+   z-index: 1200;
 }
 .findLoginId-modal{
 	position:absolute;
@@ -567,6 +568,7 @@ nav.close ~ .dashboard .top{
 	position: fixed;
   top:0; left: 0; bottom: 0; right: 0;
   background: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
 }
 .findPassword-modal{
 	position:absolute;
@@ -583,6 +585,8 @@ nav.close ~ .dashboard .top{
 	padding-right: 1rem;
 	border-radius: 0.25rem;
 	margin: 0.75rem;
+	transition: var(--tran-05);
+	
 }
 .loginPage-btn:hover{
 	background-color:var(--primary-color);
