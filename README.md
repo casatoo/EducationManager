@@ -15,7 +15,7 @@
 		- SQLyog community 64
 		- Maven 4.0.0
 		- tomcat 9
-		- chreome
+		- chrome
 		- codepen
 	- 기술스택
 		- jdbc4 version 1.16

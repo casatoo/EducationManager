@@ -46,10 +46,6 @@ const findLoginId = (form) =>{
 	}, 'json');
 }
 </script>
-<%-- 모달창 외부 클릭 닫기 --%>
-<script>
-
-</script>
 
 	<div class="findLoginId-modal-bg hidden" onclick="findLoginIdCancleBtn()">
 		<div class="findLoginId-modal" onclick="event.stopPropagation()">

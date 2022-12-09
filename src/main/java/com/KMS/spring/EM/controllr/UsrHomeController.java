@@ -25,8 +25,15 @@ public class UsrHomeController {
 	@RequestMapping("usr/home/main")
 	public String showMain(Model model) {
 		
+		/**
+		 * 최근 작성된 부터 3개 교육과정 가져옴
+		 */
 		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseSomeList(0,3);
+		/**
+		 * 최근 작성된 공지사항 게시글 6개 가져옴
+		 */
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), 1, 0, 6, "", "");
+		
 		model.addAttribute("educationCourses",educationCourses);
 		model.addAttribute("articles",articles);
 		return "usr/home/main";

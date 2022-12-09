@@ -104,9 +104,8 @@ public class MemberService {
 		if(existsMember.getDelStatus() == 1) {
 			return ResultData.from("F-5",Ut.f("탈퇴한 회원입니다."));
 		}
-		String existsLoginPw = memberRepository.getLoginPwByLoginId(loginId);
 		
-		if(!existsLoginPw.equals(Ut.sha256(loginPw))) {
+		if(!existsMember.getLoginPw().equals(Ut.sha256(loginPw))) {
 			return ResultData.from("F-6",Ut.f("비밀번호가 틀렸습니다."));
 		}
 		return ResultData.from("S-1",Ut.f("로그인 성공"));

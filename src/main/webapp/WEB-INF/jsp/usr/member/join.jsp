@@ -6,6 +6,8 @@
 <%@ include file="../common/side-bar.jspf"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+	
+<%-- 아이디 중복 체크 비동기 조회 --%>
 <script>
 	function checkLoginIdDup() {
 		if ($('#loginId').val().length > 2) {
@@ -27,6 +29,7 @@
 					.css("color", "red");
 		}
 	}
+<%-- 0.5초 동안 입력이 없을 경우 동작 --%>
 	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 500);
 </script>
 
