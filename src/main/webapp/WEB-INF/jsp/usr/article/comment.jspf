@@ -19,6 +19,7 @@ const modifyBtn = (count) => {
 <%-- 수정 취소 --%>
 <script>
 const modifyCancleBtn = (count) =>{
+	$("#showComment"+count).empty().html('${comment.comment}');
 	$("#showComment"+count).attr("disabled", true).addClass('border-none');
 	$(".comment-list-submit-btn-box"+count).addClass('hidden');
 	$(".comment-list-btn-box"+count).removeClass('hidden');

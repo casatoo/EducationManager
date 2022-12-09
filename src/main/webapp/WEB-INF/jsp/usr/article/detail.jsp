@@ -88,7 +88,6 @@ const ArticleDetail__goodReactionPoint = () =>{
 		point : 1,
 		ajaxMode : 'Y'
 	}, function(data){
-		$('.article-detail__Reaction').empty().html(data.data1);
 		$('.article-detail__goodReaction').empty().html(data.data2);
 		$('.article-detail__badReaction').empty().html(data.data3);
 		if(reaction == -1 || reaction == 0){
@@ -117,7 +116,6 @@ const ArticleDetail__badReactionPoint = () =>{
 		point : -1,
 		ajaxMode : 'Y'
 	}, function(data){
-		$('.article-detail__Reaction').empty().html(data.data1);
 		$('.article-detail__goodReaction').empty().html(data.data2);
 		$('.article-detail__badReaction').empty().html(data.data3);
 		if(reaction == 1 || reaction == 0){

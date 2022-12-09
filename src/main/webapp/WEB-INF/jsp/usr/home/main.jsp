@@ -5,6 +5,9 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
 <script>
+
+window.localStorage.clear();
+
 /** 현재 년월일 구하는 함수 */
 function getCurrentDate()
 {

@@ -50,7 +50,7 @@
 				<script type="text/x-template">${setBody}</script>
 			</div>
 		</div>
-		<div class="article-write-submit-btn"><button type="submit">글 작성</button></div>
+		<div class="article-write-submit-btn"><button type="submit">수정 완료</button></div>
 	</form>
 </div>
 
