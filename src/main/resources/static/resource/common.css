@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'TTCrownMychewR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
+    font-family: 'SEBANG_Gothic_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,7 +25,7 @@ a{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'TTCrownMychewR', sans-serif;
+    font-family: 'SEBANG_Gothic_Bold', sans-serif;
 }
 
 :root{
@@ -40,6 +40,7 @@ a{
     --box2-color: #bcd0ec;
     --box3-color: #FFF;
     --title-icon-color: #fff;
+    --active-btn-color:#1d2053;
     
     /* ====== Transition ====== */
     --tran-05: all 0.5s ease;
@@ -61,6 +62,7 @@ body.dark{
     --box2-color: #3Argb(0, 255, 255)    --box3-color: #3A3B3C;
     --box3-color: #bcd0ec;
     --title-icon-color: #CCC;
+    --active-btn-color:#21ABE2;
 }
 /* === Custom Scroll Bar CSS === */
 ::-webkit-scrollbar {
@@ -593,6 +595,9 @@ nav.close ~ .dashboard .top{
 
 
 /** 게시판 페이지 css*/
+.article-list-boardName{
+	font-size: 2rem;
+}
 .article-list-thead{
   background-color:var(--box3-color);
   color:var(--primary-color);
@@ -670,6 +675,18 @@ nav.close ~ .dashboard .top{
 	height: 30px;
 	border-radius: 0.25rem;
 	color: var(--text-color);
+}
+
+.page-move-btn-active{
+	background-color: var(--active-btn-color);
+	width:30px;
+	height: 30px;
+	border-radius: 0.25rem;
+	color: var(--box3-color);
+}
+
+.page-move-btn-not-active{
+	cursor: default;
 }
 /** calendar page*/
 .calendar-box{

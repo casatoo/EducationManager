@@ -176,6 +176,8 @@ public class UsrMemberController {
 		
 		ResultData rd =  memberService.quitMember(id);
 		
+		rq.logout();
+		
 		return Ut.jsReplace(rd.getMsg(), "/");
 	}
 	
@@ -253,6 +255,20 @@ public class UsrMemberController {
 		model.addAttribute("memberList",memberList);
 		return "/usr/member/administrator";
 	}
+	/**
+	 * 회원정보 수정
+	 * 인증코드 확인
+	 * 입력값 존재 확인
+	 * 변경 성공, 실패 메세지 출력
+	 * @param birthDay
+	 * @param name
+	 * @param englishName
+	 * @param cellphoneNum
+	 * @param email
+	 * @param memberModifyAuthKey
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
 	public String doModify(String birthDay, String name, String englishName,  String cellphoneNum, String email,String memberModifyAuthKey, Model model) {
@@ -295,6 +311,15 @@ public class UsrMemberController {
 		ResultData resultRd = ResultData.newData(doModifyRd,"member",member);
 		return Ut.jsReplace("개인정보 수정완료","../member/userInfo");
 	}
+	/**
+	 * 인증코드 확인
+	 * 기존 비밀번호 일치 확인
+	 * 비밀번호 수정
+	 * @param loginPwCheck
+	 * @param loginPw
+	 * @param memberPasswordAuthKey
+	 * @return String
+	 */
 	@RequestMapping("/usr/member/doChangePassword")
 	@ResponseBody
 	public String doChangePassword(String loginPwCheck, String loginPw, String memberPasswordAuthKey) {
@@ -323,6 +348,12 @@ public class UsrMemberController {
 		
 		return Ut.jsReplace(Ut.f("비밀번호가 수정되었습니다!"), "../member/userInfo");
 	}
+	/**
+	 * 아이디 중복 방지
+	 * 비동기 데이터 전송을 위한 코드
+	 * @param loginId
+	 * @return ResultData
+	 */
 	@RequestMapping("/usr/member/checkLoginId")
 	@ResponseBody
 	public ResultData checkLoginId(String loginId) {

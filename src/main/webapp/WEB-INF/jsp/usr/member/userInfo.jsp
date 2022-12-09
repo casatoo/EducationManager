@@ -12,11 +12,11 @@
 		if(memberInfoModify__submitFormDone){
 			return;
 		}
-		form.nickname.value = form.nickname.value.trim();
+		form.englishName.value = form.englishName.value.trim();
 		form.cellphoneNum.value = form.cellphoneNum.value.trim();
 		form.email.value = form.email.value.trim();
 		
-		if (form.nickname.value.length < 2) {
+		if (form.englishName.value.length < 2) {
 			alert('2글자 이상 입력해주세요');
 			form.nickname.focus();
 			return;

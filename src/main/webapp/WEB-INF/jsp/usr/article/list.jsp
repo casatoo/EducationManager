@@ -6,6 +6,7 @@
 <%@ include file="../common/side-bar.jspf"%>
 
 <div class="article-list-box">
+	<div class="article-list-boardName">${board.name} 게시판</div>
 	<div class="search-box">
 		<div>
 			<span class="article-badge">게시글: ${getTotalArticle}개</span>
@@ -88,15 +89,15 @@
 					onclick="location.href='../article/list${pageBaseUri}&page=1';">1</button>
 			</c:if>
 			<c:if test="${startPage > 2}">
-				<button class="page-move-btn">...</button>
+				<button class="page-move-btn page-move-btn-not-active">...</button>
 			</c:if>
 			<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
 				<button
-					class="page-move-btn ${page == pageNum ? 'page-move-btn' : '' }"
+					class="page-move-btn ${page == pageNum ? 'page-move-btn-active' : '' }"
 					onclick="location.href='../article/list${pageBaseUri}&page=${pageNum}';">${pageNum}</button>
 			</c:forEach>
 			<c:if test="${endPage < pageCount-1}">
-				<button class="page-move-btn">...</button>
+				<button class="page-move-btn page-move-btn-not-active">...</button>
 			</c:if>
 			<c:if test="${endPage < pageCount}">
 				<button class="page-move-btn"

@@ -16,71 +16,95 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
 
+	/**
+	 * 생성자
+	 * @param articleRepository
+	 */
 	public ArticleService(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
 	}
 
-	public Article getForPrintArticle(int actorId, int id) {
+	/**
+	 * 글 번호로 게시글 조회
+	 * @param id
+	 * @return Article
+	 */
+	public Article getForPrintArticle(int id) {
 		Article article = articleRepository.getForPrintArticle(id);
-		updateForPrintData(actorId, article);
+		
 		return article;
 	}
 
-	private void updateForPrintData(int actorId, Article article) {
-		if (article == null) {
-			return;
-		}
-
-		ResultData actorCanDeleteRd = actorCanDelete(actorId, article);
-		article.setExtra__actorCanDelete(actorCanDeleteRd.isSuccess());
-
-	}
-	
+	/**
+	 * 검색 조건에 해당되는 전체 글 갯수 조회
+	 * @param boardId
+	 * @param searchItem
+	 * @param searchFrom
+	 * @return int 해당하는 글 갯수
+	 */
 	public int getTotalArticle(int boardId ,String searchItem,String searchFrom) {
 		return articleRepository.getTotalArticle(boardId, searchItem, searchFrom);
 	}
-
+	/**
+	 * 조건에 해당하는 글 목록 조회
+	 * @param actorId
+	 * @param boardId
+	 * @param limitFrom
+	 * @param itemsInAPage
+	 * @param searchWord
+	 * @param searchFrom
+	 * @return List<Article> 게시글 리스트
+	 */
 	public List<Article> getForPrintArticles(int actorId, int boardId, int limitFrom, int itemsInAPage, String searchWord, String searchFrom) {
 		List<Article> articles = articleRepository.getArticles(boardId,limitFrom,itemsInAPage, searchWord, searchFrom);
 		
-		for (Article article : articles) {
-			updateForPrintData(actorId, article);
-		}
-		
 		return articles;
 	}
-
+	
+	/**
+	 * 글 작성
+	 * @param memberId
+	 * @param title
+	 * @param body
+	 * @param boardId
+	 * @return ResultData<Integer> 글 작성 결과
+	 */
 	public ResultData<Integer> writeArticle(int memberId, String title, String body, int boardId) {
 		articleRepository.writeArticle(memberId, title, body, boardId);
 		int id = articleRepository.getLastInsertId();
 
 		return ResultData.from("S-1", Ut.f("%d번 게시물이 생성되었습니다", id), "id", id);
 	}
-
+	
+	/**
+	 * 글 삭제
+	 * @param id
+	 */
 	public void deleteArticle(int id) {
 		articleRepository.deleteArticle(id);
 	}
-
+	
+	/**
+	 * 글 수정
+	 * @param id
+	 * @param title
+	 * @param body
+	 * @return ResultData<Article> 수정된 게시글
+	 */
 	public ResultData<Article> modifyArticle(int id, String title, String body) {
 		articleRepository.modifyArticle(id, title, body);
 
-		Article article = getForPrintArticle(0, id);
+		Article article = getForPrintArticle(id);
 
 		return ResultData.from("S-1", Ut.f("%d번 게시물을 수정했습니다", id), "article", article);
 	}
-
-	public ResultData actorCanDelete(int actorId, Article article) {
-
-		if (article == null) {
-			return ResultData.from("F-1", "게시물이 존재하지 않습니다");
-		}
-
-		if (article.getMemberId() != actorId) {
-			return ResultData.from("F-2", "해당 게시물에 대한 권한이 없습니다");
-		}
-
-		return ResultData.from("S-1", "삭제 가능");
-	}
+	
+	/**
+	 * 조회수 증가
+	 * 게시글 존재 여부 확인
+	 * @param id
+	 * @return ResultData<Integer> 조회수증가 성공, 실패
+	 */
 	public ResultData<Integer> increseHit(int id) {
 		int incresedHitRd = articleRepository.increseHit(id);
 		if (incresedHitRd == 0) {
@@ -88,6 +112,12 @@ public class ArticleService {
 		}
 		return ResultData.from("S-1", "게시물 조회수 증가", "addHitRd", incresedHitRd);
 	}
+	
+	/**
+	 * 조회수 조회
+	 * @param id
+	 * @return int 조회수
+	 */
 	public int getArticleHitCount(int id) {
 		return articleRepository.getArticleHitCount(id);
 	}

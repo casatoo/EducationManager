@@ -22,5 +22,4 @@ public class Article {
 	private int badReactionPoint;
 
 	private String extra__writerName;
-	private boolean extra__actorCanDelete;
 }

@@ -211,7 +211,7 @@ const loginAlert = () => {
 	</div>
 </div>
 <div class="article-detail-btn-box">
-<button onclick="location.href='${param.listUri }'">리스트로 돌아가기</button>
+<button onclick="location.href='${param.listUri }'">뒤로가기</button>
 <c:if test="${rq.loginedMemberId eq article.memberId}">
 	<button
 		onclick="location.href='../article/modify?id=${article.id }&listUri=${listUri}';">수정</button>
