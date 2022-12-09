@@ -49,13 +49,13 @@ public class UsrEducationCourseController {
 	@ResponseBody
 	public ResultData schedule(Model model) {
 		
-		
 		List<EducationCourse> educationCourses = educationCourseService.getEducationCourseList();
 		
 		ResultData rd = ResultData.from("S-1", "조회성공", "educationCourses",educationCourses);
 		
 		return rd;
 	}
+	
 	@RequestMapping("usr/educationCourse/eduStatus")
 	public String eduStatus(Model model) {
 		List<registeInfo> myeduStatus = educationCourseService.getMyeduStatus(rq.getLoginedMemberId());

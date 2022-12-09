@@ -792,6 +792,7 @@ nav.close ~ .dashboard .top{
 .article-detail-box{
 	margin-top:80px;
 	border:1px solid var(--primary-color);
+	min-width: 850px;
 }
 .article-detail-status-box{
 	padding:5px;
