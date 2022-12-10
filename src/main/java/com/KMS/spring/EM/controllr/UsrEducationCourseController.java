@@ -26,6 +26,19 @@ public class UsrEducationCourseController {
 	private Rq rq;
 	@Autowired
 	AttrService attrService;
+	
+	
+	@RequestMapping("usr/educationCourse/doAdd")
+	@ResponseBody
+	public String doAdd(int educationCourseId) {
+		List<registeInfo> myeduStatus = educationCourseService.getMyeduStatus(rq.getLoginedMemberId());
+		
+		ResultData rd = educationCourseService.doAdd(educationCourseId, rq.getLoginedMemberId());
+		
+		return Ut.jsReplace(rd.getMsg(), "../educationCourse/eduStatus");
+				
+	}
+
 	/**
 	 * 교육과정 상세보기
 	 * 디테일 페이지로 이동

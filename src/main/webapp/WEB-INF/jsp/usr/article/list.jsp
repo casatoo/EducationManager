@@ -65,11 +65,13 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${rq.isLogined()}">
 	<div class="article-write-btn">
 		<button type="button" onClick="location.href='${rq.getArticleWriteUriFromArticleList()}'">
 			<i class="uil uil-edit"></i> <span class="link-name">글 작성</span>
 		</button>
 	</div>
+	</c:if>
 	<div class="flex justify-center mb-11">
 
 		<div class="mt-4">

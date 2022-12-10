@@ -176,12 +176,12 @@ INSERT INTO `comment`(regDate, updateDate, memberId,relTypeCode,relId,`comment`)
 # 수강신청 테이블생성
 DROP TABLE IF EXISTS registeInfo;
 CREATE TABLE registeInfo(
-id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 regDate DATETIME NOT NULL,
 updateDate DATETIME NOT NULL,
 courseId INT NOT NULL,
 memberId INT NOT NULL,
-`status` INT DEFAULT 0 COMMENT '0 = 미수료, 1 = 수료'
+`status` INT DEFAULT 0 COMMENT '0 = 미수료, 1 = 수료',
+PRIMARY KEY(courseId, memberId)
 );
 
 INSERT INTO registeInfo(regDate,updateDate,courseId,memberId)VALUES
@@ -222,6 +222,11 @@ ON R.courseId = E.id
 WHERE memberId = 3) AS A
 ON M.id = A.manager;
 
+
+SELECT * FROM registeInfo
+WHERE courseId = 6 
+AND memberId = 4;
+
 SELECT VERSION();
 
 			SELECT *
@@ -231,3 +236,10 @@ SELECT VERSION();
 			AND typeCode = 'extra'
 			AND type2Code = 'educationCourseModifyAuthKey'
 			AND (expireDate >= NOW() OR expireDate IS NULL);
+			
+			
+		INSERT INTO registeInfo
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		courseId = #{courseId},
+		memberId = #{memberId};

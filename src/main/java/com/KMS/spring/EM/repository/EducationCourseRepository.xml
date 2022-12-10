@@ -48,4 +48,18 @@
 		`status` = #{status}
 		WHERE id = #{educationCourseId};
 	</update>
+	
+	<insert id="doAdd">
+		INSERT INTO registeInfo
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		courseId = #{educationCourseId},
+		memberId = #{memberId};
+	</insert>
+	
+	<select id="getRegisteInfo" resultType="registeInfo">
+		SELECT * FROM registeInfo
+		WHERE courseId = #{educationCourseId} 
+		AND memberId = #{memberId};
+	</select>
 </mapper>

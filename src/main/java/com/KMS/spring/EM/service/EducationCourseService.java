@@ -82,5 +82,17 @@ public class EducationCourseService {
 		return ResultData.from("S-1","교육과정 수정 성공","id",educationCourseId);
 		
 	}
+	public ResultData doAdd(int educationCourseId, int memberId) {
+		
+		registeInfo rd = educationCourseRepository.getRegisteInfo(educationCourseId,memberId);
+		
+		if(rd != null) {
+			return ResultData.from("F-1", Ut.f("이미 등록된 수강입니다."));
+		}
+		
+		educationCourseRepository.doAdd(educationCourseId,memberId);
+		
+		return ResultData.from("S-1", Ut.f("수강신청되었습니다."));
+	}
 	
 }

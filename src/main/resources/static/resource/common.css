@@ -732,6 +732,7 @@ nav.close ~ .dashboard .top{
 	background-color: var(--box3-color);
 	display:flex;
 	align-items:center;
+	cursor: pointer;
 }
 .edu-status-card>div{
 	margin:20px;

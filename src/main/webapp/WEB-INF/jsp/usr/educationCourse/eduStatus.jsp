@@ -10,7 +10,7 @@
 	<div class="edu-status-nav-item">수강중인 교육 리스트</div>
 </div>
 <c:forEach var="myeduStatus" items="${myeduStatus}">
-<div class="edu-status-card">
+<div class="edu-status-card" onclick="location.href='../educationCourse/detail?id=${myeduStatus.courseId}';">
 	<div>
 	<div class="edu-status-title">${myeduStatus.title}</div>
 	<div class="edu-status-date">교육기간:${myeduStatus.start}~${myeduStatus.end}</div>

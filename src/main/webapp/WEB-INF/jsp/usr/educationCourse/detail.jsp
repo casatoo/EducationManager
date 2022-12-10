@@ -49,7 +49,12 @@ const educationCourseCancleModify =()=>{
 </script>
 <section class="flex justify-center mt-16">
 	<div class="w-full max-w-lg">
-		<form action="../educationCourse/doModify">
+	<c:if test="${rq.isLogined() && rq.loginedMember.authLevel > 2}">
+	<form action="../educationCourse/doAdd">
+	</c:if>
+	<c:if test="${rq.loginedMember.authLevel <= 2}">
+	<form action="../educationCourse/doModify">
+	</c:if>
 			<input type="hidden" name="educationCourseModifyAuthKey" id="educationCourseModifyAuthKey" />
 			<input type="hidden" name="educationCourseId" id="educationCourseId" value="${educationCourse.id}"/>
 			<div class="flex flex-wrap -mx-3">
@@ -143,8 +148,7 @@ const educationCourseCancleModify =()=>{
 					</select>
 				</div>
 			</div>
-			<c:if
-				test="${rq.loginedMember.authLevel == 1 || rq.loginedMember.authLevel == 2}">
+			<c:if test="${rq.loginedMember.authLevel <= 2}">
 				<button
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hidden"
 					type="submit" id="doModify">수정 완료</button>
@@ -158,7 +162,14 @@ const educationCourseCancleModify =()=>{
 					onclick="educationCourseModify(); createAuthKey();">교육과정
 					수정</button>
 			</c:if>
+			<c:if test="${rq.isLogined() && rq.loginedMember.authLevel > 2 && educationCourse.status == 0}">
+				<button
+					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+					type="submit" id="doModify">수강하기</button>
+			</c:if>
+		<c:if test="${rq.isLogined()}">
 		</form>
+		</c:if>
 	</div>
 </section>
 <%@ include file="../common/foot.jspf"%>
