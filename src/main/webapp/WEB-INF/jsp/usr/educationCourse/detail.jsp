@@ -50,7 +50,7 @@ const educationCourseCancleModify =()=>{
 <section class="flex justify-center mt-16">
 	<div class="w-full max-w-lg">
 	<c:if test="${rq.isLogined() && rq.loginedMember.authLevel > 2}">
-	<form action="../educationCourse/doAdd">
+	<form action="../educationCourse/registe">
 	</c:if>
 	<c:if test="${rq.loginedMember.authLevel <= 2}">
 	<form action="../educationCourse/doModify">

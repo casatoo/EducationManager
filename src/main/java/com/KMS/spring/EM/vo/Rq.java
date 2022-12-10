@@ -218,7 +218,7 @@ public class Rq {
 	public String getArticleDetailUriFromArticleList(Article article) {
 		return "../article/detail?id=" + article.getId() + "&listUri=" + getEncodedCurrentUri();
 	}
-	public String getArticleWriteUriFromArticleList() {
-		return "../article/write?listUri=" + getEncodedCurrentUri();
+	public String getArticleWriteUriFromArticleList(int boardId) {
+		return "../article/write?listUri=" + getEncodedCurrentUri() + "&boardId="+ boardId;
 	}
 }

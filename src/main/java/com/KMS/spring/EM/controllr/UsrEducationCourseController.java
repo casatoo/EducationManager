@@ -28,12 +28,12 @@ public class UsrEducationCourseController {
 	AttrService attrService;
 	
 	
-	@RequestMapping("usr/educationCourse/doAdd")
+	@RequestMapping("usr/educationCourse/registe")
 	@ResponseBody
 	public String doAdd(int educationCourseId) {
 		List<registeInfo> myeduStatus = educationCourseService.getMyeduStatus(rq.getLoginedMemberId());
 		
-		ResultData rd = educationCourseService.doAdd(educationCourseId, rq.getLoginedMemberId());
+		ResultData rd = educationCourseService.registe(educationCourseId, rq.getLoginedMemberId());
 		
 		return Ut.jsReplace(rd.getMsg(), "../educationCourse/eduStatus");
 				

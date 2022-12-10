@@ -67,7 +67,7 @@
 	</table>
 	<c:if test="${rq.isLogined()}">
 	<div class="article-write-btn">
-		<button type="button" onClick="location.href='${rq.getArticleWriteUriFromArticleList()}'">
+		<button type="button" onClick="location.href='${rq.getArticleWriteUriFromArticleList(param.boardId)}'">
 			<i class="uil uil-edit"></i> <span class="link-name">글 작성</span>
 		</button>
 	</div>

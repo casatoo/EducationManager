@@ -20,7 +20,7 @@ public interface EducationCourseRepository {
 
 	public void doModify(int educationCourseId, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status);
 
-	public void doAdd(int educationCourseId, int memberId);
+	public void registe(int educationCourseId, int memberId);
 
 	public registeInfo getRegisteInfo(int educationCourseId, int memberId);
 }

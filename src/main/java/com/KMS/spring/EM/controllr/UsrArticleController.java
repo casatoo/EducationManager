@@ -59,6 +59,9 @@ public class UsrArticleController {
 		if(boardId == null) {
 			return Ut.jsHistoryBack(Ut.f("게시판을 선택해주세요"));
 		}
+		if(boardId == 1 && rq.getLoginedMember().getAuthLevel() >2) {
+			return Ut.jsHistoryBack(Ut.f("공지사항 작성 권한이 없습니다."));
+		}
 		if(Ut.empty(title)) {
 			return Ut.jsHistoryBack(Ut.f("제목을 입력해주세요"));
 		}

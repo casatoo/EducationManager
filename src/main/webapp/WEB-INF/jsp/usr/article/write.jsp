@@ -9,6 +9,12 @@
 <script>
 	let submitWriteFormDone = false;
 	function submitWriteForm(form) {
+		if(form.boardId.value == 1){
+			if(${rq.loginedMember.authLevel >2}){
+				alert('공지사항 작성 권한이 없습니다.');
+				return;
+			}
+		}
 		if (submitWriteFormDone) {
 			alert('처리중입니다');
 			return;
@@ -37,6 +43,15 @@
 </script>
 
 <script>
+const selectBoardId = () => {
+$('#boardId').val("${param.boardId}").prop("selected", true);
+
+}
+setTimeout(selectBoardId, 100);
+
+</script>
+
+<script>
 console.log('${listUri}');
 </script>
 <div class="article-write-box">
@@ -46,7 +61,7 @@ console.log('${listUri}');
 		<input type="hidden" name="body" id="body" />
 		<div class="article-write-title-box">
 		
-			<select name="boardId" required>
+			<select name="boardId" id="boardId" required>
 				<option disabled selected>게시판 선택</option>
 				<option value="1">공지사항</option>
 				<option value="2">자유게시판</option>

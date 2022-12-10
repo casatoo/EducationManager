@@ -49,7 +49,7 @@
 		WHERE id = #{educationCourseId};
 	</update>
 	
-	<insert id="doAdd">
+	<insert id="registe">
 		INSERT INTO registeInfo
 		SET regDate = NOW(),
 		updateDate = NOW(),
