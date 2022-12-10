@@ -223,3 +223,11 @@ WHERE memberId = 3) AS A
 ON M.id = A.manager;
 
 SELECT VERSION();
+
+			SELECT *
+			FROM attr
+			WHERE relId = 5
+			AND relTypeCode = 'educationCourse'
+			AND typeCode = 'extra'
+			AND type2Code = 'educationCourseModifyAuthKey'
+			AND (expireDate >= NOW() OR expireDate IS NULL);

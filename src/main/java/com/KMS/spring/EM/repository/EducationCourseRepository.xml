@@ -37,7 +37,7 @@
 	ON M.id = A.manager;
 	</select>
 	
-	<update id="">
+	<update id="doModify">
 		UPDATE `educationCourse` SET
 		updateDate = NOW(),
 		startOfEducation = DATE(#{startOfEducation}),
@@ -46,6 +46,6 @@
 		place = #{place},
 		managerMemberId = #{managerMemberId},
 		`status` = #{status}
-		WHERE id = #{id};
+		WHERE id = #{educationCourseId};
 	</update>
 </mapper>

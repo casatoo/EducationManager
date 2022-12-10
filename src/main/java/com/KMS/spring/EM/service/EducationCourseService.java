@@ -49,13 +49,12 @@ public class EducationCourseService {
 	 * @param loginMemberId
 	 * @return String
 	 */
-	public String genMemberModifyAuthKey(int loginMemberId) {
-		String memberModifyAuthKey = Ut.getTempPassword(10);
+	public String educationCourseModifyAuthKey(int educationCourseId) {
+		String educationCourseModifyAuthKey = Ut.getTempPassword(10);
 
-		attrService.setValue("member", loginMemberId, "extra", "memberModifyAuthKey", memberModifyAuthKey,
-				Ut.getDateStrLater(60 * 5));
+		attrService.setValue("educationCourse", educationCourseId, "extra", "educationCourseModifyAuthKey", educationCourseModifyAuthKey,Ut.getDateStrLater(60 * 5));
 
-		return memberModifyAuthKey;
+		return educationCourseModifyAuthKey;
 	}
 	
 	
@@ -77,10 +76,10 @@ public class EducationCourseService {
 		
 		return educationCourseRepository.getMyeduStatus(id);
 	}
-	public ResultData doModify(int id, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status) {
+	public ResultData doModify(int educationCourseId, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status) {
 		
-		educationCourseRepository.doModify(id, startOfEducation, endOfEducation, title, place, managerMemberId,status);
-		return ResultData.from("S-1","교육과정 수정 성공","id",id);
+		educationCourseRepository.doModify(educationCourseId, startOfEducation, endOfEducation, title, place, managerMemberId,status);
+		return ResultData.from("S-1","교육과정 수정 성공","id",educationCourseId);
 		
 	}
 	

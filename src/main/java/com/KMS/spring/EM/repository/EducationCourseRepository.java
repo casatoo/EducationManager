@@ -18,5 +18,5 @@ public interface EducationCourseRepository {
 
 	public List<registeInfo> getMyeduStatus(int id);
 
-	public void doModify(int id, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status);
+	public void doModify(int educationCourseId, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status);
 }

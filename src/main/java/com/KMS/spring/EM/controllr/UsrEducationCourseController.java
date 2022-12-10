@@ -74,21 +74,20 @@ public class UsrEducationCourseController {
 	 */
 	@RequestMapping("/usr/educationCourse/createAuthKey")
 	@ResponseBody
-	public String createAuthKey() {
+	public String createAuthKey(int educationCourseId) {
 		
-		String educationCourseModifyAuthKey = educationCourseService.genMemberModifyAuthKey(rq.getLoginedMemberId());
+		String educationCourseModifyAuthKey = educationCourseService.educationCourseModifyAuthKey(educationCourseId);
 		
 		return educationCourseModifyAuthKey;
 	}
 	@RequestMapping("usr/educationCourse/doModify")
 	@ResponseBody
-	public String doModify(int id, String startOfEducation,String endOfEducation,String title, String place,int managerMemberId,int status, String educationCourseModifyAuthKey) {
+	public String doModify(int educationCourseId, String startOfEducation,String endOfEducation,String title, String place,int managerMemberId,int status, String educationCourseModifyAuthKey) {
 		
 		if(educationCourseModifyAuthKey == null) {
 			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
 		}
-		
-		Attr getAttr = attrService.get("educationCourse", rq.getLoginedMemberId(), "extra", "educationCourseModifyAuthKey");
+		Attr getAttr = attrService.get("educationCourse", educationCourseId, "extra", "educationCourseModifyAuthKey");
 		
 		if(getAttr==null) {
 			return Ut.jsHistoryBack(Ut.f("인증코드가 만료되었습니다. 다시 시도해주세요"));
@@ -113,8 +112,8 @@ public class UsrEducationCourseController {
 			return Ut.jsHistoryBack(Ut.f("교육 장소를 입력해주세요"));
 		}
 		
-		ResultData rd = educationCourseService.doModify(id, startOfEducation,endOfEducation,title,place,managerMemberId,status);
+		ResultData rd = educationCourseService.doModify(educationCourseId, startOfEducation,endOfEducation,title,place,managerMemberId,status);
 		
-		return Ut.jsReplace(Ut.f("%d번 교육과정 수정", id),  Ut.f("../educationCourse/detail?id=%d", id));
+		return Ut.jsReplace(Ut.f("%d번 교육과정 수정", educationCourseId),  Ut.f("../educationCourse/detail?id=%d", educationCourseId));
 	}
 }
