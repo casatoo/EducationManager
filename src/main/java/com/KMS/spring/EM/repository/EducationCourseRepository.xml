@@ -36,4 +36,16 @@
 	WHERE memberId = #{id}) AS A
 	ON M.id = A.manager;
 	</select>
+	
+	<update id="">
+		UPDATE `educationCourse` SET
+		updateDate = NOW(),
+		startOfEducation = DATE(#{startOfEducation}),
+		endOfEducation = DATE(#{endOfEducation}),
+		title = #{title},
+		place = #{place},
+		managerMemberId = #{managerMemberId},
+		`status` = #{status}
+		WHERE id = #{id};
+	</update>
 </mapper>

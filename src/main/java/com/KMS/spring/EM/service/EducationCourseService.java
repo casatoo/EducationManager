@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.KMS.spring.EM.repository.EducationCourseRepository;
 import com.KMS.spring.EM.repository.MemberRepository;
+import com.KMS.spring.EM.utill.Ut;
 import com.KMS.spring.EM.vo.EducationCourse;
+import com.KMS.spring.EM.vo.Member;
+import com.KMS.spring.EM.vo.ResultData;
 import com.KMS.spring.EM.vo.registeInfo;
 
 /**
@@ -17,7 +20,8 @@ import com.KMS.spring.EM.vo.registeInfo;
  */
 @Service
 public class EducationCourseService {
-
+	@Autowired
+	private AttrService attrService;
 /**
  * 리포지토리에 연결해야되니까 인스턴스 객체 만들기
  */
@@ -40,6 +44,22 @@ public class EducationCourseService {
 		return educationCourseRepository.getEducationCourseSomeList(limitFrom,itemsInAPage);
 	}
 	/**
+	 * 10자리 인증코드 생성
+	 * attrService에 값 생성
+	 * @param loginMemberId
+	 * @return String
+	 */
+	public String genMemberModifyAuthKey(int loginMemberId) {
+		String memberModifyAuthKey = Ut.getTempPassword(10);
+
+		attrService.setValue("member", loginMemberId, "extra", "memberModifyAuthKey", memberModifyAuthKey,
+				Ut.getDateStrLater(60 * 5));
+
+		return memberModifyAuthKey;
+	}
+	
+	
+	/**
 	 * 교육과정 상세 조회
 	 * @param id
 	 * @return EducationCourse
@@ -47,13 +67,21 @@ public class EducationCourseService {
 	public EducationCourse getEducationCourse(int id) {
 		return educationCourseRepository.getEducationCourse(id);
 	}
+	
 	public List<EducationCourse> getEducationCourseList(){
 		
 		return educationCourseRepository.getEducationCourseList();
 	}
+	
 	public List<registeInfo> getMyeduStatus(int id) {
 		
 		return educationCourseRepository.getMyeduStatus(id);
+	}
+	public ResultData doModify(int id, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status) {
+		
+		educationCourseRepository.doModify(id, startOfEducation, endOfEducation, title, place, managerMemberId,status);
+		return ResultData.from("S-1","교육과정 수정 성공","id",id);
+		
 	}
 	
 }

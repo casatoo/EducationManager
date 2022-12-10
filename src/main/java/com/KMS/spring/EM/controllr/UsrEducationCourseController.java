@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.KMS.spring.EM.service.AttrService;
 import com.KMS.spring.EM.service.EducationCourseService;
+import com.KMS.spring.EM.utill.Ut;
+import com.KMS.spring.EM.vo.Attr;
 import com.KMS.spring.EM.vo.EducationCourse;
 import com.KMS.spring.EM.vo.ResultData;
 import com.KMS.spring.EM.vo.Rq;
@@ -21,6 +24,8 @@ public class UsrEducationCourseController {
 	EducationCourseService educationCourseService;
 	@Autowired
 	private Rq rq;
+	@Autowired
+	AttrService attrService;
 	/**
 	 * 교육과정 상세보기
 	 * 디테일 페이지로 이동
@@ -63,5 +68,53 @@ public class UsrEducationCourseController {
 		model.addAttribute("myeduStatus",myeduStatus);
 		return "usr/educationCourse/eduStatus";
 	}
-
+	/**
+	 * 인증 코드 생성
+	 * @return String
+	 */
+	@RequestMapping("/usr/educationCourse/createAuthKey")
+	@ResponseBody
+	public String createAuthKey() {
+		
+		String educationCourseModifyAuthKey = educationCourseService.genMemberModifyAuthKey(rq.getLoginedMemberId());
+		
+		return educationCourseModifyAuthKey;
+	}
+	@RequestMapping("usr/educationCourse/doModify")
+	@ResponseBody
+	public String doModify(int id, String startOfEducation,String endOfEducation,String title, String place,int managerMemberId,int status, String educationCourseModifyAuthKey) {
+		
+		if(educationCourseModifyAuthKey == null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
+		}
+		
+		Attr getAttr = attrService.get("educationCourse", rq.getLoginedMemberId(), "extra", "educationCourseModifyAuthKey");
+		
+		if(getAttr==null) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 만료되었습니다. 다시 시도해주세요"));
+		}
+		if(!getAttr.getValue().equals(educationCourseModifyAuthKey)) {
+			return Ut.jsHistoryBack(Ut.f("인증코드가 일치하지 않습니다. 다시 시도해주세요"));
+		}
+		
+		startOfEducation = startOfEducation.replaceAll("-","");
+		endOfEducation = endOfEducation.replaceAll("-","");
+		
+		if(Ut.empty(startOfEducation)) {
+			return Ut.jsHistoryBack(Ut.f("교육 시작일을 지정해주세요"));
+		}
+		if(Ut.empty(endOfEducation)) {
+			return Ut.jsHistoryBack(Ut.f("교육 종료일을 지정해주세요"));
+		}
+		if(Ut.empty(title)) {
+			return Ut.jsHistoryBack(Ut.f("교육과정명을 입력해주세요"));
+		}
+		if(Ut.empty(place)) {
+			return Ut.jsHistoryBack(Ut.f("교육 장소를 입력해주세요"));
+		}
+		
+		ResultData rd = educationCourseService.doModify(id, startOfEducation,endOfEducation,title,place,managerMemberId,status);
+		
+		return Ut.jsReplace(Ut.f("%d번 교육과정 수정", id),  Ut.f("../educationCourse/detail?id=%d", id));
+	}
 }
