@@ -24,7 +24,7 @@
 					placeholder="검색어를 입력해주세요" name="searchWord"
 					value="${param.searchWord}" />
 				<div class="article-list-search-btn">
-					<button type="submit">검색</button>
+					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;검색</button>
 				</div>
 			</form>
 		</div>
@@ -68,7 +68,7 @@
 	<c:if test="${rq.isLogined()}">
 	<div class="article-write-btn">
 		<button type="button" onClick="location.href='${rq.getArticleWriteUriFromArticleList(param.boardId)}'">
-			<i class="uil uil-edit"></i> <span class="link-name">글 작성</span>
+			<i class="fa-regular fa-pen-to-square"></i> <span class="link-name">글 작성</span>
 		</button>
 	</div>
 	</c:if>

@@ -129,7 +129,7 @@ const memberCancleModify =()=>{
 	$('#cancleModify').addClass('hidden');
 }
 </script>
-<section class="flex justify-center mt-14">
+<section class="flex justify-center mt-16">
 	<div class="w-full max-w-lg">
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">

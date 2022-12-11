@@ -218,7 +218,7 @@ function getCurrentTime()
 	<div class="dash-content">
 		<div class="overview">
 			<div class="title">
-				<i class="uil uil-location-arrow"></i> <span class="text">교육과정
+				<i class="fa-brands fa-twitter"></i><span class="text">교육과정
 					바로가기</span>
 			</div>
 			<c:if test="${empty educationCourses}">
@@ -229,7 +229,7 @@ function getCurrentTime()
 				<c:forEach var="educationCourse" items="${educationCourses}">
 					<div class="box box1"
 						onclick="location.href='../educationCourse/detail?id=${educationCourse.id}';">
-						<span class="text-title"><i class="uil uil-pen"></i>${educationCourse.title}</span>
+						<span class="text-title"><i class="fa-solid fa-pencil"></i>${educationCourse.title}</span>
 						<span class="text-date">${educationCourse.startOfEducation}~${educationCourse.endOfEducation}</span>
 						<span class="text-manager">담당자:${educationCourse.extra__managerName}</span>
 						<c:if test="${educationCourse.status == 0}">
@@ -245,7 +245,7 @@ function getCurrentTime()
 		<div class="section-2">
 			<div class="activity">
 				<div class="title">
-					<i class="uil uil-bell"></i><span class="text">최근 공지사항</span>
+					<i class="fa-regular fa-bell"></i><span class="text">최근 공지사항</span>
 				</div>
 
 				<div class="recentNotice">
@@ -278,7 +278,7 @@ function getCurrentTime()
 			</div>
 			<div class="weather">
 				<div class="title">
-					<i class="uil uil-sunset"></i> <span class="text">날씨</span>
+					<i class="fa-solid fa-temperature-high"></i> <span class="text">날씨</span>
 				</div>
 				<div class="boxes">
 					<div class="weather-box box2">

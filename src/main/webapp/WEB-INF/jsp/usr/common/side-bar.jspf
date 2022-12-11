@@ -12,32 +12,32 @@
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="../member/userInfo">
-                    <i class="uil uil-user"></i>
+                    <i class="fa-regular fa-user"></i>
                     <span class="link-name">내 정보</span>
                 </a></li>
                 <li><a href="../educationCourse/eduStatus">
-                    <i class="uil uil-user-exclamation"></i>
+                    <i class="fa-regular fa-address-book"></i>
                     <span class="link-name">나의 교육정보</span>
                 </a></li>
                 <li><a href="../article/list?boardId=1">
-                    <i class="uil uil-bell"></i>
+                    <i class="fa-regular fa-bell"></i>
                     <span class="link-name">공지사항</span>
                 </a></li>
                 <li><a href="../article/list?boardId=2">
-                    <i class="uil uil-list-ul"></i>
+                    <i class="fa-regular fa-comments"></i>
                     <span class="link-name">자유게시판</span>
                 </a></li>
                 <li><a href="../article/list?boardId=3">
-                    <i class="uil uil-question"></i>
+                    <i class="fa-regular fa-circle-question"></i>
                     <span class="link-name">Q&A</span>
                 </a></li>
                 <li><a href="../educationCourse/calendar">
-                    <i class="uil uil-calendar-alt"></i>
+                    <i class="fa-regular fa-calendar-check"></i>
                     <span class="link-name">교육일정</span>
                 </a></li>
                 <c:if test="${rq.loginedMember.authLevel == 1 || rq.loginedMember.authLevel == 2}">
                 	<li><a href="../member/memberList">
-                    <i class="uil uil-user-md"></i>
+                    <i class="fa-solid fa-user-secret"></i>
                     <span class="link-name">관리자 페이지</span>
                 </a></li>
 				</c:if>
@@ -47,19 +47,19 @@
             <ul class="logout-mode">
             	<c:if test="${rq.isLogined()}">
                 <li><a href="${rq.logoutUri}">
-                    <i class="uil uil-signout"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span class="link-name">로그아웃</span>
                 </a></li>
 				</c:if>
 				<c:if test="${!rq.isLogined()}">
                 <li><a href="${rq.loginUri}">
-                    <i class="uil uil-signin"></i>
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     <span class="link-name">로그인</span>
                 </a></li>
 				</c:if>
                 <li class="mode">
                     <a href="#">
-                        <i class="uil uil-moon"></i>
+                       <i class="fa-regular fa-moon"></i>
                     <span class="link-name">Dark Mode</span>
                 </a>
 

@@ -188,6 +188,7 @@ public class Rq {
 
 		switch (requestUri) {
 		case "/usr/member/info":
+		case "/usr/member/memberList":
 			return "../member/doLogout?afterLogoutUri=" + "/";
 		}
 

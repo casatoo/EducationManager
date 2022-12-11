@@ -71,10 +71,10 @@ const findLoginId = (form) =>{
 						<div class="flex items-center justify-between">
 							<button
 								class="loginPage-btn bg-blue-200"
-								type="button" onclick="findLoginId(this.form)">찾기</button>
+								type="button" onclick="findLoginId(this.form)"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;찾기</button>
 							<button
 								class="loginPage-btn bg-blue-200"
-								type="button" onclick="findLoginIdCancleBtn()">닫기</button>
+								type="button" onclick="findLoginIdCancleBtn()"><i class="fa-regular fa-circle-xmark"></i>&nbsp;닫기</button>
 						</div>
 						<div class="findLoginIdMessage"></div>
 					</form>
@@ -114,10 +114,10 @@ const findLoginId = (form) =>{
 						<div class="flex items-center justify-between">
 							<button
 								class="loginPage-btn bg-blue-200"
-								type="submit">찾기</button>
+								type="submit"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;찾기</button>
 							<div
 								class="loginPage-btn bg-blue-200"
-								onclick="findPasswordCancleBtn()">닫기</div>
+								onclick="findPasswordCancleBtn()"><i class="fa-regular fa-circle-xmark"></i>&nbsp;닫기</div>
 						</div>
 					</form>
 				</div>
@@ -130,7 +130,7 @@ const findLoginId = (form) =>{
 				class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 				<div class="text-center text-3xl">
 					<h1>
-						<i class="uil uil-signin"></i>로그인
+						<i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;&nbsp;&nbsp;로그인
 					</h1>
 				</div>
 				<input type="hidden" name="afterLoginUri"
@@ -151,16 +151,16 @@ const findLoginId = (form) =>{
 				<div class="flex flex-col justify-center">
 					<button
 						class="loginPage-btn bg-blue-200"
-						type="submit">로그인</button>
+						type="submit"> <i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;&nbsp;&nbsp;로그인</button>
 					<a
 						class="loginPage-btn bg-blue-200"
-						type="button" href="../member/join"> 회원가입 </a>
+						type="button" href="../member/join"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;회원가입 </a>
 					<div
 						class="loginPage-btn bg-blue-200"
-						onClick="findLoginIdModal()">아이디 찾기</div>
+						onClick="findLoginIdModal()"><i class="fa-solid fa-user-shield"></i>&nbsp;&nbsp;&nbsp;아이디 찾기</div>
 					<div
 						class="loginPage-btn bg-blue-200"
-						onClick="findPasswordModal()">비밀번호 찾기</div>
+						onClick="findPasswordModal()"><i class="fa-solid fa-shield-halved"></i>&nbsp;&nbsp;&nbsp;비밀번호 찾기</div>
 				</div>
 			</form>
 		</div>

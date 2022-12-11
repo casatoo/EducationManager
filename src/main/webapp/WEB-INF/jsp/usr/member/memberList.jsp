@@ -22,7 +22,7 @@
 					placeholder="검색어를 입력해주세요" name="searchWord"
 					value="${param.searchWord}" />
 				<div class="member-list-search-btn">
-					<button type="submit">검색</button>
+					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;검색</button>
 				</div>
 			</form>
 		</div>
@@ -82,7 +82,7 @@ $('.checkbox-all-member-id').change(function() {
 </script>
 	<div class="member-delete-btn">
 		<button type="button" class="btn-delete-selected-members">
-			<i class="uil uil-edit"></i> <span class="link-name">선택삭제</span>
+			<i class="fa-solid fa-user-slash"></i> <span class="link-name">선택삭제</span>
 		</button>
 	</div>
 	<form hidden method="POST" name="do-delete-members-form"

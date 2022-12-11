@@ -23,8 +23,6 @@
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
 
-<%-- UNICONS --%>
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 <script src="/resource/common.js" defer="defer"></script>
 <link rel="shortcut icon" href="/favicon.ico" />

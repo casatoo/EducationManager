@@ -47,7 +47,7 @@ const modifyCancleBtn = (count) =>{
 			<input type="hidden" value="${listUri}" name="listUri" />
 			<label for="comment" class="comment-input-label">댓글남기기 :&nbsp;</label> 
 			<input type="text" placeholder="댓글" id="commentWrite" name="comment" class="comment-input" required />
-			<div class="comment-input-btn"><button type="submit">작성</button></div>
+			<div class="comment-input-btn"><button type="submit"><i class="fa-regular fa-paper-plane"></i>&nbsp;작성</button></div>
 		</form>
 	</div>
 	</c:if>

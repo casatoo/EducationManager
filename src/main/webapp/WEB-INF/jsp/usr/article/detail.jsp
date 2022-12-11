@@ -209,12 +209,12 @@ const loginAlert = () => {
 	</div>
 </div>
 <div class="article-detail-btn-box">
-<button onclick="location.href='${param.listUri }'">뒤로가기</button>
+<button onclick="location.href='${param.listUri }'"><i class="fa-solid fa-rotate-left"></i>&nbsp;&nbsp;뒤로가기</button>
 <c:if test="${rq.loginedMemberId eq article.memberId}">
 	<button
-		onclick="location.href='../article/modify?id=${article.id }&listUri=${listUri}';">수정</button>
+		onclick="location.href='../article/modify?id=${article.id }&listUri=${listUri}';"><i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;&nbsp;수정</button>
 	<button
-		onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false; location.href='../article/doDelete?id=${article.id }&boardId=${article.boardId}';">삭제</button>
+		onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false; location.href='../article/doDelete?id=${article.id }&boardId=${article.boardId}';"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;삭제</button>
 </c:if>
 </div>
 <%@ include file="../article/comment.jspf"%>

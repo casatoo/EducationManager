@@ -20,12 +20,11 @@ a{
 
 /** 사이드 바 */
 /* ===== Google Font Import - Poppins ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'SEBANG_Gothic_Bold', sans-serif;
+    font-family: 'SEBANG_Gothic_Bold';
 }
 
 :root{
@@ -895,6 +894,7 @@ nav.close ~ .dashboard .top{
 }
 .comment-input-label{
 	flex-grow:0;
+	color: var(--text-color);
 }
 .comment-input-btn{
 	flex-grow:1;
@@ -917,6 +917,7 @@ nav.close ~ .dashboard .top{
 .comment-list-writer{
 	flex-grow:2;
 	text-align:center;
+	color: var(--text-color);
 }
 .comment-list-body{
 	flex-grow:7;
@@ -972,6 +973,7 @@ nav.close ~ .dashboard .top{
 /** 회원 관리 */
 .member-list-title{
 	font-size: 2rem;
+	color: var(--text-color);
 }
 .member-list-thead{
   background-color:var(--box3-color);
