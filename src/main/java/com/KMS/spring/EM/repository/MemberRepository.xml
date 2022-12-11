@@ -57,11 +57,24 @@
 	WHERE id = #{id};
 	</update>
 	
+	<select id="getTotalMember" resultType="int">
+	SELECT COUNT(*) FROM `member` 
+	where delStatus = 0
+	<if test="searchWord !=''">
+		AND ${searchFrom}
+		LIKE '%${searchWord}%'
+	</if>
+	</select>
+	
 	<select id="getMemberList" resultType="Member">
 	SELECT * FROM `member` 
-	WHERE `name` 
-	LIKE '%${name}%'
-	ORDER BY id DESC;
+	where delStatus = 0
+	<if test="searchWord !=''">
+		AND ${searchFrom}
+		LIKE '%${searchWord}%'
+	</if>
+		ORDER BY id DESC
+		LIMIT #{limitFrom} , #{itemsInAPage}
 	</select>
 	
 	<update id="doModify">

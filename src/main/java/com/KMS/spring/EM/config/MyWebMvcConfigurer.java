@@ -50,7 +50,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 			.addPathPatterns("/usr/educationCourse/eduStatus");
 			
 		ir = registry.addInterceptor(needAdnimistratorInterceptor)
-			.addPathPatterns("/usr/member/administrator")
+			.addPathPatterns("/usr/member/memberList")
 			.addPathPatterns("/usr/educationCourse/doModify");
 		
 		}

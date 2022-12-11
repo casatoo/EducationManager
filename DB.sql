@@ -28,10 +28,15 @@ INSERT INTO `member`(regDate,updateDate,loginId,loginPw,birthDay,`authLevel`,`na
 (NOW(),NOW(),'admin','admin',DATE(19970203),1,'관리자','kimminwoo','01012341234','casato6666@gmail.com'),
 (NOW(),NOW(),'id1','pw1',DATE(19970203),1,'직원','user1','0101235678','a333d@gmail.com'),
 (NOW(),NOW(),'id2','pw2',DATE(19991003),3,'사용자2','user2','01012345678','asddd@gmail.com'),
-(NOW(),NOW(),'id3','pw3',DATE(20011103),3,'사용자3','user3','01056789012','a21233@gmail.com'),
-(NOW(),NOW(),'id4','pw4',DATE(20011103),3,'사용자4','user4','01051234012','a212sdf3@gmail.com'),
-(NOW(),NOW(),'id5','pw5',DATE(20011103),3,'사용자5','user5','01056344312','a2sd33@gmail.com'),
-(NOW(),NOW(),'id6','pw6',DATE(20011103),3,'사용자6','user6','01052390122','a22313@gmail.com');
+(NOW(),NOW(),'id3','pw3',DATE(20011103),3,'사용자3','user3','01056789012','a21adfg33@gmail.com'),
+(NOW(),NOW(),'id4','pw4',DATE(20011103),3,'사용자4','user4','01051234012','a21adfgdf3@gmail.com'),
+(NOW(),NOW(),'id5','pw5',DATE(20011103),3,'사용자5','user5','01056344312','a2sadfg3@gmail.com'),
+(NOW(),NOW(),'id6','pw6',DATE(20011103),3,'사용자6','user6','01052390122','a2adfg13@gmail.com'),
+(NOW(),NOW(),'id7','pw7',DATE(19991003),3,'사용자7','user7','01012123678','asddd@gmail.com'),
+(NOW(),NOW(),'id8','pw8',DATE(20011103),3,'사용자8','user8','01056789012','a21agf3@gmail.com'),
+(NOW(),NOW(),'id9','pw9',DATE(20011103),3,'사용자9','user9','01051231232','a21afgf3@gmail.com'),
+(NOW(),NOW(),'id10','pw10',DATE(20011103),3,'사용자10','user10','01012344312','aqd33@gmail.com'),
+(NOW(),NOW(),'id11','pw11',DATE(20011103),3,'사용자11','user11','01052312322','a22213@gmail.com');
 
 UPDATE `member`
 SET loginPw = SHA2(loginPw, 256);
@@ -199,47 +204,15 @@ SELECT * FROM article;
 SELECT * FROM board;
 SELECT * FROM registeInfo;
 
-#        - 과목 명
-#        - 과목 기간
-#        - 진행 상황 %
-#        - 수료 / 미수료
-#        - 담당자 ( 담당자 전화번호 )
-SELECT * FROM registeInfo WHERE memberId = 3;
 
-SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`,E.title AS title
-FROM registeInfo AS R 
-INNER JOIN 
-educationCourse AS E 
-ON R.courseId = E.id
-WHERE memberId = 3;
-
-SELECT A.*,M.name AS extra__managerName, M.cellphoneNum AS extra__managerCellphoneNum FROM `member` AS M
-INNER JOIN (SELECT R.* ,E.managerMemberId AS manager,E.startOfEducation AS `start`,E.endOfEducation AS `end`,E.title AS title
-FROM registeInfo AS R 
-INNER JOIN 
-educationCourse AS E 
-ON R.courseId = E.id
-WHERE memberId = 3) AS A
-ON M.id = A.manager;
-
-
-SELECT * FROM registeInfo
-WHERE courseId = 6 
-AND memberId = 4;
-
-SELECT VERSION();
-
-			SELECT *
-			FROM attr
-			WHERE relId = 5
-			AND relTypeCode = 'educationCourse'
-			AND typeCode = 'extra'
-			AND type2Code = 'educationCourseModifyAuthKey'
-			AND (expireDate >= NOW() OR expireDate IS NULL);
-			
-			
-		INSERT INTO registeInfo
-		SET regDate = NOW(),
-		updateDate = NOW(),
-		courseId = #{courseId},
-		memberId = #{memberId};
+	SELECT * FROM `member` 
+	WHERE delStatus = 0
+		AND `name`
+		LIKE '%사%'
+		ORDER BY id DESC
+		LIMIT 0 , 10;
+		
+	SELECT COUNT(*) FROM `member` 
+	WHERE delStatus = 0
+		AND `name`
+		LIKE '%사%';

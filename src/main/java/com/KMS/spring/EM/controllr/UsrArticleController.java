@@ -101,7 +101,7 @@ public class UsrArticleController {
 		int itemsInAPage = 10;
 		int limitFrom = (page - 1) * itemsInAPage;
 		
-		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(),boardId,limitFrom,itemsInAPage, searchWord, searchFrom);
+		List<Article> articles = articleService.getForPrintArticles(boardId,limitFrom,itemsInAPage, searchWord, searchFrom);
 		int getTotalArticle = articleService.getTotalArticle(boardId, searchWord, searchFrom);
 		int pageCount = (int) Math.ceil((double)getTotalArticle/itemsInAPage);
 		

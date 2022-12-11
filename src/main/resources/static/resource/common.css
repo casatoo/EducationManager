@@ -969,3 +969,97 @@ nav.close ~ .dashboard .top{
 	justify-content: center;
 	align-content: center;
 }
+/** 회원 관리 */
+.member-list-title{
+	font-size: 2rem;
+}
+.member-list-thead{
+  background-color:var(--box3-color);
+  color:var(--primary-color);
+}
+.member-list-table{
+  text-align:center;
+  border-collapse:collapse;
+  table-layout:fixed;
+  color: var(--text-color);
+}
+.member-list-thead>tr>th{
+  height:50px;
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+}
+.member-list-tbody>tr>td, th{
+  height:30px;
+  white-space:nowrap;
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  
+}
+.member-list-tbody>tr{
+	transition:0.3s;
+}
+.member-list-tbody>tr:hover{
+  background-color:var(--border-color);
+}
+.member-list-box{
+  display:flex;
+  flex-direction:column;
+  width:auto;
+  margin:0 30px;
+  min-width:740px;
+  margin-top: 100px;
+}
+.search-box{
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  margin-bottom: 10px;
+  height:50px;
+}
+.input-member-search{
+	width:300px;
+}
+.input-member-select{
+	appearance: none;
+}
+
+.member-list-search-btn{
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	width:100px;
+	border-radius:8px;
+	display:inline-block;
+}
+.member-list-search-btn > button{
+	width:100%;
+	height:40px;
+}
+.member-badge{
+	background-color: var(--primary-color);
+	margin-right: 0.5rem;
+	padding-left: 0.625rem;
+	padding-right: 0.625rem;
+	padding-top: 0.125rem;
+	padding-bottom: 0.125rem;
+	border-radius: 0.25rem;
+	color: var(--text-color);
+}
+.page-move-btn{
+	background-color: var(--primary-color);
+	width:30px;
+	height: 30px;
+	border-radius: 0.25rem;
+	color: var(--text-color);
+}
+
+.page-move-btn-active{
+	background-color: var(--active-btn-color);
+	width:30px;
+	height: 30px;
+	border-radius: 0.25rem;
+	color: var(--box3-color);
+}
+
+.page-move-btn-not-active{
+	cursor: default;
+}

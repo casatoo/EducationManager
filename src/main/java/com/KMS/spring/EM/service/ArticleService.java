@@ -55,7 +55,7 @@ public class ArticleService {
 	 * @param searchFrom
 	 * @return List<Article> 게시글 리스트
 	 */
-	public List<Article> getForPrintArticles(int actorId, int boardId, int limitFrom, int itemsInAPage, String searchWord, String searchFrom) {
+	public List<Article> getForPrintArticles(int boardId, int limitFrom, int itemsInAPage, String searchWord, String searchFrom) {
 		List<Article> articles = articleRepository.getArticles(boardId,limitFrom,itemsInAPage, searchWord, searchFrom);
 		
 		return articles;

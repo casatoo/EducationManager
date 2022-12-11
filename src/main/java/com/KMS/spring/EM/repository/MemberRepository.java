@@ -24,12 +24,14 @@ public interface MemberRepository {
 
 	public void quitMember(int id);
 
-	public List<Member> getMemberList(String name);
+	public List<Member> getMemberList(int limitFrom,int itemsInAPage,String searchWord,String searchFrom);
 	
 	public void doModify(String birthDay, String englishName ,String cellphoneNum, String email, int memberId);
 	
 	public void doChangePassword(int memberId, String loginPw);
 	
 	public int matchLoginId(String loginId);
+
+	public int getTotalMember(String searchWord, String searchFrom);
 	
 }

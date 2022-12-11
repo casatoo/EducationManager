@@ -36,7 +36,7 @@
                     <span class="link-name">교육일정</span>
                 </a></li>
                 <c:if test="${rq.loginedMember.authLevel == 1 || rq.loginedMember.authLevel == 2}">
-                	<li><a href="../member/administrator">
+                	<li><a href="../member/memberList">
                     <i class="uil uil-user-md"></i>
                     <span class="link-name">관리자 페이지</span>
                 </a></li>

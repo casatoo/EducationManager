@@ -248,12 +248,28 @@ public class UsrMemberController {
 	 * @param model
 	 * @return String
 	 */
-	@RequestMapping("usr/member/administrator")
-	public String administrator(@RequestParam(defaultValue = "")String searchName, Model model) {
-		List<Member> memberList = memberService.getMemberList(searchName);
+	@RequestMapping("usr/member/memberList")
+	public String memberList(
+			@RequestParam(defaultValue = "1")Integer page,
+			@RequestParam(defaultValue = "")String searchWord,
+			@RequestParam(defaultValue = "") String searchFrom,
+			Model model) {
+		
+		int itemsInAPage = 10;
+		int limitFrom = (page - 1) * itemsInAPage;
+		
+		List<Member> memberList = memberService.getMemberList(limitFrom,itemsInAPage, searchWord, searchFrom);
+		
+		int getTotalMember = memberService.getTotalMember(searchWord, searchFrom);
+		int pageCount = (int) Math.ceil((double)getTotalMember/itemsInAPage);
 		
 		model.addAttribute("memberList",memberList);
-		return "/usr/member/administrator";
+		model.addAttribute("searchFrom",searchFrom);
+		model.addAttribute("searchWord",searchWord);
+		model.addAttribute("getTotalMember",getTotalMember);
+		model.addAttribute("page",page);
+		model.addAttribute("pageCount",pageCount);
+		return "/usr/member/memberList";
 	}
 	/**
 	 * 회원정보 수정

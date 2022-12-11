@@ -106,8 +106,6 @@
 					onclick="location.href='../article/list${pageBaseUri}&page=${pageCount}';">${pageCount}</button>
 			</c:if>
 		</div>
-
 	</div>
-
 </div>
 <%@ include file="../common/foot.jspf"%>
