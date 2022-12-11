@@ -1,5 +1,6 @@
 package com.KMS.spring.EM.controllr;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -377,6 +378,21 @@ public class UsrMemberController {
 		ResultData rd = memberService.doCheckLoginId(loginId);
 		
 		return rd;
+	}
+	
+	@RequestMapping("usr/member/doDeleteMembers")
+	@ResponseBody
+	public String doDeleteMembers(@RequestParam(defaultValue = "") String ids,
+			@RequestParam(defaultValue = "/adm/member/list") String replaceUri) {
+		List<Integer> memberIds = new ArrayList<>();
+
+		for (String idStr : ids.split(",")) {
+			memberIds.add(Integer.parseInt(idStr));
+		}
+
+		memberService.deleteMembers(memberIds);
+
+		return Ut.jsReplace("해당 회원들이 삭제되었습니다.", replaceUri);
 	}
 
 }

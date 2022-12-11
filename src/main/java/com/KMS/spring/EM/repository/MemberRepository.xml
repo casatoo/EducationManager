@@ -94,7 +94,7 @@
 		WHERE id = #{memberId}
 	</update>
 	
-		<select id="matchLoginId" resultType="int">
+	<select id="matchLoginId" resultType="int">
 		SELECT COUNT(*)
 		FROM
 		`member`
@@ -102,6 +102,12 @@
 		= #{loginId}
 	</select>
 	
-
+	<update id="deleteMember">
+		UPDATE `member` SET
+		updateDate = NOW(),
+		delStatus = 1,
+		delDate = NOW()
+		WHERE id = #{id}
+	</update>
 
 </mapper>

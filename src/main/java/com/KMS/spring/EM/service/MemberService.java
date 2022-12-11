@@ -246,5 +246,18 @@ public class MemberService {
 	public int getTotalMember(String searchWord, String searchFrom) {
 		return memberRepository.getTotalMember(searchWord,searchFrom);
 	}
+
+	public void deleteMembers(List<Integer> memberIds) {
+		for (int memberId : memberIds) {
+			Member member = getMemberById(memberId);
+
+			if (member != null) {
+				deleteMember(member);
+			}
+		}
+	}
+	private void deleteMember(Member member) {
+		memberRepository.deleteMember(member.getId());
+	}
 	
 }

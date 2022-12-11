@@ -1063,3 +1063,14 @@ nav.close ~ .dashboard .top{
 .page-move-btn-not-active{
 	cursor: default;
 }
+.member-delete-btn{
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	width:100px;
+	border-radius:8px;
+	margin-top: 10px;
+}
+.member-delete-btn>button{
+	width:100px;
+	text-align: center;
+}

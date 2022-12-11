@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="memberList" />
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/side-bar.jspf"%>
+
 
 
 <div class="member-list-box">
@@ -13,7 +15,8 @@
 		</div>
 		<div>
 			<form action="../member/list">
-				<select class="input-member-select rounded-lg" data-value="${param.searchFrom}" name="searchFrom" required>
+				<select class="input-member-select rounded-lg"
+					data-value="${param.searchFrom}" name="searchFrom" required>
 					<option value="memberName" selected>이름</option>
 				</select> <input class="input-member-search rounded-lg" type="text"
 					placeholder="검색어를 입력해주세요" name="searchWord"
@@ -57,11 +60,51 @@
 					<td>${member.name}</td>
 					<td>${member.cellphoneNum}</td>
 					<td>${member.email}</td>
-					<th><input type="checkbox" class="checkbox-member-id" value="${member.id }" /></th>
+					<th><input type="checkbox" class="checkbox-member-id"
+						value="${member.id }" /></th>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<script>
+$('.checkbox-all-member-id').change(function() {
+    const $all = $(this);
+    const allChecked = $all.prop('checked');
+    $('.checkbox-member-id').prop('checked', allChecked);
+  });
+  $('.checkbox-member-id').change(function() {
+    const checkboxMemberIdCount = $('.checkbox-member-id').length;
+    const checkboxMemberIdCheckedCount = $('.checkbox-member-id:checked').length;
+    const allChecked = checkboxMemberIdCount == checkboxMemberIdCheckedCount;
+    $('.checkbox-all-member-id').prop('checked', allChecked);
+    
+  });
+</script>
+	<div class="member-delete-btn">
+		<button type="button" class="btn-delete-selected-members">
+			<i class="uil uil-edit"></i> <span class="link-name">선택삭제</span>
+		</button>
+	</div>
+	<form hidden method="POST" name="do-delete-members-form"
+		action="../member/doDeleteMembers">
+		<input type="hidden" name="ids" value="" />
+		<input type="hidden" name="replaceUri" value="${rq.currentUri}" />
+	</form>
+
+	<script>
+    		$('.btn-delete-selected-members').click(function() {
+      			const values = $('.checkbox-member-id:checked').map((index, el) => el.value).toArray();
+      			if ( values.length == 0 ) {
+       		 		alert('삭제할 회원을 선택 해주세요.');
+       		 		return;
+     			}
+      			if ( confirm('정말 삭제하시겠습니까?') == false ) {
+        			return;
+     			}
+      			document['do-delete-members-form'].ids.value = values.join(',');
+      			document['do-delete-members-form'].submit();
+    		});
+    	</script>
 	<div class="flex justify-center mb-11">
 
 		<div class="mt-4">
@@ -71,7 +114,8 @@
 			<c:set var="endPage"
 				value="${page + pageMenuLen <= pageCount ? page + pageMenuLen : pageCount}" />
 			<c:set var="pageBaseUri" value="?searchWord=${param.searchWord}" />
-			<c:set var="pageBaseUri" value="${pageBaseUri}&searchFrom=${param.searchFrom}" />
+			<c:set var="pageBaseUri"
+				value="${pageBaseUri}&searchFrom=${param.searchFrom}" />
 			<c:if test="${startPage > 1}">
 				<button class="page-move-btn"
 					onclick="location.href='../member/memberList${pageBaseUri}&page=1';">1</button>

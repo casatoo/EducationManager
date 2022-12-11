@@ -32,7 +32,7 @@ public class UsrHomeController {
 		/**
 		 * 최근 작성된 공지사항 게시글 6개 가져옴
 		 */
-		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), 1, 0, 6, "", "");
+		List<Article> articles = articleService.getForPrintArticles(1, 0, 6, "", "");
 		
 		model.addAttribute("educationCourses",educationCourses);
 		model.addAttribute("articles",articles);

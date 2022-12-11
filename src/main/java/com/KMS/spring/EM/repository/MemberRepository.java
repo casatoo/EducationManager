@@ -33,5 +33,7 @@ public interface MemberRepository {
 	public int matchLoginId(String loginId);
 
 	public int getTotalMember(String searchWord, String searchFrom);
+
+	public void deleteMember(int id);
 	
 }
