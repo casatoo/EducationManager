@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KMS.spring.EM.service.AttrService;
@@ -138,5 +139,38 @@ public class UsrEducationCourseController {
 		
 		return Ut.jsReplace(rd.getMsg(), "../educationCourse/eduStatus");
 				
+	}
+	@RequestMapping("usr/educationCourse/create")
+	@ResponseBody
+	public String create(String title, String startOfEducation, String endOfEducation,String place, int managerMemberId ) {
+		
+		if(Ut.empty(startOfEducation)) {
+			return Ut.jsHistoryBack(Ut.f("교육 시작일을 지정해주세요"));
+		}
+		if(Ut.empty(endOfEducation)) {
+			return Ut.jsHistoryBack(Ut.f("교육 종료일을 지정해주세요"));
+		}
+		if(Ut.empty(title)) {
+			return Ut.jsHistoryBack(Ut.f("교육과정명을 입력해주세요"));
+		}
+		if(Ut.empty(place)) {
+			return Ut.jsHistoryBack(Ut.f("교육 장소를 입력해주세요"));
+		}
+		if(Ut.empty(managerMemberId)) {
+			return Ut.jsHistoryBack(Ut.f("담당자를 선택해주세요"));
+		}
+		
+		ResultData rd = educationCourseService.create(title,startOfEducation,endOfEducation,place,managerMemberId);
+		
+		return Ut.jsReplace(rd.getMsg(), "../educationCourse/calendar");
+	}
+	
+	@RequestMapping("usr/educationCourse/delete")
+	@ResponseBody
+	public String delete(int educationCourseId) {
+		
+		ResultData rd = educationCourseService.delete(educationCourseId);
+		
+		return Ut.jsReplace(rd.getMsg(), "../educationCourse/calendar");
 	}
 }

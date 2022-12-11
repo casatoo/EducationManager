@@ -37,21 +37,24 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 			.addPathPatterns("/usr/member/userInfo")
 			.addPathPatterns("/usr/member/doModify")
 			.addPathPatterns("/usr/member/quitMember")
+			.addPathPatterns("/usr/member/memberList")
 			.addPathPatterns("/usr/article/doAdd")
 			.addPathPatterns("/usr/article/write")
 			.addPathPatterns("/usr/article/modify")
 			.addPathPatterns("/usr/article/doModify")
-			.addPathPatterns("/usr/article/doDelete")
-			.addPathPatterns("/usr/member/administrator")			
+			.addPathPatterns("/usr/article/doDelete")			
 			.addPathPatterns("/usr/reaction/doReaction")
 			.addPathPatterns("/usr/comment/doAdd")
 			.addPathPatterns("/usr/comment/doDelete")
 			.addPathPatterns("/usr/comment/doModify")
-			.addPathPatterns("/usr/educationCourse/eduStatus");
+			.addPathPatterns("/usr/educationCourse/eduStatus")
+			.addPathPatterns("/usr/educationCourse/doModify")
+			.addPathPatterns("/usr/educationCourse/create");
 			
 		ir = registry.addInterceptor(needAdnimistratorInterceptor)
 			.addPathPatterns("/usr/member/memberList")
-			.addPathPatterns("/usr/educationCourse/doModify");
+			.addPathPatterns("/usr/educationCourse/doModify")
+			.addPathPatterns("/usr/educationCourse/create");
 		
 		}
 

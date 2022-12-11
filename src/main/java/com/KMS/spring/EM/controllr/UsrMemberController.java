@@ -392,7 +392,7 @@ public class UsrMemberController {
 
 		memberService.deleteMembers(memberIds);
 
-		return Ut.jsReplace("해당 회원들이 삭제되었습니다.", replaceUri);
+		return Ut.jsReplace("해당 회원이 삭제되었습니다.", replaceUri);
 	}
 
 }

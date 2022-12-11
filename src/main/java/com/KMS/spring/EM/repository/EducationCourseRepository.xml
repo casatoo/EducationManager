@@ -68,4 +68,25 @@
 		WHERE courseId = #{educationCourseId}
 		AND memberId =  #{memberId};
 	</delete>
+	
+	<select id="getEducationCourseByTitle" resultType="EducationCourse">
+		SELECT * FROM educationCourse
+		WHERE title = #{title};
+	</select>
+	
+	<insert id="create">
+		INSERT INTO educationCourse
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		startOfEducation = DATE(#{startOfEducation}),
+		endOfEducation = DATE(#{endOfEducation}),
+		title = #{title},
+		place = #{place},
+		managerMemberId = #{managerMemberId}
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM educationCourse
+		WHERE id = #{educationCourseId};
+	</delete>
 </mapper>

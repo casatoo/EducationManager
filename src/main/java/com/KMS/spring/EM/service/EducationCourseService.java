@@ -106,5 +106,26 @@ public class EducationCourseService {
 		
 		return ResultData.from("S-1","수강취소되었습니다.","id",educationCourseId);
 	}
+	public ResultData create(String title, String startOfEducation, String endOfEducation, String place,
+			int managerMemberId) {
+			
+		EducationCourse educationCourse= educationCourseRepository.getEducationCourseByTitle(title);
+		if(educationCourse != null) {
+			return ResultData.from("F-1", Ut.f("이미 등록된 과정입니다."));
+		}
+		
+		educationCourseRepository.create(title,startOfEducation,endOfEducation,place,managerMemberId);
+		
+		return ResultData.from("S-1", Ut.f("교육과정 등록 성공"));
+	}
+	public ResultData delete(int educationCourseId) {
+		
+		EducationCourse educationCourse = educationCourseRepository.getEducationCourse(educationCourseId);
+		if(educationCourse == null) {
+			return ResultData.from("F-1", Ut.f("존재하지 않는 교육과정입니다."));
+		}
+		educationCourseRepository.delete(educationCourseId);
+		return ResultData.from("S-1", Ut.f("교육과정을 삭제 했습니다."));
+	}
 	
 }

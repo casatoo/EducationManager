@@ -167,7 +167,16 @@ const educationCourseCancleModify =()=>{
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					type="submit" id="doModify">수강하기</button>
 			</c:if>
+			
 		<c:if test="${rq.isLogined()}">
+		</form>
+		</c:if>
+		
+		<c:if test="${rq.loginedMember.authLevel <= 2}">
+		<form action="../educationCourse/delete">
+			<input type="hidden" name="educationCourseId" id="educationCourseId" value="${educationCourse.id}"/>
+			<button class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-14"
+					type="submit" id="delete">삭제하기</button>
 		</form>
 		</c:if>
 	</div>

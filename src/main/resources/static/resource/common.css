@@ -691,6 +691,7 @@ nav.close ~ .dashboard .top{
 .calendar-box{
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	
 }
 .calendar{
@@ -698,6 +699,25 @@ nav.close ~ .dashboard .top{
 	margin-top: 90px;
 	width:1024px;
 }
+
+.educationCourse-add-btn{
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	width:150px;
+	border-radius:8px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+.educationCourse-add-btn>button{
+	width:100px;
+	text-align: center;
+}
+.educationCourse-add-btn>button>span{
+	width:100px;
+	text-align: center;
+}
+
 /** edustatus */
 .edu-status{
 	margin-top: 80px;
@@ -935,41 +955,7 @@ nav.close ~ .dashboard .top{
 	justify-content:space-around;
 }
 
-.comment-list-modify-btn{
-	border:1px solid var(--primary-color);
-	background-color: var(--box3-color);
-	color: var(--primary-color);
-	border-radius: 8px;
-	width: 50px;
-	text-align: center;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-}
 
-.comment-list-delete-btn{
-	border:1px solid var(--primary-color);
-	background-color: var(--box3-color);
-	color: var(--primary-color);
-	border-radius: 8px;
-	width: 50px;
-	text-align: center;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-}
-.comment-list-cancle-btn{
-	border:1px solid var(--primary-color);
-	background-color: var(--box3-color);
-	color: var(--primary-color);
-	border-radius: 8px;
-	width: 50px;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-}
 /** 회원 관리 */
 .member-list-title{
 	font-size: 2rem;
@@ -1075,4 +1061,17 @@ nav.close ~ .dashboard .top{
 .member-delete-btn>button{
 	width:100px;
 	text-align: center;
+}
+/** createEducationCourse */
+.createEducationCourse-modal-bg{
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.8);
+   z-index: 1200;
+}
+.createEducationCourse-modal{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
 }

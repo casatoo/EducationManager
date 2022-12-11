@@ -25,4 +25,10 @@ public interface EducationCourseRepository {
 	public registeInfo getRegisteInfo(int educationCourseId, int memberId);
 
 	public void doDelete(int educationCourseId, int memberId);
+
+	public EducationCourse getEducationCourseByTitle(String title);
+
+	public void create(String title, String startOfEducation, String endOfEducation, String place, int managerMemberId);
+
+	public void delete(int educationCourseId);
 }

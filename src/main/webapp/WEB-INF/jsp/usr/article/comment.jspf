@@ -62,12 +62,12 @@ const modifyCancleBtn = (count) =>{
 			<input type="text" id="showComment${status.count}" name="comment"  disabled value="${comment.comment}" class="comment-list-body" required />
 			<c:if test="${rq.loginedMemberId eq comment.memberId}">
 				<div class="comment-list-submit-btn-box comment-list-submit-btn-box${status.count} hidden">
-					<button class="comment-list-modify-btn" type="submit" >수정</button>
-					<button class="comment-list-cancle-btn" type="button" onclick="modifyCancleBtn(${status.count})">취소</button>
+					<button class="comment-list-modify-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >수정</button>
+					<button class="comment-list-cancle-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="modifyCancleBtn(${status.count})">취소</button>
 				</div>
 				<div class="comment-list-btn-box comment-list-btn-box${status.count}">
-					<div class="comment-list-modify-btn" onclick="modifyBtn(${status.count})">수정</div>
-					<div class="comment-list-delete-btn" onclick="location.href='../comment/doDelete?id=${comment.id}&relId=${comment.relId}&listUri=${listUri}';">삭제</div>
+					<div class="comment-list-modify-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="modifyBtn(${status.count})">수정</div>
+					<div class="comment-list-delete-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="location.href='../comment/doDelete?id=${comment.id}&relId=${comment.relId}&listUri=${listUri}';">삭제</div>
 				</div>
 			</c:if>
 		</form>

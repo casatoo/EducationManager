@@ -14,10 +14,10 @@
 			<span class="member-badge">회원 수: ${getTotalMember}명</span>
 		</div>
 		<div>
-			<form action="../member/list">
+			<form action="../member/memberList">
 				<select class="input-member-select rounded-lg"
 					data-value="${param.searchFrom}" name="searchFrom" required>
-					<option value="memberName" selected>이름</option>
+					<option value="name" selected>이름</option>
 				</select> <input class="input-member-search rounded-lg" type="text"
 					placeholder="검색어를 입력해주세요" name="searchWord"
 					value="${param.searchWord}" />
