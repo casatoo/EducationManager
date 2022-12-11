@@ -62,4 +62,10 @@
 		WHERE courseId = #{educationCourseId} 
 		AND memberId = #{memberId};
 	</select>
+	
+	<delete id="doDelete">
+		DELETE FROM registeInfo
+		WHERE courseId = #{educationCourseId}
+		AND memberId =  #{memberId};
+	</delete>
 </mapper>

@@ -94,5 +94,17 @@ public class EducationCourseService {
 		
 		return ResultData.from("S-1", Ut.f("수강신청되었습니다."));
 	}
+	public ResultData doDelete(int educationCourseId, int memberId) {
+		
+		registeInfo rd = educationCourseRepository.getRegisteInfo(educationCourseId,memberId);
+		
+		if(rd == null) {
+			return ResultData.from("F-1", Ut.f("수강중인 과정이 아닙니다."));
+		}
+		
+		educationCourseRepository.doDelete(educationCourseId,memberId);
+		
+		return ResultData.from("S-1","수강취소되었습니다.","id",educationCourseId);
+	}
 	
 }

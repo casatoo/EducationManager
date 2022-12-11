@@ -129,4 +129,14 @@ public class UsrEducationCourseController {
 		
 		return Ut.jsReplace(Ut.f("%d번 교육과정 수정", educationCourseId),  Ut.f("../educationCourse/detail?id=%d", educationCourseId));
 	}
+	
+	@RequestMapping("usr/educationCourse/doDelete")
+	@ResponseBody
+	public String doDelete(int educationCourseId) {
+		
+		ResultData rd = educationCourseService.doDelete(educationCourseId, rq.getLoginedMemberId());
+		
+		return Ut.jsReplace(rd.getMsg(), "../educationCourse/eduStatus");
+				
+	}
 }

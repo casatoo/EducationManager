@@ -23,4 +23,6 @@ public interface EducationCourseRepository {
 	public void registe(int educationCourseId, int memberId);
 
 	public registeInfo getRegisteInfo(int educationCourseId, int memberId);
+
+	public void doDelete(int educationCourseId, int memberId);
 }
