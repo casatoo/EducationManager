@@ -60,7 +60,7 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
 	public String doJoin(String loginId, String loginPw, String birthDay, String name, String englishName,
-			String cellphoneNum, String email, Model model, @RequestParam(defaultValue = "/") String afterLoginUri) {
+			String cellphoneNum, String email, Model model, @RequestParam(defaultValue = "/") String afterLoginUri, MultipartRequest multipartRequest) {
 
 		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
 
