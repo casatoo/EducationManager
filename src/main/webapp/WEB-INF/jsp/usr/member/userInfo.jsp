@@ -164,7 +164,7 @@ const memberCancleModify =()=>{
 				<div class="flex flex-wrap -mx-3">
 					<div class="w-full px-3">
 						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 가입일자 </label>
+							class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 가입일자 </label>
 						<div
 							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">${member.regDate.substring(0,16)}</div>
 					</div>
@@ -174,7 +174,7 @@ const memberCancleModify =()=>{
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 아이디 </label> <input disabled
+					class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 아이디 </label> <input disabled
 					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 					type="text" name="loginId" id="loginId" autocomplete="off"
 					value="${member.loginId}" required>
@@ -187,7 +187,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hidden"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 hidden userInfo-label"
 						id="password-check-label"> 현재 비밀번호 </label> <input
 						disabled
 						class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -198,7 +198,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hidden"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 hidden userInfo-label"
 						id="new-password-label"> 새 비밀번호 </label> <input
 						disabled
 						class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -221,7 +221,7 @@ const memberCancleModify =()=>{
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 이름 </label> <input
+					class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 이름 </label> <input
 					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 					type="text" name="name" id="name" autocomplete="off"
 					value="${member.name}" required disabled>
@@ -232,7 +232,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 영문이름 </label> <input
+						class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 영문이름 </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="englishName" id="englishName" autocomplete="off"
 						value="${member.englishName}" required disabled>
@@ -241,7 +241,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 생년월일 </label> <input
+						class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 생년월일 </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="date" name="birthDay" id="birthDay" autocomplete="off"
 						value="${member.birthDay}" required disabled>
@@ -250,7 +250,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> PHONE NUMBER </label> <input
+						class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> PHONE NUMBER </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="tel" id="cellphoneNum" name="cellphoneNum"
 						value="${member.cellphoneNum}" pattern="[0-9]{11}"
@@ -260,7 +260,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> E-MAIL </label> <input
+						class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> E-MAIL </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="email" name="email" id="email" autocomplete="off"
 						value="${member.email}" required disabled>
@@ -269,7 +269,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 프로필 이미지 변경 </label> <input
+						class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 프로필 이미지 변경 </label> <input
 						accept="image/gif, image/jpeg, image/png"
 						name="file__member__0__extra__profileImg__1"
 						id="file__member__0__extra__profileImg__1"

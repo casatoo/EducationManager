@@ -31,7 +31,7 @@ spring:
 mybatis:
   type-aliases-package: com.KMS.spring.EM.vo
 custom:
-  genFileDirPath: C:\springworkspace\workspace-spring-tool-suite-4-4.16.0.RELEASE\EducationManager
+  genFileDirPath: C:\workspace_kms\sts-4.15.2.RELEASE-workspace\EducationManager
   siteName: EM
   siteMainUri: http://localhost:8081
   emailFrom: no-reply@localhost
