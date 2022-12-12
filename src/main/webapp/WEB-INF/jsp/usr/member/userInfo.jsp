@@ -148,7 +148,7 @@ const memberCancleModify =()=>{
 			<div class="profile-img-box">
 				<label
 					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 프로필 이미지 </label> <img
-					src="${rq.getProfileImgUri(rq.loginedMemberId)}"
+					src="${rq.getProfileImgUri(rq.loginedMemberId)}" class="profile-image"
 					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 			</div>
 			<div class="w-full max-w-lg">

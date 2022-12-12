@@ -1108,6 +1108,10 @@ nav.close ~ .dashboard .top{
 }
 .profile-img-box{
 	width:165px;
-	height: 165px;
+	height:165px;
 	margin-right: 10px;
+}
+.profile-image{
+	width:165px;
+	height:130px;
 }

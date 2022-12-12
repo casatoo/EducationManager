@@ -217,7 +217,7 @@ public class MemberService {
 		}
 		memberRepository.doModify(birthDay, englishName, cellphoneNum, email, memberId);
 		
-		return new ResultData("S-1", "회원정보 수정 성공", "id", memberId);
+		return ResultData.from("S-1", "회원정보 수정 성공", "id", memberId);
 	}
 	
 	/**
