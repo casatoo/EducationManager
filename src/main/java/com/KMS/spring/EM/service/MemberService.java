@@ -216,7 +216,8 @@ public class MemberService {
 			return ResultData.from("F-1",Ut.f("중복된 회원 정보입니다. %s, %s",name, email));
 		}
 		memberRepository.doModify(birthDay, englishName, cellphoneNum, email, memberId);
-		return ResultData.from("S-1","회원정보 수정 성공","memberId",memberId);
+		
+		return new ResultData("S-1", "회원정보 수정 성공", "id", memberId);
 	}
 	
 	/**

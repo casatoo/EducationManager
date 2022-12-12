@@ -32,6 +32,7 @@
 			form.email.focus();
 			return;
 		}
+		
 		const maxSizeMb = 10;
 		const maxSize = maxSizeMb * 1204 * 1204;
 		const profileImgFileInput = form["file__member__0__extra__profileImg__1"];
@@ -42,6 +43,7 @@
 				return;
 			}
 		}
+
 		memberInfoModify__submitFormDone = true;
 		form.submit();
 	}
@@ -145,8 +147,7 @@ const memberCancleModify =()=>{
 		<div class="flex">
 			<div class="profile-img-box">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-					for="grid-password"> 프로필 이미지 </label> <img
+					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 프로필 이미지 </label> <img
 					src="${rq.getProfileImgUri(rq.loginedMemberId)}"
 					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 			</div>
@@ -154,8 +155,7 @@ const memberCancleModify =()=>{
 				<div class="flex flex-wrap -mx-3">
 					<div class="w-full px-3">
 						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-password"> 회원 등급 </label>
+							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 회원 등급 </label>
 						<div
 							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 							${level} 회원</div>
@@ -164,8 +164,7 @@ const memberCancleModify =()=>{
 				<div class="flex flex-wrap -mx-3">
 					<div class="w-full px-3">
 						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-password"> 가입일자 </label>
+							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 가입일자 </label>
 						<div
 							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">${member.regDate.substring(0,16)}</div>
 					</div>
@@ -175,8 +174,7 @@ const memberCancleModify =()=>{
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-					for="grid-first-name"> 아이디 </label> <input disabled
+					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 아이디 </label> <input disabled
 					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 					type="text" name="loginId" id="loginId" autocomplete="off"
 					value="${member.loginId}" required>
@@ -190,7 +188,7 @@ const memberCancleModify =()=>{
 				<div class="w-full px-3">
 					<label
 						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hidden"
-						id="password-check-label" for="grid-last-name"> 현재 비밀번호 </label> <input
+						id="password-check-label"> 현재 비밀번호 </label> <input
 						disabled
 						class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="hidden" name="loginPwCheck" id="loginPwCheck"
@@ -201,7 +199,7 @@ const memberCancleModify =()=>{
 				<div class="w-full px-3">
 					<label
 						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hidden"
-						id="new-password-label" for="grid-last-name"> 새 비밀번호 </label> <input
+						id="new-password-label"> 새 비밀번호 </label> <input
 						disabled
 						class="appearance-none block w-full text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="hidden" name="loginPw" id="loginPw"
@@ -223,22 +221,18 @@ const memberCancleModify =()=>{
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-					for="grid-password"> 이름 </label> <input
+					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 이름 </label> <input
 					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 					type="text" name="name" id="name" autocomplete="off"
 					value="${member.name}" required disabled>
 			</div>
 		</div>
-		<form action="../member/doModify?"
-			onsubmit="memberInfoModify__submitForm(this); return false;">
-			<input type="hidden" name="memberModifyAuthKey"
-				id="memberModifyAuthKey" />
+		<form action="../member/doModify" method="POST" enctype="multipart/form-data" onsubmit="memberInfoModify__submitForm(this); return false;">
+			<input type="hidden" name="memberModifyAuthKey" id="memberModifyAuthKey" />
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> 영문이름 </label> <input
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 영문이름 </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="englishName" id="englishName" autocomplete="off"
 						value="${member.englishName}" required disabled>
@@ -247,8 +241,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> 생년월일 </label> <input
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 생년월일 </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="date" name="birthDay" id="birthDay" autocomplete="off"
 						value="${member.birthDay}" required disabled>
@@ -257,8 +250,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> PHONE NUMBER </label> <input
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> PHONE NUMBER </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="tel" id="cellphoneNum" name="cellphoneNum"
 						value="${member.cellphoneNum}" pattern="[0-9]{11}"
@@ -268,8 +260,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> E-MAIL </label> <input
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> E-MAIL </label> <input
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="email" name="email" id="email" autocomplete="off"
 						value="${member.email}" required disabled>
@@ -278,8 +269,7 @@ const memberCancleModify =()=>{
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> 프로필 이미지 변경 </label> <input
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 프로필 이미지 변경 </label> <input
 						accept="image/gif, image/jpeg, image/png"
 						name="file__member__0__extra__profileImg__1"
 						id="file__member__0__extra__profileImg__1"

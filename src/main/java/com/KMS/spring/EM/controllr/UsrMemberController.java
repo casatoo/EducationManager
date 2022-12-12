@@ -307,7 +307,7 @@ public class UsrMemberController {
 	 */
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
-	public String doModify(String birthDay, String name, String englishName,  String cellphoneNum, String email,String memberModifyAuthKey, Model model, MultipartRequest multipartRequest) {
+	public String doModify(String birthDay, String name, String englishName,  String cellphoneNum, String email,String memberModifyAuthKey, MultipartRequest multipartRequest , Model model) {
 		
 		if(memberModifyAuthKey == null) {
 			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
