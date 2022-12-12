@@ -2,6 +2,10 @@ server:
   port: 8081
   
 spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
   mail:
     host: smtp.gmail.com
     port: 587
@@ -27,6 +31,7 @@ spring:
 mybatis:
   type-aliases-package: com.KMS.spring.EM.vo
 custom:
+  genFileDirPath: C:\springworkspace\workspace-spring-tool-suite-4-4.16.0.RELEASE\EducationManager
   siteName: EM
   siteMainUri: http://localhost:8081
   emailFrom: no-reply@localhost

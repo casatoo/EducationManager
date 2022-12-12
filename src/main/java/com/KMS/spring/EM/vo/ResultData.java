@@ -1,28 +1,36 @@
 package com.KMS.spring.EM.vo;
 
-import lombok.Getter;
-import lombok.ToString;
+import java.util.Map;
+
+import com.KMS.spring.EM.utill.Ut;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class ResultData<DT> {
-	
-	@Getter
+
 	private String resultCode;
-	@Getter
 	private String msg;
-	@Getter
 	private DT data1;
-	@Getter
     private String data1Name;
-	@Getter
 	private Object data2;
-	@Getter
 	private String data2Name;
-	@Getter
 	private Object data3;
-	@Getter
 	private String data3Name;
+	private Map<String, Object> body;
+	
+	public ResultData(String resultCode, String msg, Object... args) {
+		this.resultCode = resultCode;
+		this.msg = msg;
+		this.body = Ut.mapOf(args);
+	}
+
+	
 	/**
 	 * 보고서 형식 from
 	 * 결과 코드와 메세지로 구성
@@ -47,7 +55,7 @@ public class ResultData<DT> {
 	 * @param data1
 	 * @return
 	 */
-	public static <DT> ResultData<DT> from(String resultCode, String msg, String data1Name,DT data1) {
+	public static <DT> ResultData<DT> from(String resultCode, String msg, String data1Name, DT data1) {
 		ResultData<DT> rd = new ResultData<DT>();
 		rd.resultCode = resultCode;
 		rd.msg = msg;

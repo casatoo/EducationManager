@@ -158,7 +158,7 @@ const loginAlert = () => {
 	<div class="article-detail-status-box">
 		<div class="article-detail-status-content">
 			<div class="article-detail-status-img-box">
-				<img src="/resource/img/basicUserImg.jpg" alt="">
+				<img src="${rq.getProfileImgUri(article.memberId)}" onerror="${rq.profileFallbackImgOnErrorHtml}" alt=""/>
 			</div>
 			<div class="article-detail-status-content-info">
 				<div class="article-detail-status-content-title">

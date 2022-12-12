@@ -47,12 +47,22 @@
 			form.loginId.focus();
 			return;
 		}
+		const maxSizeMb = 10;
+		const maxSize = maxSizeMb * 1204 * 1204;
+		const profileImgFileInput = form["file__member__0__extra__profileImg__1"];
+		if (profileImgFileInput.value) {
+			if (profileImgFileInput.files[0].size > maxSize) {
+				alert(maxSizeMb + "MB 이하의 파일을 업로드 해주세요.");
+				profileImgFileInput.focus();
+				return;
+			}
+		}
 		memberJoin__submitFormDone = true;
 		form.submit();
 	}
 </script>
 	<section class="flex justify-center mt-14">
-		<form action="../member/dojoin?" class="w-full max-w-lg"
+		<form action="../member/dojoin" enctype="multipart/form-data" method="post" class="w-full max-w-lg"
 			onsubmit="memberJoin__submitForm(); return false;">
 			<div class="text-center text-3xl">
 				<h1>
@@ -128,6 +138,15 @@
 						for="grid-password"> 이메일 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="email" name="email" id="email" autocomplete="off" required>
+				</div>
+			</div>
+			<div class="flex flex-wrap -mx-3 mb-6">
+				<div class="w-full px-3">
+					<label
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						for="grid-password"> 이미지 파일 업로드 </label> <input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
+								placeholder="프로필 이미지를 선택해주세요" type="file" class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+							/>
 				</div>
 			</div>
 			<button

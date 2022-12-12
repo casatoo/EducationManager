@@ -210,7 +210,7 @@ public class Rq {
 		case "/usr/member/join":
 		case "/usr/member/findLoginId":
 		case "/usr/member/findLoginPw":
-			return Ut.getUriEncoded(Ut.getAttr(paramMap, "afterLoginUri", ""));
+			return Ut.getUriEncoded(Ut.getStrAttr(paramMap, "afterLoginUri", ""));
 		}
 
 		return getEncodedCurrentUri();
@@ -221,5 +221,16 @@ public class Rq {
 	}
 	public String getArticleWriteUriFromArticleList(int boardId) {
 		return "../article/write?listUri=" + getEncodedCurrentUri() + "&boardId="+ boardId;
+	}
+	public String getProfileImgUri(int membeId) {
+		return "/common/genFile/file/member/" + membeId + "/extra/profileImg/1";
+	}
+
+	public String getProfileFallbackImgUri() {
+		return "https://via.placeholder.com/150/?text=*^_^*";
+	}
+
+	public String getProfileFallbackImgOnErrorHtml() {
+		return "this.src = '" + getProfileFallbackImgUri() + "'";
 	}
 }

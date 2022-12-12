@@ -32,7 +32,16 @@
 			form.email.focus();
 			return;
 		}
-		
+		const maxSizeMb = 10;
+		const maxSize = maxSizeMb * 1204 * 1204;
+		const profileImgFileInput = form["file__member__0__extra__profileImg__1"];
+		if (profileImgFileInput.value) {
+			if (profileImgFileInput.files[0].size > maxSize) {
+				alert(maxSizeMb + "MB 이하의 파일을 업로드 해주세요.");
+				profileImgFileInput.focus();
+				return;
+			}
+		}
 		memberInfoModify__submitFormDone = true;
 		form.submit();
 	}
@@ -130,6 +139,12 @@ const memberCancleModify =()=>{
 }
 </script>
 <section class="flex justify-center mt-16">
+	<div class="w-40 border rounded-xl border-gray-400">
+		<img class="w-full rounded-xl"
+			src="${rq.getProfileImgUri(rq.loginedMemberId)}"
+			onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
+		<div>${rq.getProfileImgUri(rq.loginedMemberId)}</div>
+	</div>
 	<div class="w-full max-w-lg">
 		<div class="flex flex-wrap -mx-3">
 			<div class="w-full px-3">
@@ -251,6 +266,17 @@ const memberCancleModify =()=>{
 						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="email" name="email" id="email" autocomplete="off"
 						value="${member.email}" required disabled>
+				</div>
+			</div>
+			<div class="flex flex-wrap -mx-3 mb-6">
+				<div class="w-full px-3">
+					<label
+						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						for="grid-password"> 이미지 파일 업로드 </label> <input
+						accept="image/gif, image/jpeg, image/png"
+						name="file__member__0__extra__profileImg__1"
+						placeholder="프로필 이미지를 선택해주세요" type="file"
+						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
 				</div>
 			</div>
 			<button

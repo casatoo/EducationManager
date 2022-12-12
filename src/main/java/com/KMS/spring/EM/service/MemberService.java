@@ -66,7 +66,9 @@ public class MemberService {
 		loginPw = Ut.sha256(loginPw);
 		memberRepository.doJoin(loginId, loginPw, birthDay, name, englishName, cellphoneNum, email);
 		
-		return ResultData.from("S-1","회원가입 성공");
+		int id = memberRepository.getLastInsertId();
+		
+		return new ResultData("S-1", "회원가입이 완료되었습니다", "id", id);
 	}
 	/**
 	 * 회원번호로 Member 검색

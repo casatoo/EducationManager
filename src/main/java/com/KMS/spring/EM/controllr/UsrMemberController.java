@@ -2,6 +2,7 @@ package com.KMS.spring.EM.controllr;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,8 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.KMS.spring.EM.service.AttrService;
+import com.KMS.spring.EM.service.GenFileService;
 import com.KMS.spring.EM.service.MemberService;
 import com.KMS.spring.EM.utill.Ut;
 import com.KMS.spring.EM.vo.Attr;
@@ -40,6 +44,9 @@ public class UsrMemberController {
 	
 	@Autowired
 	private AttrService attrService;
+	
+	@Autowired
+	private GenFileService genFileService;
 	
 	/**
 	 * 회원가입
@@ -72,6 +79,18 @@ public class UsrMemberController {
 				return Ut.jsHistoryBack(Ut.f("이미 가입된 회원입니다."));
 			}
 		}
+		int newMemberId = (int) doJoinRd.getBody().get("id");
+		
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, newMemberId);
+			}
+		}
+		
 		return Ut.jsReplace(Ut.f("회원가입 성공!"),
 				Ut.f("../member/login?afterLoginUri=%s", Ut.getUriEncoded(afterLoginUri)));
 	}
@@ -288,7 +307,7 @@ public class UsrMemberController {
 	 */
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
-	public String doModify(String birthDay, String name, String englishName,  String cellphoneNum, String email,String memberModifyAuthKey, Model model) {
+	public String doModify(String birthDay, String name, String englishName,  String cellphoneNum, String email,String memberModifyAuthKey, Model model, MultipartRequest multipartRequest) {
 		
 		if(memberModifyAuthKey == null) {
 			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));
@@ -326,6 +345,17 @@ public class UsrMemberController {
 		}
 		Member member = memberService.getMemberById((int) doModifyRd.getData1());
 		ResultData resultRd = ResultData.newData(doModifyRd,"member",member);
+		
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, rq.getLoginedMemberId());
+			}
+		}
+		
 		return Ut.jsReplace("개인정보 수정완료","../member/userInfo");
 	}
 	/**
