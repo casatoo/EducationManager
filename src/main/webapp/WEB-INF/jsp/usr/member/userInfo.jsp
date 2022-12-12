@@ -218,7 +218,7 @@ const memberCancleModify =()=>{
 				type="button" id="changePasswordCancle"
 				onclick="passwordChangeCancle()">취소</button>
 		</form>
-		<div class="flex flex-wrap -mx-3">
+		<div class="flex flex-wrap -mx-3 mt-3">
 			<div class="w-full px-3">
 				<label
 					class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 이름 </label> <input

@@ -65,7 +65,7 @@
 		<form action="../member/dojoin" enctype="multipart/form-data" method="post" class="w-full max-w-lg"
 			onsubmit="memberJoin__submitForm(); return false;">
 			<div class="text-center text-3xl">
-				<h1>
+				<h1 class="join-label">
 					<i class="uil uil-user-plus"></i>회원가입
 				</h1>
 			</div>
@@ -73,7 +73,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-first-name"> 아이디 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="loginId" id="loginId" autocomplete="off"
@@ -84,7 +84,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-last-name"> 비밀번호 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="loginPw" id="loginPw" autocomplete="off"
@@ -94,7 +94,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-password"> 생년월일 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="date" name="birthDay" id="birthDay" autocomplete="off"
@@ -104,7 +104,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-password"> 이름 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="name" id="name" autocomplete="off" required>
@@ -113,7 +113,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-password"> 영문이름 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="text" name="englishName" id="englishName" autocomplete="off"
@@ -123,7 +123,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-password"> 전화번호 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="tel" id="cellphoneNum" name="cellphoneNum"
@@ -134,7 +134,7 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
 						for="grid-password"> 이메일 </label> <input
 						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 						type="email" name="email" id="email" autocomplete="off" required>
@@ -143,9 +143,9 @@
 			<div class="flex flex-wrap -mx-3 mb-6">
 				<div class="w-full px-3">
 					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> 이미지 파일 업로드 </label> <input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
-								placeholder="프로필 이미지를 선택해주세요" type="file" class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+						class="block uppercase tracking-wide text-xs font-bold mb-2 join-label"
+						for="grid-password"> 프로필 이미지 </label> <input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
+								placeholder="프로필 이미지를 선택해주세요" type="file" class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 join-label"
 							/>
 				</div>
 			</div>

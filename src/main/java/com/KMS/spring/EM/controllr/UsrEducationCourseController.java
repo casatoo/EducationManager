@@ -96,7 +96,15 @@ public class UsrEducationCourseController {
 	}
 	@RequestMapping("usr/educationCourse/doModify")
 	@ResponseBody
-	public String doModify(int educationCourseId, String startOfEducation,String endOfEducation,String title, String place,int managerMemberId,int status, String educationCourseModifyAuthKey) {
+	public String doModify(
+			int educationCourseId, 
+			String startOfEducation,
+			String endOfEducation,
+			String title, 
+			String place,
+			int managerMemberId,
+			int status, 
+			String educationCourseModifyAuthKey) {
 		
 		if(educationCourseModifyAuthKey == null) {
 			return Ut.jsHistoryBack(Ut.f("인증코드가 생성되지 않았습니다."));

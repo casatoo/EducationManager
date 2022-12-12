@@ -76,7 +76,14 @@ public class EducationCourseService {
 		
 		return educationCourseRepository.getMyeduStatus(id);
 	}
-	public ResultData doModify(int educationCourseId, String startOfEducation, String endOfEducation, String title, String place, int managerMemberId, int status) {
+	public ResultData doModify(
+			int educationCourseId, 
+			String startOfEducation, 
+			String endOfEducation, 
+			String title, 
+			String place, 
+			int managerMemberId, 
+			int status) {
 		
 		educationCourseRepository.doModify(educationCourseId, startOfEducation, endOfEducation, title, place, managerMemberId,status);
 		return ResultData.from("S-1","교육과정 수정 성공","id",educationCourseId);
