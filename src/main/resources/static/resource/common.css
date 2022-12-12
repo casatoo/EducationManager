@@ -547,6 +547,7 @@ nav.close ~ .dashboard .top{
 /** 커스텀 */
 .login-status{
 	margin-right:10px;
+	display: flex;
 }
 .login-status-text{
 	color:var(--text-color);
@@ -1074,4 +1075,39 @@ nav.close ~ .dashboard .top{
 	top:50%;
 	left:50%;
 	transform:translate(-50%,-50%);
+}
+/** common */
+
+.common-input-box{
+	appearance: none;
+	display: block;
+	width: 100%;
+	--tw-bg-opacity: 1;
+	background-color: rgba(209, 213, 219, var(--tw-bg-opacity));	
+	--tw-text-opacity: 1;
+	color: rgba(55, 65, 81, var(--tw-text-opacity));
+	border-width: 1px;
+	--tw-border-opacity: 1;
+	border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+	border-radius: 0.25rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-bottom: 0.75rem;
+	line-height: 1.25;
+}
+.common-input-box:focus{
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+	--tw-bg-opacity: 1;
+	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+	--tw-border-opacity: 1;
+	border-color: rgba(107, 114, 128, var(--tw-border-opacity));	
+	
+}
+.profile-img-box{
+	width:165px;
+	height: 165px;
+	margin-right: 10px;
 }

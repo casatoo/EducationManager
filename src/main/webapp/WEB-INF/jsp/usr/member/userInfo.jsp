@@ -93,6 +93,7 @@ const memberInfoModify =()=>{
 	$('#englishName').removeAttr('disabled').removeClass('bg-gray-300');
 	$('#cellphoneNum').removeAttr('disabled').removeClass('bg-gray-300');
 	$('#email').removeAttr('disabled').removeClass('bg-gray-300');
+	$('#file__member__0__extra__profileImg__1').removeAttr('disabled').removeClass('bg-gray-300');	
 	$('#modifyBtn').addClass('hidden');
 	$('#doModify').removeClass('hidden');
 	$('#cancleModify').removeClass('hidden');
@@ -133,36 +134,42 @@ const memberCancleModify =()=>{
 	$('#englishName').attr("disabled", true).val('${member.englishName}').addClass('bg-gray-300');
 	$('#cellphoneNum').attr("disabled", true).val('${member.cellphoneNum}').addClass('bg-gray-300');
 	$('#email').attr("disabled", true).val('${member.email}').addClass('bg-gray-300');
+	$('#file__member__0__extra__profileImg__1').attr("disabled", true).addClass('bg-gray-300');
 	$('#modifyBtn').removeClass('hidden');
 	$('#doModify').addClass('hidden');
 	$('#cancleModify').addClass('hidden');
 }
 </script>
 <section class="flex justify-center mt-16">
-	<div class="w-40 border rounded-xl border-gray-400">
-		<img class="w-full rounded-xl"
-			src="${rq.getProfileImgUri(rq.loginedMemberId)}"
-			onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
-		<div>${rq.getProfileImgUri(rq.loginedMemberId)}</div>
-	</div>
 	<div class="w-full max-w-lg">
-		<div class="flex flex-wrap -mx-3">
-			<div class="w-full px-3">
+		<div class="flex">
+			<div class="profile-img-box">
 				<label
 					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-					for="grid-password"> 회원 등급 </label>
-				<div
-					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-					${level} 회원</div>
+					for="grid-password"> 프로필 이미지 </label> <img
+					src="${rq.getProfileImgUri(rq.loginedMemberId)}"
+					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 			</div>
-		</div>
-		<div class="flex flex-wrap -mx-3">
-			<div class="w-full px-3">
-				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-					for="grid-password"> 가입일자 </label>
-				<div
-					class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">${member.regDate.substring(0,16)}</div>
+			<div class="w-full max-w-lg">
+				<div class="flex flex-wrap -mx-3">
+					<div class="w-full px-3">
+						<label
+							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+							for="grid-password"> 회원 등급 </label>
+						<div
+							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+							${level} 회원</div>
+					</div>
+				</div>
+				<div class="flex flex-wrap -mx-3">
+					<div class="w-full px-3">
+						<label
+							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+							for="grid-password"> 가입일자 </label>
+						<div
+							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">${member.regDate.substring(0,16)}</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-wrap -mx-3">
@@ -272,11 +279,12 @@ const memberCancleModify =()=>{
 				<div class="w-full px-3">
 					<label
 						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="grid-password"> 이미지 파일 업로드 </label> <input
+						for="grid-password"> 프로필 이미지 변경 </label> <input
 						accept="image/gif, image/jpeg, image/png"
 						name="file__member__0__extra__profileImg__1"
+						id="file__member__0__extra__profileImg__1"
 						placeholder="프로필 이미지를 선택해주세요" type="file"
-						class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+						class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled/>
 				</div>
 			</div>
 			<button

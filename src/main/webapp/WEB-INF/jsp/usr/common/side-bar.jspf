@@ -76,9 +76,9 @@
 		<i class="uil uil-bars sidebar-toggle"></i>
 		<c:if test="${rq.isLogined()}">
 			<div class="login-status">
-				<img
-				src="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427__480.jpg"
-				alt=""><div class="login-status-text">${rq.loginedMember.name} 님 접속 중</div>
+				<img class="w-full rounded-xl"
+			src="${rq.getProfileImgUri(rq.loginedMemberId)}"
+			onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" /><div class="login-status-text">${rq.loginedMember.name} 님 접속 중</div>
 			</div>
 			
 		</c:if>
