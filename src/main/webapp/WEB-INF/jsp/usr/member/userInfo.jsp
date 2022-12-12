@@ -142,12 +142,12 @@ const memberCancleModify =()=>{
 	$('#cancleModify').addClass('hidden');
 }
 </script>
-<section class="flex justify-center mt-16">
+<section class="flex justify-center mt-16 ">
 	<div class="w-full max-w-lg">
 		<div class="flex">
 			<div class="profile-img-box">
 				<label
-					class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 프로필 이미지 </label> <img
+					class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 프로필 이미지 </label> <img
 					src="${rq.getProfileImgUri(rq.loginedMemberId)}" class="profile-image"
 					onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 			</div>
@@ -155,7 +155,7 @@ const memberCancleModify =()=>{
 				<div class="flex flex-wrap -mx-3">
 					<div class="w-full px-3">
 						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"> 회원 등급 </label>
+							class="block uppercase tracking-wide text-xs font-bold mb-2 userInfo-label"> 회원 등급 </label>
 						<div
 							class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 							${level} 회원</div>

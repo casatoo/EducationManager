@@ -71,12 +71,11 @@
         </div>
     </nav>
     <section class="dashboard">
-
 	<div class="top">
 		<i class="uil uil-bars sidebar-toggle"></i>
 		<c:if test="${rq.isLogined()}">
 			<div class="login-status">
-				<img class="w-full rounded-xl"
+				<img class="top-profile-image"
 			src="${rq.getProfileImgUri(rq.loginedMemberId)}"
 			onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" /><div class="login-status-text">${rq.loginedMember.name} 님 접속 중</div>
 			</div>
