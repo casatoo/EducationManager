@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   
 spring:
   servlet:
@@ -31,9 +31,9 @@ spring:
 mybatis:
   type-aliases-package: com.KMS.spring.EM.vo
 custom:
-  genFileDirPath: C:\springworkspace\workspace-spring-tool-suite-4-4.16.0.RELEASE\EducationManager
+  genFileDirPath: /
   siteName: EM
-  siteMainUri: http://localhost:8081
+  siteMainUri: http://1.234.44.77:8080
   emailFrom: no-reply@localhost
   emailFromName: EM
   logging:
